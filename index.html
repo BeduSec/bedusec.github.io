@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEDUSEC | Professional Cybersecurity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hero-pattern {
+            background-color: #ffffff;
+            background-image: linear-gradient(to right, #8080800a 1px, transparent 1px), linear-gradient(to bottom, #8080800a 1px, transparent 1px);
+            background-size: 14px 24px;
+        }
+        .scrolled-nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #f1f5f9;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        }
+        .hidden-section { display: none; }
+    </style>
+</head>
+<body class="text-slate-900 antialiased selection:bg-slate-900 selection:text-white bg-white min-h-screen">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
+                    <div class="bg-slate-900 p-2 rounded-lg text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <span class="text-xl font-bold text-slate-900 tracking-tight">BEDUSEC</span>
+                </div>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <button onclick="scrollToSection('expertise')" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Expertise</button>
+                    <button onclick="scrollToSection('about')" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">About Us</button>
+                    <button onclick="scrollToSection('services')" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Services</button>
+                    <button onclick="navigateTo('github')" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">GitHub</button>
+                    <button class="bg-slate-900 text-white hover:bg-slate-800 px-6 py-2.5 rounded-lg font-semibold text-sm shadow-lg shadow-slate-900/10 active:scale-95 transition-all">Contact Firm</button>
+                </div>
+
+                <button class="md:hidden" onclick="toggleMobileMenu()">
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 p-6 flex flex-col gap-4 shadow-xl">
+            <button onclick="scrollToSection('expertise')" class="text-left text-base font-medium text-slate-600 py-2">Expertise</button>
+            <button onclick="scrollToSection('about')" class="text-left text-base font-medium text-slate-600 py-2">About Us</button>
+            <button onclick="scrollToSection('services')" class="text-left text-base font-medium text-slate-600 py-2">Services</button>
+            <button onclick="navigateTo('github')" class="text-left text-base font-medium text-slate-600 py-2">GitHub</button>
+            <button class="bg-slate-900 text-white w-full py-4 rounded-lg font-semibold">Contact Firm</button>
+        </div>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <div id="home-page">
+        <!-- Hero Section -->
+        <section class="relative pt-32 pb-24 lg:pt-48 lg:pb-40 overflow-hidden hero-pattern">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+                <div class="max-w-4xl">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-slate-600 text-sm font-medium mb-8">
+                        <span class="w-2 h-2 rounded-full bg-slate-900"></span>
+                        Viviamo per il rispetto
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-[1.1] mb-8">
+                        Elevating Global <br />
+                        <span class="text-slate-500">Cybersecurity Standards</span>
+                    </h1>
+                    <p class="text-xl text-slate-600 leading-relaxed max-w-2xl mb-12">
+                        BEDUSEC pairs the agility of youth innovation with rigorous security protocols. We provide enterprise-grade defense strategies for a complex digital world.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-slate-900 text-white hover:bg-slate-800 px-8 py-4 rounded-lg font-semibold shadow-lg shadow-slate-900/10 flex items-center justify-center gap-2 transition-all">
+                            Schedule Consultation <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                        <button class="bg-white text-slate-900 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 px-8 py-4 rounded-lg font-semibold shadow-sm transition-all">
+                            View Capabilities
+                        </button>
+                    </div>
+                    <div class="mt-20 pt-10 border-t border-slate-200 grid grid-cols-2 md:grid-cols-4 gap-8">
+                        <div><div class="text-3xl font-bold text-slate-900 mb-1">2026</div><div class="text-sm text-slate-500 font-medium">Forward Vision</div></div>
+                        <div><div class="text-3xl font-bold text-slate-900 mb-1">100%</div><div class="text-sm text-slate-500 font-medium">Security Focus</div></div>
+                        <div><div class="text-3xl font-bold text-slate-900 mb-1">Global</div><div class="text-sm text-slate-500 font-medium">Operation Reach</div></div>
+                        <div><div class="text-3xl font-bold text-slate-900 mb-1">50+</div><div class="text-sm text-slate-500 font-medium">Enterprise Partners</div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise Section -->
+        <section id="expertise" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div class="max-w-2xl">
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Strategic Security Solutions</h2>
+                        <p class="text-lg text-slate-600">We move beyond basic protection to provide comprehensive security architecture. Our youth-led innovation teams stay ahead of emerging threats through proactive research.</p>
+                    </div>
+                    <a href="#" class="flex items-center gap-2 text-slate-900 font-semibold hover:gap-3 transition-all">Explore All Services <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Cards -->
+                    <div class="bg-white p-8 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                        <div class="w-12 h-12 bg-slate-50 rounded-lg flex items-center justify-center mb-6 text-slate-900"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Infrastructure Hardening</h3>
+                        <p class="text-slate-600">Enterprise-grade system reinforcement ensuring resilience against sophisticated attacks and unauthorized access vectors.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                        <div class="w-12 h-12 bg-slate-50 rounded-lg flex items-center justify-center mb-6 text-slate-900"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg></div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Risk Assessment</h3>
+                        <p class="text-slate-600">Comprehensive evaluation of digital assets to identify vulnerabilities and implement strategic mitigation protocols.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                        <div class="w-12 h-12 bg-slate-50 rounded-lg flex items-center justify-center mb-6 text-slate-900"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Global Compliance</h3>
+                        <p class="text-slate-600">Ensuring your digital operations meet international security standards and data privacy regulations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 bg-slate-900 text-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <div class="inline-block px-3 py-1 bg-slate-800 rounded-full text-xs font-semibold tracking-wider uppercase mb-6 text-slate-300">Our Philosophy</div>
+                        <h2 class="text-3xl md:text-5xl font-bold mb-8 leading-tight">Built on Respect.<br>Driven by Innovation.</h2>
+                        <p class="text-slate-400 text-lg leading-relaxed mb-8">BEDUSEC represents a new paradigm in cybersecurity. We are a collective of youth developers and security researchers committed to constructing a safer digital environment.</p>
+                        <p class="text-slate-400 text-lg leading-relaxed mb-10">Our motto, "Viviamo per il rispetto" (We live for respect), underscores our ethical approach to security.</p>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="flex items-start gap-3 text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><div><h4 class="font-bold mb-1">Ethical Standards</h4><p class="text-sm text-slate-400">Uncompromising integrity</p></div></div>
+                            <div class="flex items-start gap-3 text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><div><h4 class="font-bold mb-1">Advanced Research</h4><p class="text-sm text-slate-400">Continuous learning</p></div></div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-slate-800 relative z-10 border border-slate-700 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-700"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-16">Capabilities</h2>
+                <div class="border-t border-slate-100">
+                    <div class="group py-10 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-6 px-4 -mx-4 rounded-lg hover:bg-slate-50 transition-all">
+                        <div class="flex gap-6 items-start">
+                            <span class="text-sm font-bold text-slate-300 pt-1">01</span>
+                            <div><h3 class="text-xl font-bold text-slate-900 mb-2">Penetration Testing</h3><p class="text-slate-600 max-w-xl">Simulated cyberattacks against your computer system to check for exploitable vulnerabilities.</p></div>
+                        </div>
+                        <div class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-all"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                    </div>
+                    <div class="group py-10 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-6 px-4 -mx-4 rounded-lg hover:bg-slate-50 transition-all">
+                        <div class="flex gap-6 items-start">
+                            <span class="text-sm font-bold text-slate-300 pt-1">02</span>
+                            <div><h3 class="text-xl font-bold text-slate-900 mb-2">Secure Code Review</h3><p class="text-slate-600 max-w-xl">In-depth analysis of source code to find security flaws that traditional testing might miss.</p></div>
+                        </div>
+                        <div class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-all"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="bg-slate-900 rounded-3xl p-8 md:p-16 overflow-hidden relative">
+                    <div class="relative z-10 grid lg:grid-cols-2 gap-12 items-center text-white">
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to secure your infrastructure?</h2>
+                            <p class="text-slate-400 text-lg mb-8">Partner with BEDUSEC for industry-leading security solutions.</p>
+                            <div class="flex flex-col gap-4">
+                                <div class="flex items-center gap-4"><div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div><div class="text-xs text-slate-400 uppercase tracking-wider">Email Us</div><div class="font-medium">contact@bedusec.com</div></div></div>
+                            </div>
+                        </div>
+                        <form class="bg-white p-8 rounded-2xl text-slate-900">
+                            <div class="mb-6"><label class="block text-sm font-semibold mb-2">Work Email</label><input type="email" class="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:ring-2 focus:ring-slate-900 bg-slate-50"></div>
+                            <div class="mb-6"><label class="block text-sm font-semibold mb-2">Message</label><textarea rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:ring-2 focus:ring-slate-900 bg-slate-50"></textarea></div>
+                            <button class="bg-slate-900 text-white w-full py-4 rounded-lg font-bold">Submit Inquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- GitHub Page -->
+    <div id="github-page" class="hidden-section">
+        <div class="pt-32 pb-24 lg:pt-48 lg:pb-40 bg-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div id="github-loading" class="flex flex-col items-center justify-center py-20">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-slate-900 mb-4"></div>
+                    <p class="text-slate-500 font-medium">Fetching Organization Data...</p>
+                </div>
+                
+                <div id="github-content" class="hidden">
+                    <div class="flex flex-col lg:flex-row gap-12 items-start mb-20">
+                        <img id="org-avatar" src="" alt="BEDUSEC" class="w-32 h-32 rounded-2xl border border-slate-100 shadow-sm">
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-4 mb-4">
+                                <h1 id="org-name" class="text-4xl font-bold text-slate-900"></h1>
+                                <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-600 border border-slate-200 uppercase tracking-widest">Public Organization</span>
+                            </div>
+                            <p id="org-desc" class="text-xl text-slate-600 mb-6 max-w-2xl"></p>
+                            <div class="flex flex-wrap gap-8 text-sm font-medium text-slate-500">
+                                <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span id="org-followers">0 Followers</span></div>
+                                <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg><span id="org-repos">0 Repositories</span></div>
+                            </div>
+                        </div>
+                        <a id="org-link" href="#" target="_blank" class="border-2 border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white px-8 py-4 rounded-lg font-semibold transition-all flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            Follow on GitHub
+                        </a>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-3">Latest Open Source Contributions <span class="h-px flex-1 bg-slate-100"></span></h2>
+                    <div id="repo-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-slate-900 p-1.5 rounded-lg text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        <span class="text-lg font-bold text-slate-900">BEDUSEC</span>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed max-w-sm mb-6">Viviamo per il rispetto. Dedicated to elevating cyber safety through professional integrity.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6">Company</h4>
+                    <ul class="space-y-4 text-sm text-slate-600">
+                        <li><a href="#" class="hover:text-slate-900">About Us</a></li>
+                        <li><a href="#" class="hover:text-slate-900">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6">Social</h4>
+                    <ul class="space-y-4 text-sm text-slate-600">
+                        <li><a href="#" class="hover:text-slate-900">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-slate-900">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+                <p>© 2026 BEDUSEC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // State Management
+        let currentPage = 'home';
+        const navbar = document.getElementById('navbar');
+        const homePage = document.getElementById('home-page');
+        const githubPage = document.getElementById('github-page');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Scroll Logic
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('scrolled-nav');
+            } else {
+                navbar.classList.remove('scrolled-nav');
+            }
+        });
+
+        // Navigation
+        function navigateTo(page) {
+            currentPage = page;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            if (page === 'home') {
+                homePage.classList.remove('hidden-section');
+                githubPage.classList.add('hidden-section');
+            } else if (page === 'github') {
+                homePage.classList.add('hidden-section');
+                githubPage.classList.remove('hidden-section');
+                fetchGitHub();
+            }
+            mobileMenu.classList.add('hidden');
+        }
+
+        function scrollToSection(id) {
+            if (currentPage !== 'home') {
+                navigateTo('home');
+                setTimeout(() => {
+                    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            } else {
+                document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+            }
+            mobileMenu.classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // GitHub API Integration
+        async function fetchGitHub() {
+            const loading = document.getElementById('github-loading');
+            const content = document.getElementById('github-content');
+            
+            try {
+                const orgRes = await fetch('https://api.github.com/orgs/bedusec');
+                const orgData = await orgRes.json();
+                
+                document.getElementById('org-avatar').src = orgData.avatar_url;
+                document.getElementById('org-name').innerText = orgData.name || 'BEDUSEC';
+                document.getElementById('org-desc').innerText = orgData.description || 'Open source security research.';
+                document.getElementById('org-followers').innerText = `${orgData.followers} Followers`;
+                document.getElementById('org-repos').innerText = `${orgData.public_repos} Repositories`;
+                document.getElementById('org-link').href = orgData.html_url;
+
+                const reposRes = await fetch('https://api.github.com/orgs/bedusec/repos?sort=updated&per_page=6');
+                const repos = await reposRes.json();
+                
+                const grid = document.getElementById('repo-grid');
+                grid.innerHTML = '';
+                
+                repos.forEach(repo => {
+                    const card = `
+                        <div class="p-6 rounded-xl border border-slate-100 bg-white hover:border-slate-300 hover:shadow-lg transition-all group">
+                            <div class="flex justify-between items-start mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 group-hover:text-slate-900"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                                <a href="${repo.html_url}" target="_blank" class="text-slate-400 hover:text-slate-900"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 truncate">${repo.name}</h3>
+                            <p class="text-sm text-slate-500 mb-6 line-clamp-2 h-10">${repo.description || 'Enterprise security utility.'}</p>
+                            <div class="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-wider">
+                                <div class="flex items-center gap-4">
+                                    <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> ${repo.stargazers_count}</span>
+                                    <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="3" r="3"></circle><circle cx="6" cy="21" r="3"></circle><path d="M18 9a3 3 0 0 0-3 3v3a3 3 0 0 0 3 3 3 3 0 0 0 3-3v-3a3 3 0 0 0-3-3z"></path><line x1="6" y1="6" x2="6" y2="18"></line><path d="M6 15h12"></path></svg> ${repo.forks_count}</span>
+                                </div>
+                                <span class="px-2 py-0.5 rounded bg-slate-50 text-slate-600 border border-slate-100">${repo.language || 'Code'}</span>
+                            </div>
+                        </div>
+                    `;
+                    grid.innerHTML += card;
+                });
+
+                loading.classList.add('hidden');
+                content.classList.remove('hidden');
+
+            } catch (err) {
+                loading.innerHTML = `<p class="text-red-500">Failed to load data. Please refresh.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

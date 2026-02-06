@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEDUSEC | Tactical Cyber Defense</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f2ff;
+            --neon-border: rgba(0, 242, 255, 0.2);
+        }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #020617;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        .orbitron { font-family: 'Orbitron', sans-serif; }
+        .hero-grid {
+            background-image: 
+                linear-gradient(to right, rgba(0, 242, 255, 0.05) 1px, transparent 1px), 
+                linear-gradient(to bottom, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .scrolled-nav {
+            background-color: rgba(2, 6, 23, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--neon-border);
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        .hidden-section { display: none; }
+        .neon-text {
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px rgba(0, 242, 255, 0.5);
+        }
+        .tactical-card {
+            background: linear-gradient(145deg, #0f172a, #020617);
+            border: 1px solid var(--neon-border);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tactical-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        input, textarea {
+            background: #0f172a !important;
+            border: 1px solid var(--neon-border) !important;
+            color: white !important;
+            width: 100%;
+        }
+        input:focus, textarea:focus {
+            border-color: var(--neon-blue) !important;
+            box-shadow: 0 0 0 1px var(--neon-blue) !important;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-black">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4 md:py-6 border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2 sm:gap-3 cursor-pointer group" onclick="navigateTo('home')">
+                    <div class="bg-cyan-500 p-1.5 sm:p-2 rounded-sm text-black group-hover:rotate-90 transition-transform duration-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="round" class="sm:w-6 sm:h-6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <span class="text-lg sm:text-xl font-black orbitron tracking-[0.1em] sm:tracking-[0.2em] neon-text uppercase">BeduSec</span>
+                </div>
+
+                <div class="hidden md:flex items-center gap-6 lg:gap-10">
+                    <button onclick="scrollToSection('expertise')" class="orbitron text-[10px] lg:text-[11px] font-bold tracking-widest text-slate-400 hover:text-cyan-400 transition-colors uppercase">Data.Exp</button>
+                    <button onclick="scrollToSection('about')" class="orbitron text-[10px] lg:text-[11px] font-bold tracking-widest text-slate-400 hover:text-cyan-400 transition-colors uppercase">Core.Philosophy</button>
+                    <button onclick="scrollToSection('services')" class="orbitron text-[10px] lg:text-[11px] font-bold tracking-widest text-slate-400 hover:text-cyan-400 transition-colors uppercase">Systems.Nodes</button>
+                    <button onclick="navigateTo('github')" class="orbitron text-[10px] lg:text-[11px] font-bold tracking-widest text-slate-400 hover:text-cyan-400 transition-colors uppercase">Open.Source</button>
+                    <button class="bg-transparent border border-cyan-500 text-cyan-400 orbitron text-[10px] lg:text-[11px] font-bold px-4 lg:px-6 py-2 tracking-tighter hover:bg-cyan-500 hover:text-black transition-all">ESTABLISH_LINK</button>
+                </div>
+
+                <button class="md:hidden text-cyan-500 p-2" onclick="toggleMobileMenu()">
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-slate-950 border-b border-cyan-500/30 p-6 flex flex-col gap-6 shadow-2xl">
+            <button onclick="scrollToSection('expertise')" class="orbitron text-xs font-bold tracking-widest text-slate-400 text-left uppercase">Data.Exp</button>
+            <button onclick="scrollToSection('about')" class="orbitron text-xs font-bold tracking-widest text-slate-400 text-left uppercase">Core.Philosophy</button>
+            <button onclick="scrollToSection('services')" class="orbitron text-xs font-bold tracking-widest text-slate-400 text-left uppercase">Systems.Nodes</button>
+            <button onclick="navigateTo('github')" class="orbitron text-xs font-bold tracking-widest text-slate-400 text-left uppercase">Open.Source</button>
+        </div>
+    </nav>
+
+    <div id="home-page">
+        <section class="relative pt-32 pb-20 sm:pt-40 sm:pb-32 lg:pt-56 lg:pb-48 overflow-hidden hero-grid">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-950"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div class="max-w-4xl">
+                    <div class="inline-flex items-center gap-3 px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 orbitron text-[9px] sm:text-[10px] font-bold tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-8 sm:mb-10">
+                        <span class="w-1.5 h-1.5 bg-cyan-500 animate-pulse"></span>
+                        Status: Active_Defense
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl lg:text-8xl font-black orbitron tracking-tighter leading-tight sm:leading-none mb-8 sm:mb-10 uppercase">
+                        Breach <br />
+                        <span class="text-slate-700">Impossible.</span>
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl mb-10 sm:mb-14 font-light">
+                        BEDUSEC weaponizes innovation against cyber threats. We deploy next-generation defensive architectures designed to withstand the velocity of modern digital warfare.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                        <button class="bg-cyan-500 text-black orbitron text-[11px] sm:text-xs font-black tracking-widest px-8 sm:px-10 py-4 sm:py-5 flex items-center justify-center gap-3 hover:bg-cyan-400 transition-all uppercase">
+                            INITIATE_PROTOCOL <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                        <button class="bg-transparent border border-slate-700 text-slate-400 orbitron text-[11px] sm:text-xs font-black tracking-widest px-8 sm:px-10 py-4 sm:py-5 hover:border-slate-500 hover:text-white transition-all uppercase">
+                            SYSTEM_CAPS
+                        </button>
+                    </div>
+                    <div class="mt-20 sm:mt-28 pt-10 sm:pt-12 border-t border-slate-800 grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
+                        <div><div class="text-xl sm:text-2xl orbitron font-bold text-cyan-400 mb-1">2026_X</div><div class="orbitron text-[8px] sm:text-[9px] tracking-widest text-slate-500 uppercase">Next.Gen</div></div>
+                        <div><div class="text-xl sm:text-2xl orbitron font-bold text-slate-200 mb-1">0.00%</div><div class="orbitron text-[8px] sm:text-[9px] tracking-widest text-slate-500 uppercase">Error.Rate</div></div>
+                        <div><div class="text-xl sm:text-2xl orbitron font-bold text-slate-200 mb-1">ROOT</div><div class="orbitron text-[8px] sm:text-[9px] tracking-widest text-slate-500 uppercase">Access.Lvl</div></div>
+                        <div><div class="text-xl sm:text-2xl orbitron font-bold text-slate-200 mb-1">GLOBAL</div><div class="orbitron text-[8px] sm:text-[9px] tracking-widest text-slate-500 uppercase">Net.Sync</div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="expertise" class="py-20 sm:py-32 bg-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-20 gap-8">
+                    <div class="max-w-2xl">
+                        <h2 class="text-3xl sm:text-4xl orbitron font-black text-white mb-4 sm:mb-6 uppercase tracking-tight">Tactical Modules</h2>
+                        <p class="text-base sm:text-lg text-slate-400 font-light">We engineer resilient security layers that outperform traditional firewall logic through algorithmic preemptive strikes.</p>
+                    </div>
+                    <a href="#" class="orbitron text-[10px] tracking-[0.3em] font-black text-cyan-500 flex items-center gap-2 hover:translate-x-2 transition-transform uppercase">Full_Node_Access ></a>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    <div class="tactical-card p-8 sm:p-10">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 mb-6 sm:mb-8 text-cyan-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" class="w-8 h-8 sm:w-10 sm:h-10"><rect x="3" y="11" width="18" height="11" rx="0"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <h3 class="orbitron text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 uppercase tracking-widest">Hardening</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed font-light">Atomic-level infrastructure reinforcement and kernel-space protection protocols.</p>
+                    </div>
+                    <div class="tactical-card p-8 sm:p-10">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 mb-6 sm:mb-8 text-cyan-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" class="w-8 h-8 sm:w-10 sm:h-10"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
+                        <h3 class="orbitron text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 uppercase tracking-widest">Analytics</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed font-light">Real-time signal analysis to identify malicious intent patterns across global nodes.</p>
+                    </div>
+                    <div class="tactical-card p-8 sm:p-10 sm:col-span-2 lg:col-span-1">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 mb-6 sm:mb-8 text-cyan-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" class="w-8 h-8 sm:w-10 sm:h-10"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
+                        <h3 class="orbitron text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 uppercase tracking-widest">Compliance</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed font-light">Ensuring regulatory alignment through automated verification and cryptographic proof.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 sm:py-32 bg-black border-y border-cyan-500/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                    <div>
+                        <div class="orbitron text-[9px] sm:text-[10px] tracking-[0.4em] sm:tracking-[0.5em] text-cyan-500 font-black mb-6 sm:mb-8 uppercase">Project_Vision</div>
+                        <h2 class="text-3xl sm:text-4xl md:text-6xl orbitron font-black text-white mb-8 sm:mb-10 uppercase leading-none">Code_Respect<br><span class="text-cyan-500">Innovation_Core</span></h2>
+                        <p class="text-slate-500 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 font-light italic">"Viviamo per il rispetto."</p>
+                        <p class="text-slate-400 text-base sm:text-lg leading-relaxed mb-10 sm:mb-12 font-light">BEDUSEC is an elite collective of tactical developers. We don't just protect data—we redefine the ethics of digital engagement through absolute transparency and technical dominance.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                            <div class="flex items-start gap-4">
+                                <div class="text-cyan-500 mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                                <div><h4 class="orbitron text-xs font-bold text-white mb-1 uppercase tracking-widest">Integrity</h4><p class="text-xs text-slate-500">Zero compromises.</p></div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="text-cyan-500 mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                                <div><h4 class="orbitron text-xs font-bold text-white mb-1 uppercase tracking-widest">Continuity</h4><p class="text-xs text-slate-500">Persistent vigilance.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group mt-8 lg:mt-0 max-w-md mx-auto lg:max-w-none">
+                        <div class="aspect-square bg-slate-900 border border-cyan-500/20 p-1">
+                            <div class="w-full h-full bg-slate-950 flex items-center justify-center relative overflow-hidden">
+                                <div class="absolute inset-0 bg-cyan-500/5 animate-pulse"></div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5" stroke-linecap="square" class="text-cyan-500/20 group-hover:scale-125 transition-transform duration-1000 sm:w-[120px] sm:h-[120px]"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                        </div>
+                        <div class="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-20 sm:w-32 h-20 sm:h-32 border-t-2 border-r-2 border-cyan-500/40"></div>
+                        <div class="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-20 sm:w-32 h-20 sm:h-32 border-b-2 border-l-2 border-cyan-500/40"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="py-20 sm:py-32 bg-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl orbitron font-black text-white mb-12 sm:mb-20 uppercase tracking-widest">Active_Nodes</h2>
+                <div class="border-t border-slate-900">
+                    <div class="group py-8 sm:py-12 border-b border-slate-900 flex flex-col md:flex-row md:items-center justify-between gap-6 sm:gap-8 px-4 sm:px-6 -mx-4 sm:-mx-6 hover:bg-cyan-500/5 transition-all">
+                        <div class="flex gap-6 sm:gap-10 items-start">
+                            <span class="orbitron text-[10px] sm:text-xs font-black text-cyan-950 bg-cyan-500 px-2 py-1">01</span>
+                            <div><h3 class="text-lg sm:text-xl orbitron font-bold text-white mb-2 sm:mb-3 uppercase tracking-tighter group-hover:text-cyan-400 transition-colors">Offensive_Audit</h3><p class="text-sm text-slate-400 max-w-xl font-light leading-relaxed">Aggressive stress-testing of perimeter defenses using proprietary exploit models.</p></div>
+                        </div>
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 border border-slate-800 flex items-center justify-center group-hover:border-cyan-500 group-hover:text-cyan-500 transition-all self-end md:self-auto"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                    </div>
+                    <div class="group py-8 sm:py-12 border-b border-slate-900 flex flex-col md:flex-row md:items-center justify-between gap-6 sm:gap-8 px-4 sm:px-6 -mx-4 sm:-mx-6 hover:bg-cyan-500/5 transition-all">
+                        <div class="flex gap-6 sm:gap-10 items-start">
+                            <span class="orbitron text-[10px] sm:text-xs font-black text-cyan-950 bg-cyan-500 px-2 py-1">02</span>
+                            <div><h3 class="text-lg sm:text-xl orbitron font-bold text-white mb-2 sm:mb-3 uppercase tracking-tighter group-hover:text-cyan-400 transition-colors">Crypto_Review</h3><p class="text-sm text-slate-400 max-w-xl font-light leading-relaxed">Deep-layer verification of cryptographic implementations and secure entropy sources.</p></div>
+                        </div>
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 border border-slate-800 flex items-center justify-center group-hover:border-cyan-500 group-hover:text-cyan-500 transition-all self-end md:self-auto"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 sm:py-32 bg-black">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gradient-to-br from-slate-900 to-black border border-cyan-500/20 p-8 sm:p-12 lg:p-24 relative overflow-hidden">
+                    <div class="relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                        <div>
+                            <h2 class="text-3xl sm:text-4xl orbitron font-black text-white mb-6 sm:mb-8 uppercase leading-tight">Sync_Network?</h2>
+                            <p class="text-slate-400 text-base sm:text-lg mb-10 sm:mb-12 font-light">Join the BEDUSEC defensive matrix. Secure your assets before the next zero-day cycle.</p>
+                            <div class="space-y-6">
+                                <div class="flex items-center gap-4 sm:gap-5 text-white">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-500"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
+                                    <div><div class="orbitron text-[8px] sm:text-[9px] text-slate-500 uppercase tracking-widest">Comm_Link</div><div class="font-bold text-sm sm:text-base text-slate-200">contact@bedusec.com</div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="space-y-4 sm:space-y-6">
+                            <div class="orbitron text-[9px] text-cyan-500 font-bold mb-1 tracking-widest uppercase">SECURE_CHANNEL_ENCRYPTED</div>
+                            <input type="email" placeholder="USER_IDENTIFIER" class="px-5 sm:px-6 py-3 sm:py-4 rounded-none border border-slate-800 bg-slate-950 text-white outline-none orbitron text-[10px] sm:text-[11px] font-bold">
+                            <textarea rows="4" placeholder="PAYLOAD_DESCRIPTION" class="px-5 sm:px-6 py-3 sm:py-4 rounded-none border border-slate-800 bg-slate-950 text-white outline-none orbitron text-[10px] sm:text-[11px] font-bold"></textarea>
+                            <button class="bg-cyan-500 text-black orbitron text-[11px] sm:text-xs font-black w-full py-4 sm:py-5 tracking-widest hover:bg-cyan-400 transition-all uppercase">TRANSMIT_DATA</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="github-page" class="hidden-section">
+        <div class="pt-32 pb-20 sm:pt-40 sm:pb-32 lg:pt-56 lg:pb-48 bg-slate-950 hero-grid">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div id="github-loading" class="flex flex-col items-center justify-center py-20">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 border-2 border-cyan-500/20 border-t-cyan-500 rounded-full animate-spin mb-6"></div>
+                    <p class="orbitron text-[10px] font-bold tracking-widest text-cyan-500 uppercase">Syncing_Nodes...</p>
+                </div>
+                
+                <div id="github-content" class="hidden">
+                    <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start mb-16 sm:mb-24">
+                        <div class="relative p-1 bg-cyan-500/20 group mx-auto lg:mx-0">
+                            <img id="org-avatar" src="" class="w-32 h-32 sm:w-40 sm:h-40 grayscale hover:grayscale-0 transition-all duration-700">
+                        </div>
+                        <div class="flex-1 text-center lg:text-left">
+                            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 mb-6">
+                                <h1 id="org-name" class="text-3xl sm:text-5xl orbitron font-black text-white uppercase tracking-tighter"></h1>
+                                <span class="px-3 py-1 bg-cyan-500 text-black orbitron text-[8px] sm:text-[9px] font-black uppercase tracking-widest">Global_Org</span>
+                            </div>
+                            <p id="org-desc" class="text-base sm:text-xl text-slate-400 mb-8 sm:mb-10 font-light max-w-3xl leading-relaxed mx-auto lg:mx-0"></p>
+                            <div class="flex flex-wrap justify-center lg:justify-start gap-8 sm:gap-12">
+                                <div class="flex items-center gap-2 sm:gap-3 text-cyan-500"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg><span id="org-followers" class="orbitron text-[10px] sm:text-xs font-bold tracking-widest uppercase"></span></div>
+                                <div class="flex items-center gap-2 sm:gap-3 text-slate-300"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg><span id="org-repos" class="orbitron text-[10px] sm:text-xs font-bold tracking-widest uppercase"></span></div>
+                            </div>
+                        </div>
+                        <a id="org-link" href="#" target="_blank" class="w-full lg:w-auto text-center border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-black orbitron text-[10px] sm:text-[11px] font-black px-8 py-4 sm:py-5 tracking-widest transition-all uppercase">
+                            GOTO_SRC
+                        </a>
+                    </div>
+                    <div id="repo-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-black border-t border-slate-900 py-12 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 sm:gap-16 mb-16 sm:mb-20">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-3 mb-6 sm:mb-8">
+                        <div class="bg-cyan-500 p-1.5 text-black"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        <span class="text-lg sm:text-xl orbitron font-black text-white uppercase tracking-widest">BeduSec</span>
+                    </div>
+                    <p class="text-slate-500 leading-relaxed max-w-sm orbitron text-[9px] sm:text-[10px] uppercase tracking-[0.2em]">Cyber Resilience through ethical dominance. System respect mandated.</p>
+                </div>
+            </div>
+            <div class="pt-8 sm:pt-10 border-t border-slate-900 flex flex-col sm:row justify-between items-center gap-4">
+                <p class="orbitron text-[8px] sm:text-[9px] text-slate-700 font-bold tracking-[0.3em] uppercase">© 2026 BEDUSEC_OPERATIONS</p>
+                <div class="flex gap-6">
+                    <span class="orbitron text-[8px] text-slate-800 uppercase tracking-widest">Encrypted_Conn</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentPage = 'home';
+        const navbar = document.getElementById('navbar');
+        const homePage = document.getElementById('home-page');
+        const githubPage = document.getElementById('github-page');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) navbar.classList.add('scrolled-nav');
+            else navbar.classList.remove('scrolled-nav');
+        });
+
+        function navigateTo(page) {
+            currentPage = page;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (page === 'home') {
+                homePage.classList.remove('hidden-section');
+                githubPage.classList.add('hidden-section');
+            } else {
+                homePage.classList.add('hidden-section');
+                githubPage.classList.remove('hidden-section');
+                fetchGitHub();
+            }
+            mobileMenu.classList.add('hidden');
+        }
+
+        function scrollToSection(id) {
+            if (currentPage !== 'home') navigateTo('home');
+            setTimeout(() => { 
+                const element = document.getElementById(id);
+                const offset = 80;
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = element.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                const offsetPosition = elementPosition - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }, 100);
+            mobileMenu.classList.add('hidden');
+        }
+
+        function toggleMobileMenu() { mobileMenu.classList.toggle('hidden'); }
+
+        async function fetchGitHub() {
+            const loading = document.getElementById('github-loading');
+            const content = document.getElementById('github-content');
+            try {
+                const orgRes = await fetch('https://api.github.com/orgs/bedusec');
+                const orgData = await orgRes.json();
+                document.getElementById('org-avatar').src = orgData.avatar_url;
+                document.getElementById('org-name').innerText = orgData.name || 'BEDUSEC';
+                document.getElementById('org-desc').innerText = orgData.description || 'Enterprise security node operational.';
+                document.getElementById('org-followers').innerText = `${orgData.followers}_Nodes`;
+                document.getElementById('org-repos').innerText = `${orgData.public_repos}_Packages`;
+                document.getElementById('org-link').href = orgData.html_url;
+
+                const reposRes = await fetch('https://api.github.com/orgs/bedusec/repos?sort=updated&per_page=6');
+                const repos = await reposRes.json();
+                const grid = document.getElementById('repo-grid');
+                grid.innerHTML = '';
+                repos.forEach(repo => {
+                    grid.innerHTML += `
+                        <div class="tactical-card p-6 sm:p-8 group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="text-cyan-500"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div>
+                                <a href="${repo.html_url}" target="_blank" class="text-slate-600 hover:text-cyan-500"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline></svg></a>
+                            </div>
+                            <h3 class="orbitron text-[10px] sm:text-xs font-black text-white mb-3 uppercase tracking-[0.2em] h-8 overflow-hidden">${repo.name}</h3>
+                            <p class="text-slate-500 text-[10px] sm:text-xs font-light mb-8 h-12 overflow-hidden">${repo.description || 'SECURE_UTILITY_NODE'}</p>
+                            <div class="flex items-center justify-between text-[8px] sm:text-[10px] orbitron font-bold text-slate-700 uppercase">
+                                <div class="flex items-center gap-3">
+                                    <span>* ${repo.stargazers_count}</span>
+                                    <span># ${repo.forks_count}</span>
+                                </div>
+                                <span class="text-cyan-900 bg-cyan-500/10 px-2 py-0.5">${repo.language || 'DATA'}</span>
+                            </div>
+                        </div>`;
+                });
+                loading.classList.add('hidden');
+                content.classList.remove('hidden');
+            } catch (err) { loading.innerHTML = `<p class="orbitron text-red-500 text-xs tracking-widest uppercase">Connection_Error: Signal_Lost</p>`; }
+        }
+    </script>
+</body>
+</html>
