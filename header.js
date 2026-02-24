@@ -44,6 +44,7 @@
             height: 2rem;
             width: 2rem;
             filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+            background: none;
         }
 
         .ici-divider {
