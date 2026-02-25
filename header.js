@@ -144,9 +144,9 @@
                 <div class="ici-logo-wrap">
                     <img src="logo.svg" style="width:3em;">
                     <div class="ici-divider"></div>
-                    <span class="ici-partner-tag">Icii Apps</span>
+                    <span class="ici-partner-tag">BEDUSEC</span>
                 </div>
-                <h1 class="ici-nav-title">Icii White <span style="opacity:0.4; margin-left:4px;">//</span> Portal</h1>
+                <h1 class="ici-nav-title">Cyber Security<span style="opacity:0.4; margin-left:4px;">//</span> Enthusiastic s</h1>
                 <button class="ici-menu-btn" id="iciMenuBtn">
                     <div class="ici-bar-1"></div>
                     <div class="ici-bar-2"></div>
