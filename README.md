@@ -1,3 +1,3 @@
 # bedusec.github.io
 
-![image](logo.png)
+![image](https://raw.githubusercontent.com/BeduSec/bedusec.github.io/main/logo.png)
