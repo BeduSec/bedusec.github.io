@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | BeduSec Security Systems</title>
+<meta name="description" content="Get in touch with BeduSec for enterprise security audits, penetration testing, and Academy inquiries.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<!-- EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<style>
+.glass-nav {
+    background-color: rgba(2, 6, 23, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.mobile-menu {
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+.mobile-menu.open {
+    max-height: 400px;
+    opacity: 1;
+}
+.gradient-text {
+    background: linear-gradient(to right, #818cf8, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.input-field {
+    background-color: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(51, 65, 85, 0.5);
+    transition: all 0.3s ease;
+}
+.input-field:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+    outline: none;
+}
+</style>
+</head>
+<body class="bg-slate-950 text-slate-300 font-sans antialiased flex flex-col min-h-screen selection:bg-indigo-500/30 selection:text-indigo-200">
+
+<header class="fixed w-full top-0 z-50 glass-nav border-b border-slate-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                <i data-feather="shield" class="text-indigo-500 w-8 h-8"></i>
+                <span class="font-bold text-2xl tracking-tight text-slate-50">Bedu<span class="text-indigo-500">Sec</span></span>
+            </div>
+
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-slate-400 font-medium hover:text-indigo-400 transition-colors">Home</a>
+                <a href="about.html" class="text-slate-400 font-medium hover:text-indigo-400 transition-colors">About</a>
+                <a href="courses.html" class="text-slate-400 font-medium hover:text-indigo-400 transition-colors">Online Courses</a>
+                <a href="team.html" class="text-slate-400 font-medium hover:text-indigo-400 transition-colors">Bedu Team</a>
+                <a href="contact.html" class="text-slate-50 font-medium" aria-current="page">Contact</a>
+            </nav>
+
+            <div class="hidden md:flex items-center">
+                <div class="flex items-center gap-2 text-xs font-mono text-slate-500 uppercase tracking-widest">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    Systems Nominal
+                </div>
+            </div>
+
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" type="button" class="text-slate-400 hover:text-white p-2">
+                    <i data-feather="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden mobile-menu bg-slate-900 border-b border-slate-800">
+        <div class="px-4 pt-2 pb-6 space-y-1">
+            <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300">Home</a>
+            <a href="about.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300">About</a>
+            <a href="courses.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300">Online Courses</a>
+            <a href="team.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300">Bedu Team</a>
+            <a href="contact.html" class="block px-3 py-3 rounded-md text-base font-medium text-white bg-slate-800/50">Contact</a>
+        </div>
+    </div>
+</header>
+
+<main class="flex-grow pt-32 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            
+            <!-- Info Column -->
+            <div class="space-y-12">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-50 mb-6">Establish <br/><span class="gradient-text">Connection</span></h1>
+                    <p class="text-lg text-slate-400 leading-relaxed">
+                        Ready to secure your infrastructure? Whether you need a full-scale audit or want to inquire about our Academy cohorts, our team is standing by.
+                    </p>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="flex items-start gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center flex-shrink-0">
+                            <i data-feather="mail" class="text-indigo-400 w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-slate-50 font-bold mb-1">Secure Channel</h4>
+                            <p class="text-slate-400">ops@bedusec.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
+                            <i data-feather="globe" class="text-blue-400 w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-slate-50 font-bold mb-1">Global Operations</h4>
+                            <p class="text-slate-400">Distributed worldwide. Headquartered in the digital cloud.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                            <i data-feather="github" class="text-cyan-400 w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-slate-50 font-bold mb-1">Open Source Inquiries</h4>
+                            <p class="text-slate-400">github.com/bedusec</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-2xl border border-slate-800 bg-slate-900/30">
+                    <p class="text-sm text-slate-500 italic">
+                        "Communication within the perimeter is always encrypted. We prioritize response times for critical infrastructure vulnerabilities."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Form Column -->
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-3xl blur opacity-10 group-hover:opacity-20 transition duration-1000"></div>
+                <div class="relative bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-10 shadow-2xl">
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-400 mb-2">Operative Name</label>
+                                <input type="text" name="user_name" required class="w-full px-4 py-3 rounded-xl input-field text-slate-100" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-400 mb-2">Secure Email</label>
+                                <input type="email" name="user_email" required class="w-full px-4 py-3 rounded-xl input-field text-slate-100" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-2">Subject</label>
+                            <select name="subject" class="w-full px-4 py-3 rounded-xl input-field text-slate-100 appearance-none">
+                                <option>Security Audit Request</option>
+                                <option>Academy Inquiry</option>
+                                <option>Bug Bounty Program</option>
+                                <option>Other Inquiry</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-2">Intelligence Details (Message)</label>
+                            <textarea name="message" rows="5" required class="w-full px-4 py-3 rounded-xl input-field text-slate-100 resize-none" placeholder="Describe your project or security needs..."></textarea>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-8 rounded-xl transition-all flex items-center justify-center gap-3 group">
+                            <span id="btn-text">Transmit Message</span>
+                            <i data-feather="send" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                        </button>
+
+                        <!-- Feedback Box -->
+                        <div id="form-feedback" class="hidden p-4 rounded-xl text-sm font-medium text-center animate-in fade-in slide-in-from-top-2"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-slate-950 border-t border-slate-800 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <i data-feather="shield" class="text-indigo-500 w-6 h-6"></i>
+                    <span class="font-bold text-xl tracking-tight text-slate-50">Bedu<span class="text-indigo-500">Sec</span></span>
+                </div>
+                <p class="text-slate-400 max-w-md mb-6 leading-relaxed">
+                    Viviamo per il rispetto. Securing the digital frontier while lurking in the darkness. Professional, discrete, and uncompromising cybersecurity architecture.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="text-sm font-semibold text-slate-50 tracking-wider uppercase mb-4">Navigation</h4>
+                <ul class="space-y-3">
+                    <li><a href="index.html" class="text-slate-400 hover:text-indigo-400 transition-colors">Home</a></li>
+                    <li><a href="about.html" class="text-slate-400 hover:text-indigo-400 transition-colors">About Us</a></li>
+                    <li><a href="courses.html" class="text-slate-400 hover:text-indigo-400 transition-colors">Online Courses</a></li>
+                    <li><a href="team.html" class="text-slate-400 hover:text-indigo-400 transition-colors">Bedu Team</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-semibold text-slate-50 tracking-wider uppercase mb-4">Connect</h4>
+                <ul class="space-y-3">
+                    <li><a href="contact.html" class="text-slate-400 hover:text-indigo-400 transition-colors">Contact Support</a></li>
+                    <li><a href="https://github.com/bedusec" class="text-slate-400 hover:text-indigo-400 transition-colors inline-flex items-center gap-2"><i data-feather="github" class="w-4 h-4"></i> GitHub</a></li>
+                    <li><a href="#" class="text-slate-400 hover:text-indigo-400 transition-colors inline-flex items-center gap-2"><i data-feather="twitter" class="w-4 h-4"></i> Twitter</a></li>
+                    <li><a href="#" class="text-slate-400 hover:text-indigo-400 transition-colors inline-flex items-center gap-2"><i data-feather="linkedin" class="w-4 h-4"></i> LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="border-t border-slate-800/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-slate-500 text-sm text-center md:text-left">&copy; 2026 BeduSec Security Systems. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    feather.replace();
+
+    // --- EmailJS Configuration ---
+    // You will update these place holders once you've set up your account
+    const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY"; 
+    const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+    const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+
+    (function() {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+    })();
+
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = document.getElementById('btn-text');
+    const feedback = document.getElementById('form-feedback');
+
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Visual Feedback: Loading
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+        btnText.innerText = "Transmitting...";
+
+        // Send via EmailJS
+        emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
+            .then(function() {
+                // Success
+                feedback.classList.remove('hidden', 'bg-red-500/10', 'text-red-400');
+                feedback.classList.add('bg-green-500/10', 'text-green-400', 'border', 'border-green-500/20');
+                feedback.innerText = "Message received. We will establish a secure connection shortly.";
+                contactForm.reset();
+            }, function(error) {
+                // Error
+                console.log('FAILED...', error);
+                feedback.classList.remove('hidden', 'bg-green-500/10', 'text-green-400');
+                feedback.classList.add('bg-red-500/10', 'text-red-400', 'border', 'border-red-500/20');
+                feedback.innerText = "Transmission failed. Please use direct email ops@bedusec.com.";
+            })
+            .finally(function() {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+                btnText.innerText = "Transmit Message";
+            });
+    });
+
+    // Mobile menu logic
+    const mbBtn = document.getElementById('mobile-menu-button');
+    const mbMenu = document.getElementById('mobile-menu');
+    mbBtn.onclick = () => {
+        const isOpen = mbMenu.classList.toggle('open');
+    };
+</script>
+</body>
+</html>
