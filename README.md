@@ -1,5 +1,5 @@
-<div align="center">
-  <img src="https://raw.githubusercontent.com/BeduSec/bedusec.github.io/main/logo.png" alt="BeduSec Logo" width="180">
+<div align="center" style="display:flex;">
+  <img src="https://raw.githubusercontent.com/BeduSec/bedusec.github.io/main/logo.png" alt="BeduSec Logo" width="70">
   <h1>BeduSec Security Systems</h1>
   <p>viviamo per il rispetto</p>
 </div>
