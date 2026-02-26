@@ -7,7 +7,7 @@
 <br>
 
 <div align="center">
-  <!-- Main navigation badges with icons -->
+
   <a href="https://www.bedusec.com"><img src="https://img.shields.io/badge/Website-bedusec.com-000000?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website"></a>
   <a href="https://github.com/BeduSec"><img src="https://img.shields.io/badge/GitHub-BeduSec-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
   <a href="https://linkedin.com/company/bedusec"><img src="https://img.shields.io/badge/LinkedIn-BeduSec-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
