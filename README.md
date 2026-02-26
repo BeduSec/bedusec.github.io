@@ -1,1 +1,1 @@
-<div align="center" style="display:flex;"><img src="https://raw.githubusercontent.com/BeduSec/bedusec.github.io/main/logo.png" alt="BeduSec Logo" width="70" height="80"><h1>BeduSec</h1></div>
+<div align="center" style="display:flex;"><img src="https://raw.githubusercontent.com/BeduSec/bedusec.github.io/main/logo.png" alt="BeduSec Logo" width="90" height="80"><h1>BeduSec</h1></div>
