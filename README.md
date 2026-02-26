@@ -1,1 +1,1 @@
-<img src="https://raw.githubusercontent.com/BeduSec/bedusec.github.io/main/logo.png" width="90" height="80">
+<img src="https://raw.githubusercontent.com/BeduSec/bedusec.github.io/main/logo.png" width="90" height="80"><img src="https://raw.githubusercontent.com/iciiwhite/badges/main/name.png" width="90" height="80">
