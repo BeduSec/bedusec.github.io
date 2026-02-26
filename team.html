@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Team | BeduSec Security Systems</title>
+<meta name="description" content="Meet the elite developers and security researchers behind BeduSec. Integrated with GitHub to show our real-time contributions.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<style>
+.glass-nav {
+    background-color: rgba(2, 6, 23, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.mobile-menu {
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+.mobile-menu.open {
+    max-height: 400px;
+    opacity: 1;
+}
+.gradient-text {
+    background: linear-gradient(to right, #818cf8, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.tab-active {
+    color: #f8fafc;
+    border-bottom: 2px solid #6366f1;
+}
+.modal-backdrop {
+    background-color: rgba(2, 6, 23, 0.9);
+    backdrop-filter: blur(4px);
+}
+.skeleton {
+    background: linear-gradient(90deg, #0f172a 25%, #1e293b 50%, #0f172a 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+</style>
+</head>
+<body class="bg-slate-950 text-slate-300 font-sans antialiased flex flex-col min-h-screen selection:bg-indigo-500/30 selection:text-indigo-200">
+
+<header class="fixed w-full top-0 z-50 glass-nav border-b border-slate-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                <i data-feather="shield" class="text-indigo-500 w-8 h-8"></i>
+                <span class="font-bold text-2xl tracking-tight text-slate-50">Bedu<span class="text-indigo-500">Sec</span></span>
+            </div>
+
+            <nav class="hidden md:flex space-x-8" aria-label="Main Navigation">
+                <a href="index.html" class="text-slate-400 font-medium hover:text-indigo-400 transition-colors duration-200">Home</a>
+                <a href="about.html" class="text-slate-400 font-medium hover:text-indigo-400 transition-colors duration-200">About</a>
+                <a href="courses.html" class="text-slate-400 font-medium hover:text-indigo-400 transition-colors duration-200">Online Courses</a>
+                <a href="team.html" class="text-slate-50 font-medium hover:text-indigo-400 transition-colors duration-200" aria-current="page">Bedu Team</a>
+                <a href="contact.html" class="text-slate-400 font-medium hover:text-indigo-400 transition-colors duration-200">Contact</a>
+            </nav>
+
+            <div class="hidden md:flex items-center">
+                <a href="https://github.com/bedusec" target="_blank" class="inline-flex items-center justify-center px-6 py-2.5 border border-slate-700 text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 transition-colors duration-200">
+                    <i data-feather="github" class="w-4 h-4 mr-2"></i> View Org
+                </a>
+            </div>
+
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" type="button" class="text-slate-400 hover:text-white focus:outline-none p-2" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i data-feather="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden mobile-menu bg-slate-900 border-b border-slate-800">
+        <div class="px-4 pt-2 pb-6 space-y-1 sm:px-6">
+            <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300 hover:text-white transition-colors">Home</a>
+            <a href="about.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300 hover:text-white transition-colors">About</a>
+            <a href="courses.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300 hover:text-white transition-colors">Online Courses</a>
+            <a href="team.html" class="block px-3 py-3 rounded-md text-base font-medium text-white bg-slate-800/50" aria-current="page">Bedu Team</a>
+            <a href="contact.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300 hover:text-white transition-colors">Contact</a>
+        </div>
+    </div>
+</header>
+
+<main class="flex-grow pt-20">
+    <section class="py-12 border-b border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl font-extrabold text-slate-50 mb-4">Operational <span class="gradient-text">Intelligence</span></h1>
+            <p class="text-slate-400 max-w-2xl mx-auto">Real-time synchronization with our development core. Transparency in our expertise.</p>
+        </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex border-b border-slate-800 mt-8">
+            <button id="tab-org" class="px-8 py-4 text-sm font-bold uppercase tracking-widest tab-active transition-all outline-none">Organization</button>
+            <button id="tab-members" class="px-8 py-4 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-slate-300 transition-all outline-none">Members</button>
+        </div>
+
+        <div id="content-org" class="py-12 space-y-12 animate-in fade-in duration-500">
+            <div id="org-header" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-1 flex flex-col items-center lg:items-start space-y-4">
+                    <div id="org-avatar-container" class="w-48 h-48 rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden skeleton"></div>
+                    <h2 id="org-name" class="text-3xl font-bold text-slate-50"></h2>
+                    <p id="org-bio" class="text-slate-400 text-center lg:text-left"></p>
+                </div>
+                <div class="lg:col-span-2 grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div class="bg-slate-900/50 border border-slate-800 p-6 rounded-xl text-center">
+                        <span id="stat-repos" class="block text-3xl font-bold text-indigo-400 mb-1">0</span>
+                        <span class="text-xs uppercase tracking-widest text-slate-500">Repositories</span>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800 p-6 rounded-xl text-center">
+                        <span id="stat-followers" class="block text-3xl font-bold text-blue-400 mb-1">0</span>
+                        <span class="text-xs uppercase tracking-widest text-slate-500">Followers</span>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800 p-6 rounded-xl text-center">
+                        <span id="stat-location" class="block text-sm font-medium text-slate-300 mb-1 mt-2">N/A</span>
+                        <span class="text-xs uppercase tracking-widest text-slate-500">HQ Location</span>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800 p-6 rounded-xl text-center">
+                        <span id="stat-created" class="block text-sm font-medium text-slate-300 mb-1 mt-2">N/A</span>
+                        <span class="text-xs uppercase tracking-widest text-slate-500">Established</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="space-y-6">
+                <h3 class="text-xl font-bold text-slate-50 flex items-center gap-2">
+                    <i data-feather="terminal" class="w-5 h-5 text-indigo-500"></i> Active Projects
+                </h3>
+                <div id="org-repos" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="h-32 rounded-xl skeleton"></div>
+                    <div class="h-32 rounded-xl skeleton"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-members" class="py-12 hidden animate-in fade-in duration-500">
+            <div id="members-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="h-64 rounded-xl skeleton"></div>
+                <div class="h-64 rounded-xl skeleton"></div>
+                <div class="h-64 rounded-xl skeleton"></div>
+                <div class="h-64 rounded-xl skeleton"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div id="member-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+    <div class="absolute inset-0 modal-backdrop" onclick="closeModal()"></div>
+    <div class="relative w-full max-w-4xl max-h-[90vh] bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row animate-in zoom-in-95 duration-200">
+        <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white z-10"><i data-feather="x"></i></button>
+        
+        <div id="modal-sidebar" class="w-full md:w-80 bg-slate-950 p-8 border-b md:border-b-0 md:border-r border-slate-800 flex flex-col items-center text-center">
+            <img id="modal-avatar" src="" alt="" class="w-32 h-32 rounded-2xl mb-6 border-2 border-indigo-500/20 shadow-xl">
+            <h3 id="modal-name" class="text-2xl font-bold text-slate-50"></h3>
+            <p id="modal-username" class="text-indigo-400 mb-4"></p>
+            <p id="modal-bio" class="text-sm text-slate-400 mb-6"></p>
+            <div class="w-full space-y-3">
+                <div class="flex items-center gap-3 text-sm text-slate-300 bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                    <i data-feather="map-pin" class="w-4 h-4 text-slate-500"></i>
+                    <span id="modal-location"></span>
+                </div>
+                <a id="modal-github-link" href="" target="_blank" class="flex items-center justify-center gap-3 text-sm text-white bg-indigo-600 hover:bg-indigo-700 p-3 rounded-lg transition-colors w-full">
+                    <i data-feather="github" class="w-4 h-4"></i>
+                    Profile
+                </a>
+            </div>
+        </div>
+
+        <div class="flex-grow p-8 overflow-y-auto">
+            <h4 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-6">Recent Public Contributions</h4>
+            <div id="modal-repos" class="space-y-4"></div>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-slate-950 border-t border-slate-800 pt-16 pb-8 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <i data-feather="shield" class="text-indigo-500 w-6 h-6"></i>
+                    <span class="font-bold text-xl tracking-tight text-slate-50">Bedu<span class="text-indigo-500">Sec</span></span>
+                </div>
+                <p class="text-slate-400 max-w-md mb-6 leading-relaxed">
+                    Viviamo per il rispetto. Securing the digital frontier while lurking in the darkness. Professional, discrete, and uncompromising cybersecurity architecture.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="text-sm font-semibold text-slate-50 tracking-wider uppercase mb-4">Navigation</h4>
+                <ul class="space-y-3">
+                    <li><a href="index.html" class="text-slate-400 hover:text-indigo-400 transition-colors">Home</a></li>
+                    <li><a href="about.html" class="text-slate-400 hover:text-indigo-400 transition-colors">About Us</a></li>
+                    <li><a href="courses.html" class="text-slate-400 hover:text-indigo-400 transition-colors">Online Courses</a></li>
+                    <li><a href="team.html" class="text-slate-400 hover:text-indigo-400 transition-colors">Bedu Team</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-semibold text-slate-50 tracking-wider uppercase mb-4">Connect</h4>
+                <ul class="space-y-3">
+                    <li><a href="contact.html" class="text-slate-400 hover:text-indigo-400 transition-colors">Contact Support</a></li>
+                    <li><a href="https://github.com/bedusec" class="text-slate-400 hover:text-indigo-400 transition-colors inline-flex items-center gap-2"><i data-feather="github" class="w-4 h-4"></i> GitHub</a></li>
+                    <li><a href="#" class="text-slate-400 hover:text-indigo-400 transition-colors inline-flex items-center gap-2"><i data-feather="twitter" class="w-4 h-4"></i> Twitter</a></li>
+                    <li><a href="#" class="text-slate-400 hover:text-indigo-400 transition-colors inline-flex items-center gap-2"><i data-feather="linkedin" class="w-4 h-4"></i> LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="border-t border-slate-800/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-slate-500 text-sm text-center md:text-left">&copy; 2026 BeduSec Security Systems. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+const ORG_URL = 'https://api.github.com/orgs/bedusec';
+const REPOS_URL = 'https://api.github.com/orgs/bedusec/repos?sort=updated&per_page=6';
+const MEMBERS_URL = 'https://api.github.com/orgs/bedusec/public_members';
+
+async function fetchData(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('API limit reached or network error');
+        return await response.json();
+    } catch (e) {
+        console.error(e);
+        return null;
+    }
+}
+
+async function initOrg() {
+    const data = await fetchData(ORG_URL);
+    if (!data) return;
+
+    document.getElementById('org-avatar-container').innerHTML = `<img src="${data.avatar_url}" class="w-full h-full object-cover">`;
+    document.getElementById('org-avatar-container').classList.remove('skeleton');
+    document.getElementById('org-name').textContent = data.name || 'BeduSec';
+    document.getElementById('org-bio').textContent = data.description || 'Securing the digital frontier.';
+    document.getElementById('stat-repos').textContent = data.public_repos;
+    document.getElementById('stat-followers').textContent = data.followers;
+    document.getElementById('stat-location').textContent = data.location || 'Global';
+    document.getElementById('stat-created').textContent = new Date(data.created_at).getFullYear();
+
+    const repos = await fetchData(REPOS_URL);
+    const reposContainer = document.getElementById('org-repos');
+    reposContainer.innerHTML = '';
+    repos?.forEach(repo => {
+        reposContainer.innerHTML += `
+            <a href="${repo.html_url}" target="_blank" class="p-6 bg-slate-900 border border-slate-800 rounded-xl hover:border-indigo-500/50 transition-all group">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="font-bold text-slate-50 group-hover:text-indigo-400">${repo.name}</h4>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-400 border border-slate-700">${repo.language || 'Code'}</span>
+                </div>
+                <p class="text-sm text-slate-400 line-clamp-2">${repo.description || 'No description provided.'}</p>
+            </a>
+        `;
+    });
+}
+
+async function initMembers() {
+    const members = await fetchData(MEMBERS_URL);
+    const grid = document.getElementById('members-grid');
+    grid.innerHTML = '';
+    
+    if (!members || members.length === 0) {
+        grid.innerHTML = '<p class="col-span-full text-center text-slate-500 py-12">No public members found for this organization.</p>';
+        return;
+    }
+
+    members.forEach(m => {
+        const card = document.createElement('div');
+        card.className = 'bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center hover:border-indigo-500/50 transition-all cursor-pointer group shadow-xl';
+        card.innerHTML = `
+            <img src="${m.avatar_url}" class="w-24 h-24 rounded-2xl mx-auto mb-4 border border-slate-700 group-hover:scale-105 transition-transform">
+            <h4 class="font-bold text-slate-50 mb-1">@${m.login}</h4>
+            <p class="text-xs text-indigo-400 uppercase tracking-widest font-semibold">Bedu Operator</p>
+        `;
+        card.onclick = () => openMemberModal(m.login);
+        grid.appendChild(card);
+    });
+}
+
+async function openMemberModal(username) {
+    const modal = document.getElementById('member-modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+
+    const user = await fetchData(`https://api.github.com/users/${username}`);
+    const repos = await fetchData(`https://api.github.com/users/${username}/repos?sort=updated&per_page=4`);
+
+    document.getElementById('modal-avatar').src = user.avatar_url;
+    document.getElementById('modal-name').textContent = user.name || user.login;
+    document.getElementById('modal-username').textContent = `@${user.login}`;
+    document.getElementById('modal-bio').textContent = user.bio || 'This operative prefers to stay in the shadows.';
+    document.getElementById('modal-location').textContent = user.location || 'Distributed';
+    document.getElementById('modal-github-link').href = user.html_url;
+
+    const repoContainer = document.getElementById('modal-repos');
+    repoContainer.innerHTML = '';
+    repos?.forEach(r => {
+        repoContainer.innerHTML += `
+            <a href="${r.html_url}" target="_blank" class="block p-4 bg-slate-950 border border-slate-800 rounded-xl hover:bg-slate-900 transition-colors">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="text-slate-50 font-medium">${r.name}</span>
+                    <span class="text-[10px] text-slate-500 flex items-center gap-1"><i data-feather="star" class="w-3 h-3"></i> ${r.stargazers_count}</span>
+                </div>
+                <p class="text-xs text-slate-500 line-clamp-1">${r.description || 'Repository'}</p>
+            </a>
+        `;
+    });
+    feather.replace();
+}
+
+function closeModal() {
+    document.getElementById('member-modal').classList.add('hidden');
+    document.getElementById('member-modal').classList.remove('flex');
+    document.body.style.overflow = '';
+}
+
+// Tab Logic
+const btnOrg = document.getElementById('tab-org');
+const btnMem = document.getElementById('tab-members');
+const contOrg = document.getElementById('content-org');
+const contMem = document.getElementById('content-members');
+
+btnOrg.onclick = () => {
+    btnOrg.className = 'px-8 py-4 text-sm font-bold uppercase tracking-widest tab-active transition-all outline-none';
+    btnMem.className = 'px-8 py-4 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-slate-300 transition-all outline-none';
+    contOrg.classList.remove('hidden');
+    contMem.classList.add('hidden');
+};
+
+btnMem.onclick = () => {
+    btnMem.className = 'px-8 py-4 text-sm font-bold uppercase tracking-widest tab-active transition-all outline-none';
+    btnOrg.className = 'px-8 py-4 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-slate-300 transition-all outline-none';
+    contMem.classList.remove('hidden');
+    contOrg.classList.add('hidden');
+    initMembers();
+};
+
+// Global Init
+window.addEventListener('DOMContentLoaded', () => {
+    feather.replace();
+    initOrg();
+    
+    // Mobile menu logic
+    const mbBtn = document.getElementById('mobile-menu-button');
+    const mbMenu = document.getElementById('mobile-menu');
+    mbBtn.onclick = () => {
+        const isOpen = mbMenu.classList.toggle('open');
+        mbBtn.setAttribute('aria-expanded', isOpen);
+    };
+});
+</script>
+</body>
+</html>
