@@ -1,0 +1,26 @@
+{
+    "name": "BeduSec",
+    "short_name": "BeduSec",
+    "description": "Securing the digital frontier while lurking in the darkness.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "icons": [
+        {
+            "src": "/favicon.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/apple-touch.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ]
+}
