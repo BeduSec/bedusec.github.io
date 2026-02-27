@@ -1,0 +1,17 @@
+title: BeduSec
+description: Securing the digital frontier while lurking in the darkness.
+author: Icii White 
+twitter:
+  username: bedusec
+  card: summary_large_image
+social:
+  name: BeduSec
+  links:
+    - https://twitter.com/bedusec
+    - https://github.com/bedusec
+logo: https://bedusec.github.io/favicon.png
+image: https://bedusec.github.io/og.png
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
