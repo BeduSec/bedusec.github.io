@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>BeduSec</title>
+        <description>Securing the digital frontier while lurking in the darkness.</description>
+        <link>https://bedusec.github.io/</link>
+        <atom:link href="https://bedusec.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 27 Feb 2026 00:00:00 GMT</lastBuildDate>
+        
+        
+        <item>
+            <title>Viliamo per il rispetto</title>
+            <link>https://bedusec.github.io/blog.html?blog=3</link>
+            <description>We live for respect, respect for code, and security.</description>
+            <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
+            <guid>https://bedusec.github.io/blog/?blog=3</guid>
+        </item>
+        
+      
+    </channel>
+</rss>
