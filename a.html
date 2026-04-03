@@ -17,7 +17,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, serverTimestamp, getDocs, limit, query } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyCs-VRMnT1Ose7cHxRbNabPz8YoHThzzr4",
@@ -57,16 +57,32 @@
                 </div>
             `;
             feather.replace();
-            document.getElementById("login-form").addEventListener("submit", (e) => {
-                e.preventDefault();
-                const pwd = document.getElementById("admin-password").value;
-                if (md5(pwd) === CORRECT_HASH) {
-                    isAuthenticated = true;
-                    showBlogForm();
-                } else {
-                    document.getElementById("login-error").classList.remove("hidden");
-                }
-            });
+            const form = document.getElementById("login-form");
+            if (form) {
+                form.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const pwd = document.getElementById("admin-password").value;
+                    if (md5(pwd) === CORRECT_HASH) {
+                        isAuthenticated = true;
+                        showBlogForm();
+                    } else {
+                        document.getElementById("login-error").classList.remove("hidden");
+                    }
+                });
+            } else {
+                console.error("Login form not found");
+            }
+        }
+
+        async function testFirebaseConnection() {
+            try {
+                const testQuery = query(collection(db, "blogs"), limit(1));
+                await getDocs(testQuery);
+                return true;
+            } catch (err) {
+                console.error("Firebase connection test failed:", err);
+                return false;
+            }
         }
 
         function showBlogForm() {
@@ -76,6 +92,7 @@
                         <h2 class="text-2xl font-bold text-white">Add New Blog Post</h2>
                         <button id="logout-btn" class="text-slate-400 hover:text-red-400 text-sm">Logout</button>
                     </div>
+                    <div id="connection-status" class="mb-4 text-sm text-center"></div>
                     <form id="blog-form">
                         <div class="mb-4">
                             <label class="block text-sm font-medium text-slate-300 mb-2">Title *</label>
@@ -97,45 +114,83 @@
                             <label class="block text-sm font-medium text-slate-300 mb-2">Lesson ID (unique slug) *</label>
                             <input type="text" id="lessonId" required placeholder="e.g., bypass-amsi" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white">
                         </div>
-                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded-lg transition">Publish Blog</button>
+                        <button type="submit" id="publish-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded-lg transition">Publish Blog</button>
                     </form>
                     <div id="form-message" class="mt-4 text-center text-sm"></div>
                 </div>
             `;
             feather.replace();
-            document.getElementById("logout-btn").addEventListener("click", () => {
-                isAuthenticated = false;
-                showLogin();
-            });
-            document.getElementById("blog-form").addEventListener("submit", async (e) => {
-                e.preventDefault();
-                const title = document.getElementById("title").value.trim();
-                const description = document.getElementById("description").value.trim();
-                const coverImage = document.getElementById("coverImage").value.trim() || "https://placehold.co/600x400";
-                const author = document.getElementById("author").value.trim();
-                const lessonId = document.getElementById("lessonId").value.trim();
 
-                if (!title || !description || !author || !lessonId) {
-                    showMessage("Please fill all required fields.", "red");
-                    return;
-                }
+            const logoutBtn = document.getElementById("logout-btn");
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", () => {
+                    isAuthenticated = false;
+                    showLogin();
+                });
+            }
 
-                const newPost = {
-                    title,
-                    description,
-                    coverImage,
-                    author,
-                    lessonId,
-                    date: serverTimestamp()
-                };
+            const form = document.getElementById("blog-form");
+            if (form) {
+                form.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    const publishBtn = document.getElementById("publish-btn");
+                    const originalText = publishBtn.innerHTML;
+                    publishBtn.innerHTML = '<i data-feather="loader" class="animate-spin w-4 h-4 inline mr-2"></i> Publishing...';
+                    publishBtn.disabled = true;
+                    feather.replace();
 
-                try {
-                    await addDoc(collection(db, "blogs"), newPost);
-                    showMessage("Blog post published successfully!", "green");
-                    document.getElementById("blog-form").reset();
-                } catch (error) {
-                    console.error(error);
-                    showMessage("Error: " + error.message, "red");
+                    const title = document.getElementById("title").value.trim();
+                    const description = document.getElementById("description").value.trim();
+                    const coverImage = document.getElementById("coverImage").value.trim() || "https://placehold.co/600x400";
+                    const author = document.getElementById("author").value.trim();
+                    const lessonId = document.getElementById("lessonId").value.trim();
+
+                    if (!title || !description || !author || !lessonId) {
+                        showMessage("Please fill all required fields.", "red");
+                        publishBtn.innerHTML = originalText;
+                        publishBtn.disabled = false;
+                        feather.replace();
+                        return;
+                    }
+
+                    const newPost = {
+                        title,
+                        description,
+                        coverImage,
+                        author,
+                        lessonId,
+                        date: serverTimestamp()
+                    };
+
+                    try {
+                        await addDoc(collection(db, "blogs"), newPost);
+                        showMessage("Blog post published successfully!", "green");
+                        form.reset();
+                    } catch (error) {
+                        console.error("Firestore write error:", error);
+                        let errorMsg = error.message;
+                        if (errorMsg.includes("permission")) {
+                            errorMsg = "Permission denied. Check Firestore rules: allow write: if true";
+                        } else if (errorMsg.includes("network")) {
+                            errorMsg = "Network error. Check your internet connection.";
+                        }
+                        showMessage("Error: " + errorMsg, "red");
+                    } finally {
+                        publishBtn.innerHTML = originalText;
+                        publishBtn.disabled = false;
+                        feather.replace();
+                    }
+                });
+            } else {
+                console.error("Blog form not found");
+            }
+
+            testFirebaseConnection().then(connected => {
+                const statusDiv = document.getElementById("connection-status");
+                if (connected) {
+                    statusDiv.innerHTML = '<span class="text-emerald-400">✅ Firebase connected. You can publish.</span>';
+                } else {
+                    statusDiv.innerHTML = '<span class="text-red-400">❌ Cannot reach Firebase. Check rules and network.</span>';
                 }
             });
         }
@@ -143,7 +198,7 @@
         function showMessage(msg, color) {
             const msgDiv = document.getElementById("form-message");
             msgDiv.innerHTML = `<span class="text-${color === "green" ? "emerald" : "red"}-400">${msg}</span>`;
-            setTimeout(() => msgDiv.innerHTML = "", 4000);
+            setTimeout(() => msgDiv.innerHTML = "", 5000);
         }
 
         showLogin();
