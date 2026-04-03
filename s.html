@@ -1,47 +1,255 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Multi-Engine Search</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>BeduSearch – Discover the undiscoverable.</title>
     <style>
-        .tab { display: inline-block; padding: 10px; cursor: pointer; background: #eee; }
-        .active { background: #ccc; }
-        .engine { display: none; width: 100%; height: 600px; border: none; }
-        .engine.active { display: block; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0a0f1e 0%, #0c1222 100%);
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 1.5rem;
+        }
+
+        /* main container */
+        .search-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(18, 25, 45, 0.6);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 1.8rem 1.5rem 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(66, 153, 225, 0.2);
+        }
+
+        /* header branding */
+        .brand {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .brand h1 {
+            font-size: clamp(2.2rem, 8vw, 3.8rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #E0E7FF 0%, #93C5FD 50%, #60A5FA 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .tagline {
+            font-size: clamp(0.85rem, 4vw, 1.1rem);
+            color: #9ca3cf;
+            margin-top: 0.5rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            border-top: 1px dashed #2d3a5e;
+            display: inline-block;
+            padding-top: 0.5rem;
+        }
+
+        /* google cse wrapper */
+        .cse-wrapper {
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        /* ---------- CUSTOM STYLES FOR GOOGLE CSE (remove branding + rounded bar) ---------- */
+        /* target the main control area */
+        .gsc-control-cse {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            font-family: inherit !important;
+        }
+
+        /* search box outer table */
+        .gsc-search-box {
+            margin-bottom: 1.5rem !important;
+        }
+
+        /* the input field – make it fully rounded (pill shape) */
+        input.gsc-input,
+        .gsc-input-box,
+        .gsc-input input {
+            border-radius: 999px !important;
+            background-color: #111827 !important;
+            border: 1px solid #334155 !important;
+            padding: 0.9rem 1.5rem !important;
+            font-size: 1rem !important;
+            color: #f0f3fa !important;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        input.gsc-input:focus,
+        .gsc-input-box:focus-within {
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3) !important;
+            outline: none;
+        }
+
+        /* search button – also rounded */
+        .gsc-search-button {
+            border-radius: 999px !important;
+            background: #2563eb !important;
+            border: none !important;
+            padding: 0.7rem 1.6rem !important;
+            margin-left: 0.8rem !important;
+            font-weight: 600;
+            transition: 0.15s;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .gsc-search-button:hover {
+            background: #3b82f6 !important;
+            transform: scale(0.97);
+        }
+
+        /* result area styling */
+        .gsc-results-wrapper-overlay,
+        .gsc-results {
+            background: transparent !important;
+            border: none !important;
+        }
+
+        .gsc-result-info {
+            color: #cbd5e6 !important;
+            font-size: 0.9rem !important;
+        }
+
+        .gs-title *,
+        .gs-title {
+            color: #93c5fd !important;
+            font-size: 1.1rem !important;
+        }
+
+        .gs-snippet {
+            color: #b9c7dd !important;
+            background: transparent !important;
+        }
+
+        .gs-webResult div.gs-visibleUrl,
+        .gs-visibleUrl {
+            color: #6b8cce !important;
+        }
+
+        /* HIDE ALL GOOGLE BRANDING (text, images, "Powered by Google") */
+        .gsc-branding,
+        .gcse-branding,
+        .gcse-branding-img,
+        .gsc-branding-img-noclear,
+        .gsc-branding-text,
+        .gsc-branding-img,
+        .gsc-clear-button,
+        [class*="branding"] {
+            display: none !important;
+        }
+
+        /* remove any footer or extra google watermark */
+        .gsc-clear-button {
+            display: none !important;
+        }
+
+        /* results pagination */
+        .gsc-cursor-page {
+            background: #1e293b !important;
+            color: #e2e8f0 !important;
+            border-radius: 30px !important;
+            padding: 6px 12px !important;
+            margin: 0 3px !important;
+        }
+        .gsc-cursor-current-page {
+            background: #3b82f6 !important;
+            color: white !important;
+        }
+
+        /* responsive table adjustments */
+        @media (max-width: 640px) {
+            .search-container {
+                padding: 1rem;
+            }
+            .gsc-search-box {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .gsc-search-box-tools .gsc-search-box .gsc-input {
+                width: 100% !important;
+            }
+            input.gsc-input {
+                width: 100% !important;
+            }
+            .gsc-search-button {
+                margin-left: 0 !important;
+                margin-top: 8px;
+                width: auto;
+                padding: 0.7rem 1rem !important;
+            }
+        }
+
+        /* make iframe / results fully responsive */
+        .gsc-control-cse,
+        .gsc-results-wrapper-overlay {
+            width: 100% !important;
+            overflow-x: auto !important;
+        }
+        .gs-webResult {
+            word-break: break-word;
+        }
     </style>
 </head>
 <body>
-    <div>
-        <div class="tab active" data-engine="google">Google CSE</div>
-        <div class="tab" data-engine="duckduckgo">DuckDuckGo</div>
-        <div class="tab" data-engine="brave">Brave</div>
+<div class="search-container">
+    <div class="brand">
+        <h1>⚡ BeduSearch</h1>
+        <div class="tagline">Discover the undiscoverable.</div>
     </div>
-
-    <!-- Google CSE (your snippet) -->
-    <div id="google" class="engine active">
+    <div class="cse-wrapper">
+        <!-- Google Custom Search Engine boxes -->
         <div class="gcse-searchbox"></div>
         <div class="gcse-searchresults"></div>
-        <script async src="https://cse.google.com/cse.js?cx=f043c534092a948aa"></script>
     </div>
+</div>
 
-    <!-- DuckDuckGo Lite iframe -->
-    <div id="duckduckgo" class="engine">
-        <iframe src="https://lite.duckduckgo.com/" width="100%" height="600"></iframe>
-    </div>
+<!-- Google CSE script (async) with your custom CX -->
+<script async src="https://cse.google.com/cse.js?cx=f043c534092a948aa"></script>
 
-    <!-- Brave Search iframe -->
-    <div id="brave" class="engine">
-        <iframe src="https://search.brave.com/" width="100%" height="600"></iframe>
-    </div>
-
-    <script>
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                const engineId = tab.dataset.engine;
-                document.querySelectorAll('.tab, .engine').forEach(el => el.classList.remove('active'));
-                tab.classList.add('active');
-                document.getElementById(engineId).classList.add('active');
-            });
-        });
-    </script>
+<!-- extra style overrides to ensure border-radius 100% (pill) and no branding after load -->
+<script>
+    (function() {
+        // force restyling in case google injects additional elements after load
+        function applyStyles() {
+            // ensure input pill shape
+            const searchInput = document.querySelector('input.gsc-input');
+            if (searchInput) {
+                searchInput.style.borderRadius = '999px';
+                searchInput.style.padding = '0.9rem 1.5rem';
+            }
+            // hide any late branding
+            const brandingElements = document.querySelectorAll('.gsc-branding, .gcse-branding, .gsc-branding-img-noclear, .gsc-branding-text');
+            brandingElements.forEach(el => el.style.display = 'none');
+        }
+        // observe DOM changes for dynamically added elements
+        const observer = new MutationObserver(() => applyStyles());
+        observer.observe(document.body, { childList: true, subtree: true });
+        applyStyles();
+    })();
+</script>
 </body>
 </html>
