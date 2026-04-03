@@ -185,7 +185,7 @@
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-  import { getFirestore, collection, query, orderBy, limit, startAfter, getDocs } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+  import { getFirestore, collection, getDocs, query, orderBy, limit, startAfter } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyCs-VRMnT1Ose7cHxRbNabPz8YoHThzzr4",
@@ -219,43 +219,62 @@
           <img src="${post.coverImage || 'https://placehold.co/600x400'}" alt="${post.title}" class="w-full h-full object-cover">
         </div>
         <div class="p-8">
-          <h3 class="text-xl font-bold text-slate-50 mb-3 group-hover:text-indigo-400 transition-colors">${post.title}</h3>
-          <p class="text-sm text-slate-400 leading-relaxed mb-6">${post.description}</p>
+          <h3 class="text-xl font-bold text-slate-50 mb-3 group-hover:text-indigo-400 transition-colors">${escapeHtml(post.title)}</h3>
+          <p class="text-sm text-slate-400 leading-relaxed mb-6">${escapeHtml(post.description)}</p>
           <div class="flex items-center justify-between">
-            <span class="text-slate-500 text-sm">${post.author} • ${formatDate(post.date)}</span>
-            <a href="tutorials.html?lessonId=${post.lessonId}" class="text-indigo-400 font-semibold text-sm hover:underline">Read more →</a>
+            <span class="text-slate-500 text-sm">${escapeHtml(post.author)} • ${formatDate(post.date)}</span>
+            <a href="tutorials.html?lessonId=${encodeURIComponent(post.lessonId)}" class="text-indigo-400 font-semibold text-sm hover:underline">Read more →</a>
           </div>
         </div>
       </div>
     `;
   }
 
+  function escapeHtml(str) {
+    if (!str) return "";
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === "&") return "&amp;";
+      if (m === "<") return "&lt;";
+      if (m === ">") return "&gt;";
+      return m;
+    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+      return c;
+    });
+  }
+
   async function loadBlogs(reset = false) {
     if (isLoading || (!hasMore && !reset)) return;
     isLoading = true;
 
+    const container = document.getElementById("courses-grid");
+    if (!container) return;
+
+    if (reset) {
+      container.innerHTML = '<div class="col-span-full text-center py-12"><i data-feather="loader" class="animate-spin w-8 h-8 mx-auto text-indigo-400"></i><p class="mt-2 text-slate-400">Loading articles...</p></div>';
+      if (observer) observer.disconnect();
+      lastDoc = null;
+      hasMore = true;
+    }
+
     try {
       let q;
-      if (reset) {
-        lastDoc = null;
-        hasMore = true;
+      if (!lastDoc) {
         q = query(collection(db, "blogs"), orderBy("date", "desc"), limit(PER_PAGE));
       } else {
-        if (!lastDoc) {
-          q = query(collection(db, "blogs"), orderBy("date", "desc"), limit(PER_PAGE));
-        } else {
-          q = query(collection(db, "blogs"), orderBy("date", "desc"), startAfter(lastDoc), limit(PER_PAGE));
-        }
+        q = query(collection(db, "blogs"), orderBy("date", "desc"), startAfter(lastDoc), limit(PER_PAGE));
       }
 
       const snapshot = await getDocs(q);
-      const container = document.getElementById("courses-grid");
-      if (!container) return;
 
       if (reset) container.innerHTML = "";
 
+      if (snapshot.empty && reset) {
+        container.innerHTML = '<div class="col-span-full text-center text-slate-400 py-12">No blog posts yet. Check back soon.</div>';
+        hasMore = false;
+        return;
+      }
+
       if (snapshot.empty) {
-        if (reset) container.innerHTML = "<p class='text-slate-400 col-span-full text-center'>No blog posts yet. Check back soon.</p>";
         hasMore = false;
         return;
       }
@@ -270,31 +289,29 @@
 
       if (typeof feather !== "undefined") feather.replace();
 
-    } catch (error) {
-      console.error("Error loading blogs:", error);
+      if (reset && hasMore) {
+        const sentinel = document.getElementById("scroll-sentinel");
+        if (sentinel && !observer) {
+          observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && hasMore && !isLoading) {
+              loadBlogs(false);
+            }
+          }, { threshold: 0.1 });
+          observer.observe(sentinel);
+        }
+      }
+    } catch (err) {
+      console.error(err);
       if (reset) {
-        const container = document.getElementById("courses-grid");
-        if (container) container.innerHTML = "<p class='text-red-400 col-span-full text-center'>Failed to load articles. Please refresh.</p>";
+        container.innerHTML = `<div class="col-span-full text-center text-red-400 py-12">Error loading blogs: ${err.message}. Check Firestore rules.</div>`;
       }
     } finally {
       isLoading = false;
     }
   }
 
-  function setupInfiniteScroll() {
-    const sentinel = document.getElementById("scroll-sentinel");
-    if (!sentinel) return;
-    observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && hasMore && !isLoading) {
-        loadBlogs(false);
-      }
-    }, { threshold: 0.1 });
-    observer.observe(sentinel);
-  }
-
-  document.addEventListener("DOMContentLoaded", async () => {
-    await loadBlogs(true);
-    if (hasMore) setupInfiniteScroll();
+  document.addEventListener("DOMContentLoaded", () => {
+    loadBlogs(true);
   });
 </script>
 
