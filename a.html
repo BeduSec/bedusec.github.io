@@ -33,11 +33,11 @@
 
         const CORRECT_HASH = "5b95846bde97f6a92430058003444dce";
 
+        let isAuthenticated = false;
+
         function md5(string) {
             return CryptoJS.MD5(string).toString();
         }
-
-        let isAuthenticated = false;
 
         function showLogin() {
             document.getElementById("admin-container").innerHTML = `
@@ -95,7 +95,7 @@
                         </div>
                         <div class="mb-6">
                             <label class="block text-sm font-medium text-slate-300 mb-2">Lesson ID (unique slug) *</label>
-                            <input type="text" id="lessonId" required placeholder="e.g., amsi-bypass-101" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white">
+                            <input type="text" id="lessonId" required placeholder="e.g., bypass-amsi" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white">
                         </div>
                         <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded-lg transition">Publish Blog</button>
                     </form>
