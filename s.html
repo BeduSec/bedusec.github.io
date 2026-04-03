@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Engine Search</title>
+    <style>
+        .tab { display: inline-block; padding: 10px; cursor: pointer; background: #eee; }
+        .active { background: #ccc; }
+        .engine { display: none; width: 100%; height: 600px; border: none; }
+        .engine.active { display: block; }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="tab active" data-engine="google">Google CSE</div>
+        <div class="tab" data-engine="duckduckgo">DuckDuckGo</div>
+        <div class="tab" data-engine="brave">Brave</div>
+    </div>
+
+    <!-- Google CSE (your snippet) -->
+    <div id="google" class="engine active">
+        <div class="gcse-searchbox"></div>
+        <div class="gcse-searchresults"></div>
+        <script async src="https://cse.google.com/cse.js?cx=f043c534092a948aa"></script>
+    </div>
+
+    <!-- DuckDuckGo Lite iframe -->
+    <div id="duckduckgo" class="engine">
+        <iframe src="https://lite.duckduckgo.com/" width="100%" height="600"></iframe>
+    </div>
+
+    <!-- Brave Search iframe -->
+    <div id="brave" class="engine">
+        <iframe src="https://search.brave.com/" width="100%" height="600"></iframe>
+    </div>
+
+    <script>
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const engineId = tab.dataset.engine;
+                document.querySelectorAll('.tab, .engine').forEach(el => el.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(engineId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
