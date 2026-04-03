@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head><title>Firebase Test</title></head>
+<body style="background:black; color:lime; padding:20px; font-family:monospace;">
+<pre id="log"></pre>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+  import { getFirestore, collection, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+  const logDiv = document.getElementById("log");
+  function log(msg) { logDiv.innerText += msg + "\n"; }
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCs-VRMnT1Ose7cHxRbNabPz8YoHThzzr4",
+    authDomain: "bedusec-blogs.firebaseapp.com",
+    projectId: "bedusec-blogs",
+    storageBucket: "bedusec-blogs.firebasestorage.app",
+    messagingSenderId: "736679428058",
+    appId: "1:736679428058:web:edaed698f9f9cf464e8ae3"
+  };
+
+  try {
+    log("Initializing Firebase...");
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    log("Firebase OK. Fetching blogs...");
+    const q = query(collection(db, "blogs"), orderBy("date", "desc"), limit(1));
+    const snapshot = await getDocs(q);
+    if (snapshot.empty) {
+      log("No blogs found in 'blogs' collection.");
+      log("Check: Did you add any blog via Admin Panel?");
+    } else {
+      log("✅ Found " + snapshot.size + " blog(s). First blog title: " + snapshot.docs[0].data().title);
+    }
+    log("Firestore read works. If you see this, Courses page should work.");
+  } catch (err) {
+    log("❌ ERROR: " + err.message);
+    log("Possible: Wrong config, missing collection, or security rules block read.");
+  }
+</script>
+</body>
+</html>
