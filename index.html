@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -124,6 +124,7 @@ h1,h2,h3,h4{font-weight:500;letter-spacing:-.02em}
   width:1px;
   background-color:var(--line);
   flex-shrink:0;
+  align-self:stretch;
   transform-origin:top center;
   animation:sep-draw .7s cubic-bezier(.4,0,.2,1) both;
 }
@@ -180,8 +181,10 @@ h1,h2,h3,h4{font-weight:500;letter-spacing:-.02em}
   background-color:var(--surface);
   color:var(--ink);
   text-decoration:none;
+  font-family:inherit;
   font-size:14px;
   font-weight:400;
+  text-align:left;
   cursor:pointer;
   overflow:hidden;
   opacity:0;
@@ -243,6 +246,7 @@ h1,h2,h3,h4{font-weight:500;letter-spacing:-.02em}
   font-size:14px;
   font-weight:400;
   letter-spacing:-.005em;
+  text-align:left;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
@@ -471,7 +475,7 @@ main{
     <span class="menu-label">Contact</span>
   </a>
   <button type="button" class="menu-item" data-cycle-theme>
-    <span class="menu-icon"><i class="ph-duotone ph-moon" data-theme-icon></i></span>
+    <span class="menu-icon"><i class="ph-duotone ph-sun" data-theme-icon></i></span>
     <span class="menu-label">Theme</span>
   </button>
 </nav>
@@ -763,7 +767,7 @@ const themeIcons = {
 
 const setThemeIcon = (theme) => {
   if (!themeIcon) return;
-  themeIcon.className = 'ph-duotone ' + (themeIcons[theme] || 'ph-moon');
+  themeIcon.className = 'ph-duotone ' + (themeIcons[theme] || 'ph-sun');
 };
 
 const applyTheme = (theme) => {
@@ -773,14 +777,14 @@ const applyTheme = (theme) => {
 };
 
 const cycleTheme = () => {
-  const order = ['dark', 'light', 'warm'];
-  const current = root.dataset.theme || 'dark';
+  const order = ['light', 'dark', 'warm'];
+  const current = root.dataset.theme || 'light';
   const next = order[(order.indexOf(current) + 1) % order.length];
   applyTheme(next);
 };
 
-let storedTheme = 'dark';
-try { storedTheme = localStorage.getItem('bedusec-theme') || 'dark'; } catch (error) {}
+let storedTheme = 'light';
+try { storedTheme = localStorage.getItem('bedusec-theme') || 'light'; } catch (error) {}
 applyTheme(storedTheme);
 
 const setMenuState = (state) => {
