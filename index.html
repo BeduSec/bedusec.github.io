@@ -6,7 +6,7 @@
 <title>BeduSec — Securing the Digital Frontier While Lurking in the Darkness</title>
 <meta name="description" content="BeduSec is an elite collective of cybersecurity experts, passionate developers and tech enthusiasts. Penetration testing, secure engineering and offensive security research under one roof.">
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500&display=swap">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/thin/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
@@ -23,8 +23,7 @@ tailwind.config = {
         line: 'var(--line)',
         accent: 'var(--accent)',
         'accent-ink': 'var(--accent-ink)',
-        'accent-soft': 'var(--accent-soft)',
-        glass: 'var(--glass)'
+        'accent-soft': 'var(--accent-soft)'
       },
       fontFamily: {
         sans: ['"Clash Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif']
@@ -39,10 +38,7 @@ tailwind.config = {
   --surface-2:#F2F5FA;
   --ink:#0A1424;
   --muted:#4F6078;
-  --line:rgba(10,20,36,.16);
-  --glass:rgba(255,255,255,.72);
-  --glass-sheen:rgba(255,255,255,.88);
-  --shadow:rgba(10,20,36,.22);
+  --line:rgba(10,20,36,.18);
   --accent:#1E5EFF;
   --accent-ink:#F4F8FF;
   --accent-soft:rgba(30,94,255,.10);
@@ -54,10 +50,7 @@ tailwind.config = {
   --surface-2:#F7F1E9;
   --ink:#1C1710;
   --muted:#6B5D4C;
-  --line:rgba(28,23,16,.16);
-  --glass:rgba(255,250,242,.72);
-  --glass-sheen:rgba(255,255,255,.82);
-  --shadow:rgba(60,40,15,.22);
+  --line:rgba(28,23,16,.18);
   --accent:#8A5A16;
   --accent-ink:#FFF7EA;
   --accent-soft:rgba(138,90,22,.11);
@@ -69,10 +62,7 @@ tailwind.config = {
   --surface-2:#0A1120;
   --ink:#E6EDF7;
   --muted:#8595AE;
-  --line:rgba(255,255,255,.14);
-  --glass:rgba(20,30,50,.62);
-  --glass-sheen:rgba(255,255,255,.10);
-  --shadow:rgba(0,0,0,.72);
+  --line:rgba(255,255,255,.16);
   --accent:#3B82F6;
   --accent-ink:#03101F;
   --accent-soft:rgba(59,130,246,.14);
@@ -86,10 +76,12 @@ body{
   background-color:var(--surface);
   color:var(--ink);
   font-family:"Clash Grotesk",ui-sans-serif,system-ui,sans-serif;
+  font-weight:400;
   -webkit-font-smoothing:antialiased;
   transition:background-color .45s ease,color .45s ease;
   min-height:100vh;
 }
+h1,h2,h3,h4{font-weight:500;letter-spacing:-.02em}
 ::selection{background:var(--accent);color:var(--accent-ink)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
@@ -98,14 +90,12 @@ body{
 
 .site-header{
   position:sticky;top:0;z-index:50;
-  background:var(--glass);
-  -webkit-backdrop-filter:blur(22px) saturate(170%);
-  backdrop-filter:blur(22px) saturate(170%);
+  background-color:var(--surface);
   border-bottom:1px solid var(--line);
-  padding:.8rem 1.15rem;
+  padding:0 1.15rem;
 }
-@media (min-width:768px){.site-header{padding:.95rem 1.75rem}}
-@media (min-width:1280px){.site-header{padding:1.05rem 2.25rem}}
+@media (min-width:768px){.site-header{padding:0 1.75rem}}
+@media (min-width:1280px){.site-header{padding:0 2.25rem}}
 
 .header-inner{
   display:flex;
@@ -114,119 +104,152 @@ body{
   gap:1rem;
   max-width:1320px;
   margin:0 auto;
+  min-height:64px;
 }
+@media (min-width:768px){.header-inner{min-height:72px}}
+@media (min-width:1280px){.header-inner{min-height:80px}}
 
 .brand{display:flex;align-items:center;flex-shrink:0;transition:opacity .2s ease}
-.brand:hover{opacity:.8}
-.brand-logo{display:block;height:28px;width:auto}
-@media (min-width:768px){.brand-logo{height:32px}}
-@media (min-width:1280px){.brand-logo{height:36px}}
+.brand:hover{opacity:.75}
+.brand-logo{display:block;height:26px;width:auto}
+@media (min-width:768px){.brand-logo{height:30px}}
+@media (min-width:1280px){.brand-logo{height:34px}}
 
-.header-actions{display:flex;align-items:center;gap:.35rem;flex-shrink:0}
-@media (min-width:768px){.header-actions{gap:.5rem}}
+.header-right{display:flex;align-items:center;gap:.4rem;flex-shrink:0}
+@media (min-width:768px){.header-right{gap:.6rem}}
+
+.sep{
+  width:1px;
+  height:26px;
+  background-color:var(--line);
+  flex-shrink:0;
+  transform-origin:top;
+  animation:sep-draw .7s cubic-bezier(.4,0,.2,1) both;
+}
+.sep:nth-of-type(2){animation-delay:.15s}
+@keyframes sep-draw{
+  from{transform:scaleY(0)}
+  to{transform:scaleY(1)}
+}
 
 .icon-btn{
   display:grid;place-items:center;
   width:40px;height:40px;
-  border:none;background:transparent;
-  color:var(--ink);cursor:pointer;
-  transition:background-color .2s ease,color .2s ease;
+  border:none;
+  background:transparent;
+  color:var(--ink);
+  cursor:pointer;
+  transition:color .2s ease;
 }
 @media (min-width:768px){.icon-btn{width:44px;height:44px}}
-.icon-btn:hover{background:var(--accent-soft);color:var(--accent)}
+.icon-btn:hover{color:var(--accent)}
 .icon-btn i{font-size:20px}
 @media (min-width:768px){.icon-btn i{font-size:22px}}
-.icon-btn.menu-btn.is-open{background:var(--accent);color:var(--accent-ink)}
-.icon-btn.menu-btn .ico-equals{display:block;width:24px;height:16px}
-.icon-btn.menu-btn .ico-caret{display:none;font-size:22px}
-.icon-btn.menu-btn.is-open .ico-equals{display:none}
-.icon-btn.menu-btn.is-open .ico-caret{display:block}
+
+.menu-btn .ico-equals{display:block;width:26px;height:16px}
+.menu-btn .ico-caret{display:none;font-size:22px}
+.menu-btn[data-state="icons"] .ico-equals{display:none}
+.menu-btn[data-state="icons"] .ico-caret{display:block}
+.menu-btn[data-state="expanded"] .ico-equals{display:none}
+.menu-btn[data-state="expanded"] .ico-caret{display:block}
 
 .menu-col{
   position:fixed;
-  top:4.4rem;
-  right:1rem;
+  top:calc(64px + 1rem);
+  right:1.15rem;
   z-index:45;
   display:flex;
   flex-direction:column;
   gap:.4rem;
-  align-items:flex-end;
+  width:230px;
   pointer-events:none;
 }
-@media (min-width:768px){.menu-col{top:5.2rem;right:1.5rem;gap:.5rem}}
-@media (min-width:1280px){.menu-col{top:5.6rem;right:2rem}}
-
-.menu-col.is-open{pointer-events:auto}
+@media (min-width:768px){
+  .menu-col{top:calc(72px + 1.25rem);right:1.75rem;width:250px;gap:.5rem}
+}
+@media (min-width:1280px){
+  .menu-col{top:calc(80px + 1.5rem);right:2.25rem;width:260px}
+}
 
 .menu-item{
-  display:inline-flex;
-  align-items:center;
-  padding:.55rem;
+  position:relative;
+  display:block;
+  width:100%;
+  height:52px;
   border:1px solid var(--line);
-  background:var(--glass);
-  -webkit-backdrop-filter:blur(18px) saturate(160%);
-  backdrop-filter:blur(18px) saturate(160%);
+  background-color:transparent;
   color:var(--ink);
   text-decoration:none;
+  font-size:14px;
+  font-weight:400;
   cursor:pointer;
-  transform:translateX(calc(100% + 2.5rem));
   opacity:0;
+  transform:translateX(120%);
   pointer-events:none;
   transition:
-    transform .5s cubic-bezier(.34,1.4,.64,1),
-    opacity .35s ease,
-    background-color .2s ease,
-    color .2s ease,
-    border-color .2s ease;
+    opacity .3s ease,
+    transform .45s cubic-bezier(.34,1.3,.64,1),
+    border-color .2s ease,
+    color .2s ease;
 }
-@media (min-width:768px){.menu-item{padding:.65rem}}
-@media (min-width:1280px){.menu-item{padding:.7rem}}
+@media (min-width:768px){.menu-item{height:56px}}
 
-.menu-col.is-open .menu-item{
-  transform:translateX(0);
+.menu-col.open .menu-item{
   opacity:1;
+  transform:translateX(0);
   pointer-events:auto;
 }
-.menu-col.is-open .menu-item:nth-child(1){transition-delay:0ms,0ms,0ms,0ms,0ms}
-.menu-col.is-open .menu-item:nth-child(2){transition-delay:55ms,55ms,0ms,0ms,0ms}
-.menu-col.is-open .menu-item:nth-child(3){transition-delay:110ms,110ms,0ms,0ms,0ms}
-.menu-col.is-open .menu-item:nth-child(4){transition-delay:165ms,165ms,0ms,0ms,0ms}
-.menu-col.is-open .menu-item:nth-child(5){transition-delay:220ms,220ms,0ms,0ms,0ms}
-.menu-col.is-open .menu-item:nth-child(6){transition-delay:275ms,275ms,0ms,0ms,0ms}
-.menu-col.is-open .menu-item:nth-child(7){transition-delay:330ms,330ms,0ms,0ms,0ms}
+.menu-col.open .menu-item:nth-child(1){transition-delay:0ms}
+.menu-col.open .menu-item:nth-child(2){transition-delay:50ms}
+.menu-col.open .menu-item:nth-child(3){transition-delay:100ms}
+.menu-col.open .menu-item:nth-child(4){transition-delay:150ms}
+.menu-col.open .menu-item:nth-child(5){transition-delay:200ms}
+.menu-col.open .menu-item:nth-child(6){transition-delay:250ms}
+.menu-col.open .menu-item:nth-child(7){transition-delay:300ms}
 
-.menu-item:hover,
-.menu-item:focus-visible{
-  background:var(--accent);
-  color:var(--accent-ink);
+.menu-item:hover{
   border-color:var(--accent);
-}
-
-.menu-label{
-  max-width:0;
-  overflow:hidden;
-  white-space:nowrap;
-  opacity:0;
-  font-size:13px;
-  font-weight:600;
-  letter-spacing:-.01em;
-  margin-right:0;
-  order:-1;
-  transition:max-width .38s ease,opacity .28s ease,margin-right .38s ease;
-}
-@media (min-width:768px){.menu-label{font-size:14px}}
-.menu-col.is-expanded .menu-label{
-  max-width:140px;
-  opacity:1;
-  margin-right:.7rem;
+  color:var(--accent);
 }
 
 .menu-icon{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:24px;height:24px;
   display:grid;place-items:center;
-  width:22px;height:22px;
-  flex-shrink:0;
+  transition:
+    left .45s cubic-bezier(.34,1.2,.64,1),
+    transform .45s cubic-bezier(.34,1.2,.64,1);
 }
-.menu-icon i{font-size:20px}
+.menu-icon i{font-size:20px;display:block}
+
+.menu-col.expanded .menu-icon{
+  left:18px;
+  transform:translate(0,-50%);
+}
+
+.menu-label{
+  position:absolute;
+  top:50%;
+  left:52px;
+  right:16px;
+  transform:translateY(-50%);
+  opacity:0;
+  font-size:14px;
+  font-weight:400;
+  letter-spacing:-.005em;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  pointer-events:none;
+  transition:opacity .25s ease;
+}
+.menu-col.expanded .menu-label{
+  opacity:1;
+  transition:opacity .3s ease .08s;
+}
 
 .frame{
   position:relative;
@@ -239,14 +262,14 @@ body{
 
 .btn{
   display:inline-flex;align-items:center;gap:.5rem;
-  padding:.8rem 1.2rem;font-size:13.5px;font-weight:600;
+  padding:.75rem 1.15rem;
+  font-size:13.5px;font-weight:400;
   border-radius:0;
-  transition:transform .2s ease,background-color .25s ease,color .25s ease,border-color .25s ease;
+  transition:background-color .2s ease,color .2s ease,border-color .2s ease;
 }
-.btn-accent{background:var(--accent);color:var(--accent-ink)}
-.btn-accent:hover{transform:translateY(-1px)}
+.btn-accent{background-color:var(--accent);color:var(--accent-ink);border:1px solid var(--accent)}
 .btn-frame{border:1px solid var(--line);color:var(--ink);background-color:transparent}
-.btn-frame:hover{background-color:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.btn-frame:hover{border-color:var(--accent);color:var(--accent)}
 
 main{
   max-width:1200px;margin:0 auto;
@@ -280,13 +303,13 @@ main{
     position:absolute;top:50%;left:50%;
     transform:translate(-50%,-50%);
     width:44px;height:44px;border-radius:50%;
-    background:var(--accent);
+    background-color:var(--accent);
     box-shadow:0 0 60px var(--glow-1);
   }
   .ring-dot{
     position:absolute;top:50%;left:50%;
     width:10px;height:10px;border-radius:50%;
-    background:var(--accent);
+    background-color:var(--accent);
     box-shadow:0 0 18px var(--glow-1);
     animation:orbit 22s linear infinite;
   }
@@ -312,10 +335,10 @@ main{
 @media (min-width:640px){.philosophy{padding:6rem 0}}
 .philosophy-text{
   font-size:clamp(2rem,5.5vw,4rem);
-  font-weight:600;line-height:1.02;
+  font-weight:500;line-height:1.02;
   letter-spacing:-.04em;max-width:16ch;
 }
-.philosophy-sub{margin-top:1.5rem;max-width:38ch;font-size:15px;line-height:1.65;color:var(--muted)}
+.philosophy-sub{margin-top:1.5rem;max-width:38ch;font-size:15px;line-height:1.7;color:var(--muted)}
 
 .pillars{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .pillar{
@@ -325,22 +348,22 @@ main{
 }
 @media (min-width:640px){.pillar{grid-template-columns:80px 1fr;gap:2rem;padding:2.5rem 0}}
 .pillar:hover{padding-left:.5rem}
-.pillar-num{font-size:13px;font-variant-numeric:tabular-nums;font-weight:600;color:var(--accent);padding-top:.35rem}
-.pillar-body h3{font-size:clamp(1.15rem,2vw,1.5rem);font-weight:600;letter-spacing:-.02em;margin-bottom:.5rem}
-.pillar-body p{font-size:14px;line-height:1.65;color:var(--muted);max-width:52ch}
+.pillar-num{font-size:13px;font-variant-numeric:tabular-nums;font-weight:400;color:var(--accent);padding-top:.35rem}
+.pillar-body h3{font-size:clamp(1.15rem,2vw,1.5rem);font-weight:500;margin-bottom:.5rem}
+.pillar-body p{font-size:14px;line-height:1.7;color:var(--muted);max-width:52ch}
 
 .repo-list{border-top:1px solid var(--line)}
 .repo-row{
   display:grid;grid-template-columns:auto 1fr auto;
   align-items:center;gap:1rem;
   padding:1.25rem .25rem;border-bottom:1px solid var(--line);
-  transition:padding .3s ease,background-color .3s ease;
+  transition:padding .3s ease,color .2s ease;
 }
 @media (min-width:640px){.repo-row{grid-template-columns:40px 1fr auto auto;gap:1.5rem;padding:1.5rem .75rem}}
-.repo-row:hover{padding-left:1.25rem;background-color:var(--accent-soft)}
-@media (min-width:640px){.repo-row:hover{padding-left:1.5rem}}
-.repo-index{font-size:11px;font-variant-numeric:tabular-nums;color:var(--muted);font-weight:600}
-.repo-name{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.repo-row:hover{padding-left:1rem;color:var(--accent)}
+@media (min-width:640px){.repo-row:hover{padding-left:1.25rem}}
+.repo-index{font-size:11px;font-variant-numeric:tabular-nums;color:var(--muted);font-weight:400}
+.repo-name{font-size:15px;font-weight:500}
 .repo-tags{font-size:12px;color:var(--muted);display:none}
 @media (min-width:640px){.repo-tags{display:block}}
 .repo-arrow{color:var(--muted);transition:transform .3s ease,color .3s ease}
@@ -361,7 +384,7 @@ main{
 }
 .logo-tile:hover{color:var(--ink);opacity:1}
 .logo-icon{display:block;flex-shrink:0;height:26px;width:26px}
-.logo-name{display:none;font-size:15px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;line-height:1}
+.logo-name{display:none;font-size:15px;font-weight:400;white-space:nowrap;line-height:1}
 @media (min-width:640px){.logo-name{display:inline}}
 
 @media (prefers-reduced-motion:reduce){
@@ -369,6 +392,7 @@ main{
   .reveal{opacity:1;transform:none;transition:none}
   .logo-track{transform:none!important}
   .ring-dot{animation:none!important}
+  .sep{animation:none!important}
 }
 </style>
 </head>
@@ -407,16 +431,18 @@ main{
     <a href="/" class="brand" aria-label="BeduSec home">
       <img src="logo.svg" alt="BeduSec" class="brand-logo">
     </a>
-    <div class="header-actions">
+    <div class="header-right">
+      <span class="sep" aria-hidden="true"></span>
       <a href="/search" class="icon-btn" aria-label="Search">
         <i class="ph-thin ph-magnifying-glass"></i>
       </a>
-      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
-        <svg class="ico-equals" viewBox="0 0 32 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-          <path d="M3 6.5 H29"/>
-          <path d="M3 13.5 H29"/>
+      <span class="sep" aria-hidden="true"></span>
+      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" data-state="closed" data-menu-toggle>
+        <svg class="ico-equals" viewBox="0 0 32 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <path d="M2 6.5 H30"/>
+          <path d="M2 13.5 H30"/>
         </svg>
-        <i class="ph ph-caret-left ico-caret" aria-hidden="true"></i>
+        <i class="ico-caret" data-caret aria-hidden="true"></i>
       </button>
     </div>
   </div>
@@ -424,32 +450,32 @@ main{
 
 <nav class="menu-col" data-menu aria-label="Primary">
   <a href="/" class="menu-item">
-    <span class="menu-label">Home</span>
     <span class="menu-icon"><i class="ph-duotone ph-house"></i></span>
+    <span class="menu-label">Home</span>
   </a>
   <a href="/projects" class="menu-item">
-    <span class="menu-label">Projects</span>
     <span class="menu-icon"><i class="ph-duotone ph-folders"></i></span>
+    <span class="menu-label">Projects</span>
   </a>
   <a href="/services" class="menu-item">
-    <span class="menu-label">Services</span>
     <span class="menu-icon"><i class="ph-duotone ph-shield-check"></i></span>
+    <span class="menu-label">Services</span>
   </a>
   <a href="/research" class="menu-item">
-    <span class="menu-label">Research</span>
     <span class="menu-icon"><i class="ph-duotone ph-flask"></i></span>
+    <span class="menu-label">Research</span>
   </a>
   <a href="/team" class="menu-item">
-    <span class="menu-label">Team</span>
     <span class="menu-icon"><i class="ph-duotone ph-users-three"></i></span>
+    <span class="menu-label">Team</span>
   </a>
   <a href="/contact" class="menu-item">
-    <span class="menu-label">Contact</span>
     <span class="menu-icon"><i class="ph-duotone ph-envelope-simple"></i></span>
+    <span class="menu-label">Contact</span>
   </a>
   <button type="button" class="menu-item" data-cycle-theme>
-    <span class="menu-label">Theme</span>
     <span class="menu-icon"><i class="ph-duotone ph-moon" data-theme-icon></i></span>
+    <span class="menu-label">Theme</span>
   </button>
 </nav>
 
@@ -467,7 +493,7 @@ main{
     </div>
 
     <div class="relative max-w-2xl" data-reveal>
-      <h1 class="text-[clamp(2.6rem,5.6vw,4.4rem)] font-semibold leading-[0.98] tracking-[-0.04em]">
+      <h1 class="text-[clamp(2.6rem,5.6vw,4.4rem)] leading-[0.98] tracking-[-0.04em]">
         Securing the digital frontier.
         <span class="block">Lurking in the <em class="not-italic text-accent">darkness</em>.</span>
       </h1>
@@ -499,8 +525,8 @@ main{
   <section class="mt-16 border-y border-line py-6" data-logo-scroll>
     <div class="flex items-end justify-between gap-6" data-reveal>
       <div class="max-w-md">
-        <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Stack</p>
-        <h2 class="mt-2 text-[clamp(1.4rem,2.2vw,1.75rem)] font-semibold leading-[1.1] tracking-[-0.02em]">
+        <p class="text-[11px] tracking-[0.24em] text-accent">STACK</p>
+        <h2 class="mt-2 text-[clamp(1.4rem,2.2vw,1.75rem)] leading-[1.1]">
           The tools we trust.
         </h2>
       </div>
@@ -559,7 +585,7 @@ main{
   </section>
 
   <section class="philosophy" data-reveal>
-    <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Philosophy</p>
+    <p class="text-[11px] tracking-[0.24em] text-accent">PHILOSOPHY</p>
     <h2 class="philosophy-text mt-4">
       Viviamo per il <em class="not-italic text-accent">rispetto</em>.
     </h2>
@@ -571,8 +597,8 @@ main{
   <section class="mt-4">
     <div class="flex items-end justify-between gap-6" data-reveal>
       <div class="max-w-xl">
-        <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Three pillars</p>
-        <h2 class="mt-3 text-[clamp(1.8rem,3vw,2.5rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
+        <p class="text-[11px] tracking-[0.24em] text-accent">THREE PILLARS</p>
+        <h2 class="mt-3 text-[clamp(1.8rem,3vw,2.5rem)] leading-[1.05]">
           What BeduSec is made of.
         </h2>
       </div>
@@ -602,7 +628,7 @@ main{
       </div>
     </div>
 
-    <a href="/services" class="mt-8 inline-flex items-center gap-1.5 text-[13px] font-semibold text-accent">
+    <a href="/services" class="mt-8 inline-flex items-center gap-1.5 text-[13px] text-accent">
       Our methodology
       <i class="ph-thin ph-arrow-right text-[14px]"></i>
     </a>
@@ -611,15 +637,15 @@ main{
   <section class="mt-20 sm:mt-28">
     <div class="flex items-end justify-between gap-6" data-reveal>
       <div class="max-w-xl">
-        <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Public research</p>
-        <h2 class="mt-3 text-[clamp(1.8rem,3vw,2.5rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
+        <p class="text-[11px] tracking-[0.24em] text-accent">PUBLIC RESEARCH</p>
+        <h2 class="mt-3 text-[clamp(1.8rem,3vw,2.5rem)] leading-[1.05]">
           Tools we've released.
         </h2>
         <p class="mt-4 text-[14.5px] leading-relaxed text-muted">
           A selection of BeduSec repositories, published for defensive research, education, and authorised security testing.
         </p>
       </div>
-      <a href="/projects" class="hidden shrink-0 items-center gap-1.5 text-[13px] font-semibold text-accent sm:inline-flex">
+      <a href="/projects" class="hidden shrink-0 items-center gap-1.5 text-[13px] text-accent sm:inline-flex">
         All repositories
         <i class="ph-thin ph-arrow-right text-[14px]"></i>
       </a>
@@ -635,68 +661,50 @@ main{
     </div>
 
     <div class="mt-6 sm:hidden">
-      <a href="/projects" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-accent">All repositories<i class="ph-thin ph-arrow-right text-[14px]"></i></a>
+      <a href="/projects" class="inline-flex items-center gap-1.5 text-[13px] text-accent">All repositories<i class="ph-thin ph-arrow-right text-[14px]"></i></a>
     </div>
   </section>
 
   <section class="mt-20" data-reveal>
     <div class="frame grid grid-cols-2 divide-x divide-[var(--line)] !p-0 sm:grid-cols-4">
-      <div class="p-5 sm:p-6"><p class="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">3</p><p class="mt-1 text-[12px] text-muted">Core pillars</p></div>
-      <div class="p-5 sm:p-6"><p class="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">6</p><p class="mt-1 text-[12px] text-muted">Public repos</p></div>
-      <div class="p-5 sm:p-6"><p class="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">100%</p><p class="mt-1 text-[12px] text-muted">Authorised work</p></div>
-      <div class="p-5 sm:p-6"><p class="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">24h</p><p class="mt-1 text-[12px] text-muted">Response time</p></div>
+      <div class="p-5 sm:p-6"><p class="text-2xl tracking-[-0.03em] sm:text-3xl">3</p><p class="mt-1 text-[12px] text-muted">Core pillars</p></div>
+      <div class="p-5 sm:p-6"><p class="text-2xl tracking-[-0.03em] sm:text-3xl">6</p><p class="mt-1 text-[12px] text-muted">Public repos</p></div>
+      <div class="p-5 sm:p-6"><p class="text-2xl tracking-[-0.03em] sm:text-3xl">100%</p><p class="mt-1 text-[12px] text-muted">Authorised work</p></div>
+      <div class="p-5 sm:p-6"><p class="text-2xl tracking-[-0.03em] sm:text-3xl">24h</p><p class="mt-1 text-[12px] text-muted">Response time</p></div>
     </div>
   </section>
 
   <section class="mt-20 sm:mt-24">
     <div class="max-w-xl" data-reveal>
-      <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">What we do</p>
-      <h2 class="mt-3 text-[clamp(1.8rem,3vw,2.5rem)] font-semibold leading-[1.05] tracking-[-0.03em]">Offence informs defence.</h2>
+      <p class="text-[11px] tracking-[0.24em] text-accent">WHAT WE DO</p>
+      <h2 class="mt-3 text-[clamp(1.8rem,3vw,2.5rem)] leading-[1.05]">Offence informs defence.</h2>
       <p class="mt-4 text-[14.5px] leading-relaxed text-muted">We test systems the way adversaries would, then help you build them so the next attempt fails.</p>
     </div>
 
     <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-reveal>
       <a href="/services" class="frame frame-lift block">
         <span class="text-accent"><i class="ph-duotone ph-crosshair text-[22px]"></i></span>
-        <h3 class="mt-3 text-[14px] font-semibold">Penetration testing</h3>
+        <h3 class="mt-3 text-[14px]">Penetration testing</h3>
         <p class="mt-1.5 text-[12.5px] leading-relaxed text-muted">Web, network, mobile and social engineering assessments.</p>
       </a>
       <a href="/services" class="frame frame-lift block">
         <span class="text-accent"><i class="ph-duotone ph-code text-[22px]"></i></span>
-        <h3 class="mt-3 text-[14px] font-semibold">Secure development</h3>
+        <h3 class="mt-3 text-[14px]">Secure development</h3>
         <p class="mt-1.5 text-[12.5px] leading-relaxed text-muted">Applications built with security in the architecture, not after.</p>
       </a>
       <a href="/services" class="frame frame-lift block">
         <span class="text-accent"><i class="ph-duotone ph-flask text-[22px]"></i></span>
-        <h3 class="mt-3 text-[14px] font-semibold">Security research</h3>
+        <h3 class="mt-3 text-[14px]">Security research</h3>
         <p class="mt-1.5 text-[12.5px] leading-relaxed text-muted">Vulnerability discovery and responsible disclosure.</p>
       </a>
       <a href="/services" class="frame frame-lift block">
         <span class="text-accent"><i class="ph-duotone ph-graduation-cap text-[22px]"></i></span>
-        <h3 class="mt-3 text-[14px] font-semibold">Training</h3>
+        <h3 class="mt-3 text-[14px]">Training</h3>
         <p class="mt-1.5 text-[12.5px] leading-relaxed text-muted">Awareness programmes and hands-on defensive workshops.</p>
       </a>
     </div>
 
-    <a href="/services" class="mt-6 inline-flex items-center gap-1.5 text-[13px] font-semibold text-accent" data-reveal>View all services<i class="ph-thin ph-arrow-right text-[14px]"></i></a>
-  </section>
-
-  <section class="mt-20 sm:mt-28">
-    <div class="frame relative !p-8 sm:!p-12" data-reveal>
-      <div class="pointer-events-none absolute -top-24 left-1/2 h-48 w-[32rem] -translate-x-1/2" style="background:var(--glow-1);filter:blur(80px)" aria-hidden="true"></div>
-      <div class="relative mx-auto max-w-xl text-center">
-        <div class="inline-flex items-center gap-2 border border-line px-3 py-1.5 text-[12px] text-muted">
-          <i class="ph-duotone ph-envelope-simple text-accent"></i>Open for authorised engagements
-        </div>
-        <h2 class="mt-5 text-[clamp(1.7rem,3.4vw,2.6rem)] font-semibold leading-[1.05] tracking-[-0.035em]">Tell us what you need protected — or what you need tested.</h2>
-        <p class="mx-auto mt-4 max-w-md text-[14px] leading-relaxed text-muted">A short message is enough. We will tell you honestly how we would approach it, and whether we are the right team.</p>
-        <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
-          <a href="/contact" class="btn btn-accent">Contact BeduSec<i class="ph-thin ph-arrow-up-right text-[15px]"></i></a>
-          <a href="/team" class="btn btn-frame">Meet the team<i class="ph-thin ph-arrow-right text-[15px]"></i></a>
-        </div>
-        <p class="mt-5 text-[12px] text-muted">NDAs welcome · Authorised work only · Replies within one business day</p>
-      </div>
-    </div>
+    <a href="/services" class="mt-6 inline-flex items-center gap-1.5 text-[13px] text-accent" data-reveal>View all services<i class="ph-thin ph-arrow-right text-[14px]"></i></a>
   </section>
 
   <footer class="mt-20 border-t border-line pt-10">
@@ -711,7 +719,7 @@ main{
         </div>
       </div>
       <div>
-        <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">Pages</p>
+        <p class="text-[11px] tracking-[0.2em] text-muted">PAGES</p>
         <ul class="mt-4 space-y-2.5 text-[13px]">
           <li><a href="/projects" class="text-ink transition hover:text-accent">Projects</a></li>
           <li><a href="/services" class="text-ink transition hover:text-accent">Services</a></li>
@@ -721,7 +729,7 @@ main{
         </ul>
       </div>
       <div>
-        <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">Reach us</p>
+        <p class="text-[11px] tracking-[0.2em] text-muted">REACH US</p>
         <ul class="mt-4 space-y-2.5 text-[13px]">
           <li><a href="mailto:hello@bedusec.com" class="text-ink transition hover:text-accent">hello@bedusec.com</a></li>
           <li><a href="mailto:security@bedusec.com" class="text-ink transition hover:text-accent">security@bedusec.com</a></li>
@@ -739,6 +747,7 @@ main{
 const root = document.documentElement;
 const menuToggle = document.querySelector('[data-menu-toggle]');
 const menuCol = document.querySelector('[data-menu]');
+const caretEl = document.querySelector('[data-caret]');
 const themeButtons = document.querySelectorAll('[data-cycle-theme]');
 const themeIcon = document.querySelector('[data-theme-icon]');
 const logoSection = document.querySelector('[data-logo-scroll]');
@@ -780,10 +789,23 @@ applyTheme(storedTheme);
 const setMenuState = (state) => {
   menuState = state;
   const isOpen = state !== 'closed';
+  const isExpanded = state === 'expanded';
+
   menuToggle.setAttribute('aria-expanded', String(isOpen));
-  menuToggle.classList.toggle('is-open', isOpen);
-  menuCol.classList.toggle('is-open', isOpen);
-  menuCol.classList.toggle('is-expanded', state === 'expanded');
+  menuToggle.setAttribute('data-state', state);
+
+  menuCol.classList.toggle('open', isOpen);
+  menuCol.classList.toggle('expanded', isExpanded);
+
+  if (caretEl) {
+    if (state === 'icons') {
+      caretEl.className = 'ph ph-caret-left ico-caret';
+    } else if (state === 'expanded') {
+      caretEl.className = 'ph ph-caret-right ico-caret';
+    } else {
+      caretEl.className = 'ico-caret';
+    }
+  }
 };
 
 menuToggle.addEventListener('click', () => {
@@ -801,9 +823,7 @@ menuCol.querySelectorAll('a.menu-item').forEach((item) => {
 });
 
 themeButtons.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    cycleTheme();
-  });
+  btn.addEventListener('click', () => cycleTheme());
 });
 
 document.addEventListener('click', (event) => {
