@@ -1,278 +1,869 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>&#66;&#101;&#100;&#117;&#83;&#101;&#99;</title>
-<meta property="og:title" content="BeduSec">
-<meta name="twitter:title" content="BeduSec">
-<meta itemprop="name" content="BeduSec">
-<meta name="apple-mobile-web-app-title" content="BeduSec">
-
-
-
-
-
-<meta name="description" content="Securing the digital frontier while lurking in the darkness.">
-<meta property="og:description" content="Securing the digital frontier while lurking in the darkness.">
-<meta name="twitter:description" content="Securing the digital frontier while lurking in the darkness .">
-<meta itemprop="description" content="Securing the digital frontier while lurking in the darkness.">
-
-
-
-
-
-<meta property="og:image" content="https://bedusec.github.io/og.png">
-<meta property="og:image:secure_url" content="https://bedusec.github.io/favicon.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="BeduSec Security Systems.">
-<meta name="twitter:image" content="https://bedusec.github.io/favicon.png">
-<meta name="twitter:image:alt" content="BeduSec Security Systems.">
-<meta itemprop="image" content="https://bedusec.github.io/favicon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-
-
-
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow">
-<meta name="bingbot" content="index, follow">
-<link rel="canonical" href="https://bedusec.github.io/">
-<link rel="manifest" href="https://bedusec.github.io/site.webmanifest">
-<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://bedusec.github.io/feed.xml">
-
-<meta name="google-site-verification" content="AmaklCqqUFYVvbS4NuXsE7YKmENzocCBnkKNfmspJaM" />
-
-<meta property="og:url" content="https://bedusec.github.io/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="BeduSec">
-<meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@BeduSec">
-<meta name="twitter:creator" content="@IciiWhite">
-<meta name="theme-color" content="#ffffff">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="author" content="Icii White">
-<meta name="description" content="Securing the digital frontier while lurking in the darkness. BeduSec Security Systems offers elite cybersecurity solutions, training, and development.">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>BeduSec — Securing the Digital Frontier While Lurking in the Darkness</title>
+<meta name="description" content="BeduSec is an elite collective of cybersecurity experts, passionate developers and tech enthusiasts. Penetration testing, secure engineering and offensive security research under one roof.">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/thin/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/feather-icons"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink: 'var(--ink)',
+        muted: 'var(--muted)',
+        surface: 'var(--surface)',
+        surface2: 'var(--surface-2)',
+        line: 'var(--line)',
+        accent: 'var(--accent)',
+        'accent-ink': 'var(--accent-ink)',
+        'accent-soft': 'var(--accent-soft)',
+        glass: 'var(--glass)'
+      },
+      fontFamily: {
+        sans: ['"Clash Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif']
+      }
+    }
+  }
+}
+</script>
 <style>
-.glass-nav {
-    background-color: rgba(2, 6, 23, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+:root,[data-theme="light"]{
+  --surface:#E8EDF5;
+  --surface-2:#F2F5FA;
+  --ink:#0A1424;
+  --muted:#4F6078;
+  --line:rgba(10,20,36,.16);
+  --glass:rgba(255,255,255,.72);
+  --glass-sheen:rgba(255,255,255,.88);
+  --shadow:rgba(10,20,36,.22);
+  --accent:#1E5EFF;
+  --accent-ink:#F4F8FF;
+  --accent-soft:rgba(30,94,255,.10);
+  --glow-1:rgba(30,94,255,.20);
+  --glow-2:rgba(0,200,255,.14);
 }
-.mobile-menu {
-    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
+[data-theme="warm"]{
+  --surface:#EEE7DE;
+  --surface-2:#F7F1E9;
+  --ink:#1C1710;
+  --muted:#6B5D4C;
+  --line:rgba(28,23,16,.16);
+  --glass:rgba(255,250,242,.72);
+  --glass-sheen:rgba(255,255,255,.82);
+  --shadow:rgba(60,40,15,.22);
+  --accent:#8A5A16;
+  --accent-ink:#FFF7EA;
+  --accent-soft:rgba(138,90,22,.11);
+  --glow-1:rgba(205,125,35,.20);
+  --glow-2:rgba(120,90,200,.10);
 }
-.mobile-menu.open {
-    max-height: 400px;
-    opacity: 1;
+[data-theme="dark"]{
+  --surface:#050A15;
+  --surface-2:#0A1120;
+  --ink:#E6EDF7;
+  --muted:#8595AE;
+  --line:rgba(255,255,255,.14);
+  --glass:rgba(20,30,50,.62);
+  --glass-sheen:rgba(255,255,255,.10);
+  --shadow:rgba(0,0,0,.72);
+  --accent:#3B82F6;
+  --accent-ink:#03101F;
+  --accent-soft:rgba(59,130,246,.14);
+  --glow-1:rgba(59,130,246,.18);
+  --glow-2:rgba(0,180,255,.14);
 }
-.gradient-text {
-    background: linear-gradient(to right, #818cf8, #38bdf8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+*{border-color:var(--line);box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{max-width:100vw;overflow-x:hidden}
+body{
+  background-color:var(--surface);
+  color:var(--ink);
+  font-family:"Clash Grotesk",ui-sans-serif,system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  transition:background-color .45s ease,color .45s ease;
+  min-height:100vh;
+}
+::selection{background:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.aura{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
+.aura span{position:absolute;display:block;border-radius:50%;filter:blur(110px);opacity:.9}
+
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(22px) saturate(170%);
+  backdrop-filter:blur(22px) saturate(170%);
+  border-bottom:1px solid var(--line);
+  padding:.8rem 1.15rem;
+}
+@media (min-width:768px){.site-header{padding:.95rem 1.75rem}}
+@media (min-width:1280px){.site-header{padding:1.05rem 2.25rem}}
+
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  max-width:1320px;
+  margin:0 auto;
+}
+
+.brand{display:flex;align-items:center;flex-shrink:0;transition:opacity .2s ease}
+.brand:hover{opacity:.8}
+.brand-logo{display:block;height:28px;width:auto}
+@media (min-width:768px){.brand-logo{height:32px}}
+@media (min-width:1280px){.brand-logo{height:36px}}
+
+.header-actions{display:flex;align-items:center;gap:.35rem;flex-shrink:0}
+@media (min-width:768px){.header-actions{gap:.5rem}}
+
+.icon-btn{
+  display:grid;place-items:center;
+  width:40px;height:40px;
+  border:none;background:transparent;
+  color:var(--ink);cursor:pointer;
+  transition:background-color .2s ease,color .2s ease;
+}
+@media (min-width:768px){.icon-btn{width:44px;height:44px}}
+.icon-btn:hover{background:var(--accent-soft);color:var(--accent)}
+.icon-btn i{font-size:20px}
+@media (min-width:768px){.icon-btn i{font-size:22px}}
+.icon-btn.menu-btn.is-open{background:var(--accent);color:var(--accent-ink)}
+.icon-btn.menu-btn .ico-equals{display:block;width:24px;height:16px}
+.icon-btn.menu-btn .ico-caret{display:none;font-size:22px}
+.icon-btn.menu-btn.is-open .ico-equals{display:none}
+.icon-btn.menu-btn.is-open .ico-caret{display:block}
+
+.menu-col{
+  position:fixed;
+  top:4.4rem;
+  right:1rem;
+  z-index:45;
+  display:flex;
+  flex-direction:column;
+  gap:.4rem;
+  align-items:flex-end;
+  pointer-events:none;
+}
+@media (min-width:768px){.menu-col{top:5.2rem;right:1.5rem;gap:.5rem}}
+@media (min-width:1280px){.menu-col{top:5.6rem;right:2rem}}
+
+.menu-col.is-open{pointer-events:auto}
+
+.menu-item{
+  display:inline-flex;
+  align-items:center;
+  padding:.55rem;
+  border:1px solid var(--line);
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  backdrop-filter:blur(18px) saturate(160%);
+  color:var(--ink);
+  text-decoration:none;
+  cursor:pointer;
+  transform:translateX(calc(100% + 2.5rem));
+  opacity:0;
+  pointer-events:none;
+  transition:
+    transform .5s cubic-bezier(.34,1.4,.64,1),
+    opacity .35s ease,
+    background-color .2s ease,
+    color .2s ease,
+    border-color .2s ease;
+}
+@media (min-width:768px){.menu-item{padding:.65rem}}
+@media (min-width:1280px){.menu-item{padding:.7rem}}
+
+.menu-col.is-open .menu-item{
+  transform:translateX(0);
+  opacity:1;
+  pointer-events:auto;
+}
+.menu-col.is-open .menu-item:nth-child(1){transition-delay:0ms,0ms,0ms,0ms,0ms}
+.menu-col.is-open .menu-item:nth-child(2){transition-delay:55ms,55ms,0ms,0ms,0ms}
+.menu-col.is-open .menu-item:nth-child(3){transition-delay:110ms,110ms,0ms,0ms,0ms}
+.menu-col.is-open .menu-item:nth-child(4){transition-delay:165ms,165ms,0ms,0ms,0ms}
+.menu-col.is-open .menu-item:nth-child(5){transition-delay:220ms,220ms,0ms,0ms,0ms}
+.menu-col.is-open .menu-item:nth-child(6){transition-delay:275ms,275ms,0ms,0ms,0ms}
+.menu-col.is-open .menu-item:nth-child(7){transition-delay:330ms,330ms,0ms,0ms,0ms}
+
+.menu-item:hover,
+.menu-item:focus-visible{
+  background:var(--accent);
+  color:var(--accent-ink);
+  border-color:var(--accent);
+}
+
+.menu-label{
+  max-width:0;
+  overflow:hidden;
+  white-space:nowrap;
+  opacity:0;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:-.01em;
+  margin-right:0;
+  order:-1;
+  transition:max-width .38s ease,opacity .28s ease,margin-right .38s ease;
+}
+@media (min-width:768px){.menu-label{font-size:14px}}
+.menu-col.is-expanded .menu-label{
+  max-width:140px;
+  opacity:1;
+  margin-right:.7rem;
+}
+
+.menu-icon{
+  display:grid;place-items:center;
+  width:22px;height:22px;
+  flex-shrink:0;
+}
+.menu-icon i{font-size:20px}
+
+.frame{
+  position:relative;
+  border:1px solid var(--line);
+  background:transparent;
+  padding:1.5rem;
+}
+.frame-lift{transition:border-color .25s ease}
+.frame-lift:hover{border-color:var(--accent)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.8rem 1.2rem;font-size:13.5px;font-weight:600;
+  border-radius:0;
+  transition:transform .2s ease,background-color .25s ease,color .25s ease,border-color .25s ease;
+}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-accent:hover{transform:translateY(-1px)}
+.btn-frame{border:1px solid var(--line);color:var(--ink);background-color:transparent}
+.btn-frame:hover{background-color:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+
+main{
+  max-width:1200px;margin:0 auto;
+  padding:2rem 1.25rem 4rem;
+}
+@media (min-width:1024px){main{padding:3.5rem 2rem 6rem}}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+.hero{position:relative;overflow:hidden;padding-top:.5rem}
+@media (min-width:1024px){.hero{padding-top:2rem;min-height:56vh;display:flex;align-items:center}}
+.hero-rings{display:none}
+@media (min-width:1024px){
+  .hero-rings{
+    display:block;position:absolute;
+    right:-80px;top:50%;
+    transform:translateY(-50%);
+    width:420px;height:420px;
+    pointer-events:none;opacity:.85;
+  }
+  .ring{
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;border:1px solid var(--line);
+  }
+  .ring.r1{width:420px;height:420px}
+  .ring.r2{width:280px;height:280px;opacity:.7}
+  .ring.r3{width:150px;height:150px;opacity:.5}
+  .ring-center{
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:44px;height:44px;border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 60px var(--glow-1);
+  }
+  .ring-dot{
+    position:absolute;top:50%;left:50%;
+    width:10px;height:10px;border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 18px var(--glow-1);
+    animation:orbit 22s linear infinite;
+  }
+  .ring-dot.d2{animation-duration:32s;animation-direction:reverse;opacity:.6}
+  .ring-dot.d3{animation-duration:44s;width:6px;height:6px;opacity:.45}
+  @keyframes orbit{
+    0%{transform:rotate(0deg) translateX(210px) rotate(0deg)}
+    100%{transform:rotate(360deg) translateX(210px) rotate(-360deg)}
+  }
+  .ring-dot.d2{animation-name:orbit2}
+  @keyframes orbit2{
+    0%{transform:rotate(0deg) translateX(140px) rotate(0deg)}
+    100%{transform:rotate(-360deg) translateX(140px) rotate(360deg)}
+  }
+  .ring-dot.d3{animation-name:orbit3}
+  @keyframes orbit3{
+    0%{transform:rotate(0deg) translateX(75px) rotate(0deg)}
+    100%{transform:rotate(360deg) translateX(75px) rotate(-360deg)}
+  }
+}
+
+.philosophy{padding:5rem 0}
+@media (min-width:640px){.philosophy{padding:6rem 0}}
+.philosophy-text{
+  font-size:clamp(2rem,5.5vw,4rem);
+  font-weight:600;line-height:1.02;
+  letter-spacing:-.04em;max-width:16ch;
+}
+.philosophy-sub{margin-top:1.5rem;max-width:38ch;font-size:15px;line-height:1.65;color:var(--muted)}
+
+.pillars{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.pillar{
+  display:grid;grid-template-columns:auto 1fr;gap:1.5rem;
+  padding:2rem 0;border-bottom:1px solid var(--line);
+  transition:padding .3s ease;
+}
+@media (min-width:640px){.pillar{grid-template-columns:80px 1fr;gap:2rem;padding:2.5rem 0}}
+.pillar:hover{padding-left:.5rem}
+.pillar-num{font-size:13px;font-variant-numeric:tabular-nums;font-weight:600;color:var(--accent);padding-top:.35rem}
+.pillar-body h3{font-size:clamp(1.15rem,2vw,1.5rem);font-weight:600;letter-spacing:-.02em;margin-bottom:.5rem}
+.pillar-body p{font-size:14px;line-height:1.65;color:var(--muted);max-width:52ch}
+
+.repo-list{border-top:1px solid var(--line)}
+.repo-row{
+  display:grid;grid-template-columns:auto 1fr auto;
+  align-items:center;gap:1rem;
+  padding:1.25rem .25rem;border-bottom:1px solid var(--line);
+  transition:padding .3s ease,background-color .3s ease;
+}
+@media (min-width:640px){.repo-row{grid-template-columns:40px 1fr auto auto;gap:1.5rem;padding:1.5rem .75rem}}
+.repo-row:hover{padding-left:1.25rem;background-color:var(--accent-soft)}
+@media (min-width:640px){.repo-row:hover{padding-left:1.5rem}}
+.repo-index{font-size:11px;font-variant-numeric:tabular-nums;color:var(--muted);font-weight:600}
+.repo-name{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.repo-tags{font-size:12px;color:var(--muted);display:none}
+@media (min-width:640px){.repo-tags{display:block}}
+.repo-arrow{color:var(--muted);transition:transform .3s ease,color .3s ease}
+.repo-row:hover .repo-arrow{color:var(--accent);transform:translateX(4px)}
+
+.logo-row{
+  position:relative;overflow:hidden;padding:1rem 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+}
+.logo-track{display:flex;align-items:center;gap:1.75rem;width:max-content;will-change:transform}
+@media (min-width:640px){.logo-track{gap:2.75rem}}
+@media (min-width:1024px){.logo-track{gap:3.5rem}}
+.logo-tile{
+  display:inline-flex;align-items:center;gap:.6rem;
+  color:var(--muted);opacity:.75;flex-shrink:0;
+  transition:opacity .35s ease,color .35s ease;
+}
+.logo-tile:hover{color:var(--ink);opacity:1}
+.logo-icon{display:block;flex-shrink:0;height:26px;width:26px}
+.logo-name{display:none;font-size:15px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;line-height:1}
+@media (min-width:640px){.logo-name{display:inline}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .logo-track{transform:none!important}
+  .ring-dot{animation:none!important}
 }
 </style>
 </head>
-<body class="bg-slate-950 text-slate-300 font-sans antialiased flex flex-col min-h-screen selection:bg-indigo-500/30 selection:text-indigo-200">
+<body id="top">
 
-<header class="fixed w-full top-0 z-50 glass-nav border-b border-slate-800/50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
-            <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
-                <i data-feather="shield" class="text-indigo-500 w-8 h-8"></i>
-                <span class="font-bold text-2xl tracking-tight text-slate-50">&#66;&#101;&#100;&#117;<span class="text-indigo-500">&#83;&#101;&#99;</span></span>
-            </div>
+<svg width="0" height="0" style="position:absolute;left:-9999px" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="logo-vercel" viewBox="0 0 32 32"><path fill="currentColor" d="m16 6l12 20H4Z"/></symbol>
+    <symbol id="logo-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59c.4.07.55-.17.55-.38c0-.19-.01-.82-.01-1.49c-2.01.37-2.53-.49-2.69-.94c-.09-.23-.48-.94-.82-1.13c-.28-.15-.68-.52-.01-.53c.63-.01 1.08.58 1.23.82c.72 1.21 1.87.87 2.33.66c.07-.52.28-.87.51-1.07c-1.78-.2-3.64-.89-3.64-3.95c0-.87.31-1.59.82-2.15c-.08-.2-.36-1.02.08-2.12c0 0 .67-.21 2.2.82c.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82c.44 1.1.16 1.92.08 2.12c.51.56.82 1.27.82 2.15c0 3.07-1.87 3.75-3.65 3.95c.29.25.54.73.54 1.48c0 1.07-.01 1.93-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></symbol>
+    <symbol id="logo-gitlab" viewBox="0 0 24 24"><path fill="currentColor" d="m21.94 12.865l-1.066-3.28l.001.005v-.005l-2.115-6.51a.83.83 0 0 0-.799-.57a.82.82 0 0 0-.788.576l-2.007 6.178H8.834L6.824 3.08a.82.82 0 0 0-.788-.575H6.03a.84.84 0 0 0-.796.575L3.127 9.584l-.002.006l.001-.005l-1.069 3.28a1.195 1.195 0 0 0 .435 1.34l9.229 6.705l.004.003l.012.008l-.011-.008l.002.001l.001.001l.045.028l.006.004l.004.002l.003.001h.002l.005.003l.025.01l.023.01h.001l.004.002l.005.002h.002l.006.002h.003l.034.009l.013.003h.002l.005.002l.007.001h.007l.066.006h.001l.067-.005h.007l.007-.002l.004-.001h.002l.014-.004l.034-.008h.002l.006-.003h.002l.005-.002l.004-.001h.001l.025-.011l.023-.01l.005-.002h.002l.003-.002l.004-.002l.007-.004l.044-.027l.004-.003l.005-.003l9.23-6.706a1.195 1.195 0 0 0 .434-1.339Zm-3.973-9.18l1.81 5.574h-3.62Zm-11.937 0L7.843 9.26h-3.62Zm-2.984 9.757a.255.255 0 0 1-.092-.285l.794-2.438l5.822 7.464Zm1.494-3.24h3.61l2.573 7.927Zm7.165 10.696l-.006-.005l-.011-.01l-.02-.018l.002.001l.002.002l.043.037l.002.002Zm.293-1.894l-1.514-4.665l-1.344-4.138h5.72Zm.31 1.88l-.01.008l-.002.001l-.005.005l-.012.009l.002-.002l.043-.036l.001-.002l.002-.002ZM15.851 10.2h3.61l-.74.947l-5.447 6.98Zm5.1 3.241l-6.523 4.74l5.824-7.463l.791 2.437a.255.255 0 0 1-.092.286"/></symbol>
+    <symbol id="logo-supabase" viewBox="0 0 24 24"><path fill="currentColor" d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z"/></symbol>
+    <symbol id="logo-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01m-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18l-3.12.82l.83-3.04l-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24c2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81c-.23-.08-.39-.12-.56.12c-.17.25-.64.81-.78.97c-.14.17-.29.19-.54.06c-.25-.12-1.05-.39-1.99-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.14-.25-.02-.38.11-.51c.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31c-.22.25-.86.85-.86 2.07c0 1.22.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74c.59.26 1.05.41 1.41.52c.59.19 1.13.16 1.56.1c.48-.07 1.47-.6 1.68-1.18c.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28"/></symbol>
+    <symbol id="logo-linux" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a3 3 0 0 0-3 3v3.5c0 .8-.4 1.4-1 1.9c-1.2.9-2 2.3-2 3.9c0 1.4.6 2.7 1.6 3.6l-.8 2.1h10.4l-.8-2.1c1-.9 1.6-2.2 1.6-3.6c0-1.6-.8-3-2-3.9c-.6-.5-1-1.1-1-1.9V5a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v3.5c0 1.1.6 2.1 1.5 2.7c.8.6 1.5 1.6 1.5 2.8c0 1.1-.6 2.1-1.5 2.7l-.5.3l.5 1.5H9.5l.5-1.5l-.5-.3c-.9-.6-1.5-1.6-1.5-2.7c0-1.2.7-2.2 1.5-2.8c.9-.6 1.5-1.6 1.5-2.7V5a1 1 0 0 1 1-1"/></symbol>
+    <symbol id="logo-tor" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.5 19.4v-3.2A7 7 0 0 1 12 5a7 7 0 0 1 3.5 13.2v3.2A10 10 0 0 0 12 2m0 4a6 6 0 0 0-2 11.7v-3A3 3 0 0 1 12 9a3 3 0 0 1 2 5.7v3A6 6 0 0 0 12 6"/></symbol>
+    <symbol id="logo-docker" viewBox="0 0 24 24"><path fill="currentColor" d="M13.2 4.5h2v2h-2zm0 3h2v2h-2zm-3-3h2v2h-2zm0 3h2v2h-2zm-3-3h2v2H7.2zm0 3h2v2H7.2zm-3 3h2v2h-2zm3 0h2v2h-2zm3 0h2v2h-2zm3 0h2v2h-2zm3 0h2v2h-2zm-9-6h2v2h-2zm9 3h2v2h-2zm-3-3h2v2h-2zM3.2 13.5c0 3.5 2.5 5 5 5h6c3.5 0 5.5-2 5.5-5v-1H3.2z"/></symbol>
+    <symbol id="logo-cloudflare" viewBox="0 0 128 128">
+      <path fill="currentColor" fill-opacity="0.55" d="m115.679 69.288l-15.591-8.94l-2.689-1.163l-63.781.436v32.381h82.061z"/>
+      <path fill="currentColor" d="M87.295 89.022c.763-2.617.472-5.015-.8-6.796c-1.163-1.635-3.125-2.58-5.488-2.689l-44.737-.581c-.291 0-.545-.145-.691-.363s-.182-.509-.109-.8c.145-.436.581-.763 1.054-.8l45.137-.581c5.342-.254 11.157-4.579 13.192-9.885l2.58-6.723c.109-.291.145-.581.073-.872c-2.906-13.158-14.644-22.97-28.672-22.97c-12.938 0-23.913 8.359-27.838 19.952a13.35 13.35 0 0 0-9.267-2.58c-6.215.618-11.193 5.597-11.811 11.811c-.145 1.599-.036 3.162.327 4.615C10.104 70.051 2 78.337 2 88.549c0 .909.073 1.817.182 2.726a.895.895 0 0 0 .872.763h82.57c.472 0 .909-.327 1.054-.8z"/>
+    </symbol>
+    <symbol id="logo-netlify" viewBox="0 0 24 24">
+      <path fill="currentColor" fill-opacity="0.75" d="m11.25 2.232l-.127.127v4.567l.127.129h1.526l.126-.13V2.36l-.126-.127H11.25zM6.69 5.455L5.643 6.5v.21l1.6 1.6h1.108l.148-.148V7.055l-1.6-1.6zM1.026 11.11l-.127.127v1.528l.127.127h6.09l.127-.127v-1.528l-.127-.127zm15.858 0l-.127.127v1.528l.127.127h6.09l.127-.127v-1.528l-.127-.127zm-9.64 4.58l-1.6 1.6v.21l1.045 1.046h.21l1.6-1.6v-1.109l-.148-.146zm4.005 1.256l-.127.13v4.566l.127.127h1.526l.126-.127v-4.567l-.126-.129z"/>
+      <path fill="currentColor" d="M14.855 15.172h-1.523l-.127-.127V11.48c0-.634-.249-1.125-1.013-1.142c-.394-.01-.844 0-1.325.019l-.072.074v4.61l-.127.128H9.146l-.128-.127V8.956l.128-.127h3.425a2.41 2.41 0 0 1 2.41 2.41v3.806z"/>
+    </symbol>
+    <symbol id="logo-neon" viewBox="0 0 256 256"><path fill="currentColor" d="M0 44.139C0 19.762 19.762 0 44.139 0H211.86C236.238 0 256 19.762 256 44.139v142.649c0 25.216-31.915 36.16-47.388 16.256l-48.392-62.251v75.484c0 21.939-17.784 39.723-39.722 39.723h-76.36C19.763 256 0 236.238 0 211.861zm44.139-8.825a8.817 8.817 0 0 0-8.825 8.818v167.73c0 4.878 3.946 8.831 8.818 8.831h77.688c2.44 0 3.087-1.977 3.087-4.416v-101.22c0-25.222 31.914-36.166 47.395-16.255l48.391 62.243V44.14c0-4.879.455-8.825-4.416-8.825H44.14Z"/></symbol>
+  </defs>
+</svg>
 
-            <nav class="hidden md:flex space-x-8" aria-label="Main Navigation">
-                <a href="index.html" class="text-slate-50 font-medium hover:text-indigo-400 transition-colors duration-200" aria-current="page">&#72;&#111;&#109;&#101;</a>
-                <a href="about.html" class="text-slate-400 font-medium hover:text-indigo-400 transition-colors duration-200">&#65;&#98;&#111;&#117;&#116;</a>
-                <a href="courses.html" class="text-slate-400 font-medium hover:text-indigo-400 transition-colors duration-200">&#79;&#110;&#108;&#105;&#110;&#101;&#32;&#67;&#111;&#117;&#114;&#115;&#101;&#115;</a>
-                <a href="team.html" class="text-slate-400 font-medium hover:text-indigo-400 transition-colors duration-200">&#66;&#101;&#100;&#117;&#32;&#84;&#101;&#97;&#109;</a>
-                <a href="contact.html" class="text-slate-400 font-medium hover:text-indigo-400 transition-colors duration-200">&#67;&#111;&#110;&#116;&#97;&#99;&#116;</a>
-            </nav>
+<div class="aura" aria-hidden="true">
+  <span style="top:-18rem;left:-10rem;height:34rem;width:34rem;background:var(--glow-1)"></span>
+  <span style="top:26rem;right:-14rem;height:38rem;width:38rem;background:var(--glow-2)"></span>
+  <span style="bottom:-20rem;left:35%;height:30rem;width:30rem;background:var(--glow-1);opacity:.5"></span>
+</div>
 
-            <div class="hidden md:flex items-center">
-                <a href="contact.html" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-950 focus:ring-indigo-500 transition-colors duration-200 shadow-lg shadow-indigo-500/20">
-                    &#83;&#101;&#99;&#117;&#114;&#101;&#32;&#89;&#111;&#117;&#114;&#32;&#83;&#121;&#115;&#116;&#101;&#109;&#115;
-                </a>
-            </div>
-
-            <div class="md:hidden flex items-center">
-                <button id="mobile-menu-button" type="button" class="text-slate-400 hover:text-white focus:outline-none p-2" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
-                    <i data-feather="menu" class="w-6 h-6"></i>
-                </button>
-            </div>
-        </div>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand" aria-label="BeduSec home">
+      <img src="logo.svg" alt="BeduSec" class="brand-logo">
+    </a>
+    <div class="header-actions">
+      <a href="/search" class="icon-btn" aria-label="Search">
+        <i class="ph-thin ph-magnifying-glass"></i>
+      </a>
+      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+        <svg class="ico-equals" viewBox="0 0 32 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M3 6.5 H29"/>
+          <path d="M3 13.5 H29"/>
+        </svg>
+        <i class="ph ph-caret-left ico-caret" aria-hidden="true"></i>
+      </button>
     </div>
-
-    <div id="mobile-menu" class="md:hidden mobile-menu bg-slate-900 border-b border-slate-800">
-        <div class="px-4 pt-2 pb-6 space-y-1 sm:px-6">
-            <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-white bg-slate-800/50" aria-current="page">&#72;&#111;&#109;&#101;</a>
-            <a href="about.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors">&#65;&#98;&#111;&#117;&#116;</a>
-            <a href="courses.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors">&#79;&#110;&#108;&#105;&#110;&#101;&#32;&#67;&#111;&#117;&#114;&#115;&#101;&#115;</a>
-            <a href="team.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors">&#66;&#101;&#100;&#117;&#32;&#84;&#101;&#97;&#109;</a>
-            <a href="contact.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors">&#67;&#111;&#110;&#116;&#97;&#99;&#116;</a>
-        </div>
-    </div>
+  </div>
 </header>
 
-<main class="flex-grow pt-20">
-    <section class="relative overflow-hidden py-24 sm:py-32 lg:pb-40 border-b border-slate-800/50">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/20 via-slate-950 to-slate-950 -z-10"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700/50 text-sm font-medium text-indigo-300 mb-8 backdrop-blur-sm">
-                <i data-feather="terminal" class="w-4 h-4"></i>
-                <span>&#86;&#105;&#118;&#105;&#97;&#109;&#111;&#32;&#112;&#101;&#114;&#32;&#105;&#108;&#32;&#114;&#105;&#115;&#112;&#101;&#116;&#116;&#111;</span>
-            </div>
-            
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-50 tracking-tight mb-8 leading-tight">
-                &#83;&#101;&#99;&#117;&#114;&#105;&#110;&#103;&#32;&#116;&#104;&#101;&#32;&#68;&#105;&#103;&#105;&#116;&#97;&#108;&#32;&#70;&#114;&#111;&#110;&#116;&#105;&#101;&#114; <br class="hidden md:block" />
-                <span class="gradient-text">&#87;&#104;&#105;&#108;&#101;&#32;&#76;&#117;&#114;&#107;&#105;&#110;&#103;&#32;&#105;&#110;&#32;&#116;&#104;&#101;&#32;&#68;&#97;&#114;&#107;&#110;&#101;&#115;&#115;</span>
-            </h1>
-            
-            <p class="mt-4 max-w-2xl text-lg md:text-xl text-slate-400 mx-auto mb-10 leading-relaxed">
-                &#66;&#101;&#100;&#117;&#83;&#101;&#99;&#32;&#105;&#115;&#32;&#97;&#32;&#99;&#111;&#108;&#108;&#101;&#99;&#116;&#105;&#118;&#101;&#32;&#111;&#102;&#32;&#112;&#97;&#115;&#115;&#105;&#111;&#110;&#97;&#116;&#101;&#32;&#100;&#101;&#118;&#101;&#108;&#111;&#112;&#101;&#114;&#115;&#44;&#32;&#116;&#101;&#99;&#104;&#32;&#101;&#110;&#116;&#104;&#117;&#115;&#105;&#97;&#115;&#116;&#115;&#44;&#32;&#97;&#110;&#100;&#32;&#101;&#108;&#105;&#116;&#101;&#32;&#99;&#121;&#98;&#101;&#114;&#115;&#101;&#99;&#117;&#114;&#105;&#116;&#121;&#32;&#101;&#120;&#112;&#101;&#114;&#116;&#115;&#46;&#32;&#87;&#101;&#32;&#102;&#111;&#114;&#116;&#105;&#102;&#121;&#32;&#105;&#110;&#102;&#114;&#97;&#115;&#116;&#114;&#117;&#99;&#116;&#117;&#114;&#101;&#115;&#32;&#119;&#105;&#116;&#104;&#32;&#117;&#110;&#99;&#111;&#109;&#112;&#114;&#111;&#109;&#105;&#115;&#105;&#110;&#103;&#32;&#112;&#114;&#101;&#99;&#105;&#115;&#105;&#111;&#110;&#32;&#97;&#110;&#100;&#32;&#112;&#114;&#111;&#102;&#101;&#115;&#115;&#105;&#111;&#110;&#97;&#108;&#32;&#105;&#110;&#116;&#101;&#103;&#114;&#105;&#116;&#121;&#46;
-            </p>
-            
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="contact.html" class="inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-950 focus:ring-indigo-500 shadow-lg shadow-indigo-500/25 transition-all duration-200">
-                    &#71;&#101;&#116;&#32;&#80;&#114;&#111;&#116;&#101;&#99;&#116;&#101;&#100;&#32;&#84;&#111;&#100;&#97;&#121;
-                    <i data-feather="arrow-right" class="ml-2 w-5 h-5"></i>
-                </a>
-                <a href="courses.html" class="inline-flex items-center justify-center px-8 py-3.5 border border-slate-700 text-base font-medium rounded-md text-slate-300 bg-slate-800/50 hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-950 focus:ring-slate-600 backdrop-blur-sm transition-all duration-200">
-                    &#69;&#120;&#112;&#108;&#111;&#114;&#101;&#32;&#79;&#117;&#114;&#32;&#67;&#111;&#117;&#114;&#115;&#101;&#115;
-                </a>
-            </div>
+<nav class="menu-col" data-menu aria-label="Primary">
+  <a href="/" class="menu-item">
+    <span class="menu-label">Home</span>
+    <span class="menu-icon"><i class="ph-duotone ph-house"></i></span>
+  </a>
+  <a href="/projects" class="menu-item">
+    <span class="menu-label">Projects</span>
+    <span class="menu-icon"><i class="ph-duotone ph-folders"></i></span>
+  </a>
+  <a href="/services" class="menu-item">
+    <span class="menu-label">Services</span>
+    <span class="menu-icon"><i class="ph-duotone ph-shield-check"></i></span>
+  </a>
+  <a href="/research" class="menu-item">
+    <span class="menu-label">Research</span>
+    <span class="menu-icon"><i class="ph-duotone ph-flask"></i></span>
+  </a>
+  <a href="/team" class="menu-item">
+    <span class="menu-label">Team</span>
+    <span class="menu-icon"><i class="ph-duotone ph-users-three"></i></span>
+  </a>
+  <a href="/contact" class="menu-item">
+    <span class="menu-label">Contact</span>
+    <span class="menu-icon"><i class="ph-duotone ph-envelope-simple"></i></span>
+  </a>
+  <button type="button" class="menu-item" data-cycle-theme>
+    <span class="menu-label">Theme</span>
+    <span class="menu-icon"><i class="ph-duotone ph-moon" data-theme-icon></i></span>
+  </button>
+</nav>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-rings" aria-hidden="true">
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="ring r3"></div>
+      <div class="ring-center"></div>
+      <div class="ring-dot d1"></div>
+      <div class="ring-dot d2"></div>
+      <div class="ring-dot d3"></div>
+    </div>
+
+    <div class="relative max-w-2xl" data-reveal>
+      <h1 class="text-[clamp(2.6rem,5.6vw,4.4rem)] font-semibold leading-[0.98] tracking-[-0.04em]">
+        Securing the digital frontier.
+        <span class="block">Lurking in the <em class="not-italic text-accent">darkness</em>.</span>
+      </h1>
+
+      <p class="mt-7 max-w-xl text-[15.5px] leading-relaxed text-muted sm:text-base">
+        An elite collective of cybersecurity experts, passionate developers and technology enthusiasts dedicated to the digital well-being of global infrastructure. We build secure systems — and quietly break weak ones.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3">
+        <a href="/contact" class="btn btn-accent">
+          Work with BeduSec
+          <i class="ph-thin ph-arrow-up-right text-[15px]"></i>
+        </a>
+        <a href="/projects" class="btn btn-frame">
+          Explore research
+          <i class="ph-thin ph-arrow-right text-[15px]"></i>
+        </a>
+      </div>
+
+      <div class="mt-11 flex flex-wrap items-center gap-x-6 gap-y-3 text-[12.5px] text-muted">
+        <span class="inline-flex items-center gap-2"><i class="ph-duotone ph-shield-check text-accent"></i>Penetration testing</span>
+        <span class="inline-flex items-center gap-2"><i class="ph-duotone ph-code text-accent"></i>Secure development</span>
+        <span class="inline-flex items-center gap-2"><i class="ph-duotone ph-crosshair text-accent"></i>Offensive research</span>
+        <span class="inline-flex items-center gap-2"><i class="ph-duotone ph-globe-hemisphere-west text-accent"></i>Global reach</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-16 border-y border-line py-6" data-logo-scroll>
+    <div class="flex items-end justify-between gap-6" data-reveal>
+      <div class="max-w-md">
+        <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Stack</p>
+        <h2 class="mt-2 text-[clamp(1.4rem,2.2vw,1.75rem)] font-semibold leading-[1.1] tracking-[-0.02em]">
+          The tools we trust.
+        </h2>
+      </div>
+      <p class="hidden text-[12px] text-muted sm:block">Scroll to move</p>
+    </div>
+
+    <div class="mt-6 space-y-1">
+      <div class="logo-row" data-logo-row data-dir="left" data-speed="0.18">
+        <div class="logo-track">
+          <span class="logo-tile" role="img" aria-label="Tor"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-tor"/></svg><span class="logo-name" aria-hidden="true">Tor</span></span>
+          <span class="logo-tile" role="img" aria-label="Linux"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-linux"/></svg><span class="logo-name" aria-hidden="true">Linux</span></span>
+          <span class="logo-tile" role="img" aria-label="Docker"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-docker"/></svg><span class="logo-name" aria-hidden="true">Docker</span></span>
+          <span class="logo-tile" role="img" aria-label="WhatsApp"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-whatsapp"/></svg><span class="logo-name" aria-hidden="true">WhatsApp</span></span>
+          <span class="logo-tile" role="img" aria-label="Supabase"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-supabase"/></svg><span class="logo-name" aria-hidden="true">Supabase</span></span>
+          <span class="logo-tile" role="img" aria-label="Cloudflare"><svg class="logo-icon" viewBox="0 0 128 128" aria-hidden="true"><use href="#logo-cloudflare"/></svg><span class="logo-name" aria-hidden="true">Cloudflare</span></span>
+          <span class="logo-tile" role="img" aria-label="Netlify"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-netlify"/></svg><span class="logo-name" aria-hidden="true">Netlify</span></span>
+          <span class="logo-tile" role="img" aria-label="Neon"><svg class="logo-icon" viewBox="0 0 256 256" aria-hidden="true"><use href="#logo-neon"/></svg><span class="logo-name" aria-hidden="true">Neon</span></span>
+          <span class="logo-tile" role="img" aria-label="GitHub"><svg class="logo-icon" viewBox="0 0 16 16" aria-hidden="true"><use href="#logo-github"/></svg><span class="logo-name" aria-hidden="true">GitHub</span></span>
+          <span class="logo-tile" role="img" aria-label="GitLab"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-gitlab"/></svg><span class="logo-name" aria-hidden="true">GitLab</span></span>
+          <span class="logo-tile" role="img" aria-label="Vercel"><svg class="logo-icon" viewBox="0 0 32 32" aria-hidden="true"><use href="#logo-vercel"/></svg><span class="logo-name" aria-hidden="true">Vercel</span></span>
         </div>
-    </section>
+      </div>
 
-    <section class="py-24 bg-slate-950 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-50 tracking-tight sm:text-4xl">&#84;&#104;&#101;&#32;&#66;&#101;&#100;&#117;&#83;&#101;&#99;&#32;&#65;&#100;&#118;&#97;&#110;&#116;&#97;&#103;&#101;</h2>
-                <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">&#79;&#117;&#114;&#32;&#109;&#101;&#116;&#104;&#111;&#100;&#111;&#108;&#111;&#103;&#121;&#32;&#98;&#114;&#105;&#100;&#103;&#101;&#115;&#32;&#116;&#104;&#101;&#32;&#103;&#97;&#112;&#32;&#98;&#101;&#116;&#119;&#101;&#101;&#110;&#32;&#105;&#110;&#110;&#111;&#118;&#97;&#116;&#105;&#118;&#101;&#32;&#115;&#111;&#102;&#116;&#119;&#97;&#114;&#101;&#32;&#100;&#101;&#118;&#101;&#108;&#111;&#112;&#109;&#101;&#110;&#116;&#32;&#97;&#110;&#100;&#32;&#105;&#109;&#112;&#101;&#110;&#101;&#116;&#114;&#97;&#98;&#108;&#101;&#32;&#115;&#101;&#99;&#117;&#114;&#105;&#116;&#121;&#32;&#97;&#114;&#99;&#104;&#105;&#116;&#101;&#99;&#116;&#117;&#114;&#101;&#46;</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-                <article class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 hover:bg-slate-800/80 transition-colors duration-300 group">
-                    <div class="w-14 h-14 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-500/20 transition-colors duration-300 border border-indigo-500/20">
-                        <i data-feather="code" class="w-7 h-7 text-indigo-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-50 mb-3">&#80;&#97;&#115;&#115;&#105;&#111;&#110;&#97;&#116;&#101;&#32;&#68;&#101;&#118;&#101;&#108;&#111;&#112;&#101;&#114;&#115;</h3>
-                    <p class="text-slate-400 leading-relaxed">
-                        &#87;&#101;&#32;&#98;&#117;&#105;&#108;&#100;&#32;&#114;&#111;&#98;&#117;&#115;&#116;&#44;&#32;&#115;&#99;&#97;&#108;&#97;&#98;&#108;&#101;&#32;&#97;&#112;&#112;&#108;&#105;&#99;&#97;&#116;&#105;&#111;&#110;&#115;&#32;&#102;&#114;&#111;&#109;&#32;&#116;&#104;&#101;&#32;&#103;&#114;&#111;&#117;&#110;&#100;&#32;&#117;&#112;&#44;&#32;&#101;&#110;&#115;&#117;&#114;&#105;&#110;&#103;&#32;&#116;&#104;&#97;&#116;&#32;&#115;&#101;&#99;&#117;&#114;&#105;&#116;&#121;&#32;&#105;&#115;&#32;&#119;&#111;&#118;&#101;&#110;&#32;&#105;&#110;&#116;&#111;&#32;&#116;&#104;&#101;&#32;&#118;&#101;&#114;&#121;&#32;&#102;&#97;&#98;&#114;&#105;&#99;&#32;&#111;&#102;&#32;&#116;&#104;&#101;&#32;&#99;&#111;&#100;&#101;&#44;&#32;&#110;&#111;&#116;&#32;&#98;&#111;&#108;&#116;&#101;&#100;&#32;&#111;&#110;&#32;&#97;&#115;&#32;&#97;&#110;&#32;&#97;&#102;&#116;&#101;&#114;&#116;&#104;&#111;&#117;&#103;&#104;&#116;&#46;
-                    </p>
-                </article>
-
-                <article class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 hover:bg-slate-800/80 transition-colors duration-300 group">
-                    <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors duration-300 border border-blue-500/20">
-                        <i data-feather="cpu" class="w-7 h-7 text-blue-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-50 mb-3">&#84;&#101;&#99;&#104;&#32;&#69;&#110;&#116;&#104;&#117;&#115;&#105;&#97;&#115;&#116;&#115;</h3>
-                    <p class="text-slate-400 leading-relaxed">
-                        &#68;&#114;&#105;&#118;&#101;&#110;&#32;&#98;&#121;&#32;&#99;&#117;&#114;&#105;&#111;&#115;&#105;&#116;&#121;&#32;&#97;&#110;&#100;&#32;&#105;&#110;&#110;&#111;&#118;&#97;&#116;&#105;&#111;&#110;&#44;&#32;&#111;&#117;&#114;&#32;&#116;&#101;&#97;&#109;&#32;&#115;&#116;&#97;&#121;&#115;&#32;&#97;&#104;&#101;&#97;&#100;&#32;&#111;&#102;&#32;&#116;&#104;&#101;&#32;&#116;&#101;&#99;&#104;&#110;&#111;&#108;&#111;&#103;&#105;&#99;&#97;&#108;&#32;&#99;&#117;&#114;&#118;&#101;&#44;&#32;&#108;&#101;&#118;&#101;&#114;&#97;&#103;&#105;&#110;&#103;&#32;&#116;&#104;&#101;&#32;&#108;&#97;&#116;&#101;&#115;&#116;&#32;&#97;&#100;&#118;&#97;&#110;&#99;&#101;&#109;&#101;&#110;&#116;&#115;&#32;&#116;&#111;&#32;&#115;&#111;&#108;&#118;&#101;&#32;&#99;&#111;&#109;&#112;&#108;&#101;&#120;&#32;&#100;&#105;&#103;&#105;&#116;&#97;&#108;&#32;&#99;&#104;&#97;&#108;&#108;&#101;&#110;&#103;&#101;&#115;&#46;
-                    </p>
-                </article>
-
-                <article class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 hover:bg-slate-800/80 transition-colors duration-300 group">
-                    <div class="w-14 h-14 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-cyan-500/20 transition-colors duration-300 border border-cyan-500/20">
-                        <i data-feather="lock" class="w-7 h-7 text-cyan-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-50 mb-3">&#67;&#121;&#98;&#101;&#114;&#32;&#83;&#101;&#99;&#117;&#114;&#105;&#116;&#121;&#32;&#69;&#120;&#112;&#101;&#114;&#116;&#115;</h3>
-                    <p class="text-slate-400 leading-relaxed">
-                        &#79;&#112;&#101;&#114;&#97;&#116;&#105;&#110;&#103;&#32;&#102;&#114;&#111;&#109;&#32;&#116;&#104;&#101;&#32;&#115;&#104;&#97;&#100;&#111;&#119;&#115;&#32;&#116;&#111;&#32;&#112;&#114;&#111;&#116;&#101;&#99;&#116;&#32;&#121;&#111;&#117;&#114;&#32;&#108;&#105;&#103;&#104;&#116;&#46;&#32;&#87;&#101;&#32;&#99;&#111;&#110;&#100;&#117;&#99;&#116;&#32;&#109;&#101;&#116;&#105;&#99;&#117;&#108;&#111;&#117;&#115;&#32;&#112;&#101;&#110;&#101;&#116;&#114;&#97;&#116;&#105;&#111;&#110;&#32;&#116;&#101;&#115;&#116;&#105;&#110;&#103;&#44;&#32;&#114;&#105;&#115;&#107;&#32;&#97;&#115;&#115;&#101;&#115;&#115;&#109;&#101;&#110;&#116;&#115;&#44;&#32;&#97;&#110;&#100;&#32;&#112;&#114;&#111;&#97;&#99;&#116;&#105;&#118;&#101;&#32;&#116;&#104;&#114;&#101;&#97;&#116;&#32;&#109;&#105;&#116;&#105;&#103;&#97;&#116;&#105;&#111;&#110;&#46;
-                    </p>
-                </article>
-            </div>
+      <div class="logo-row" data-logo-row data-dir="right" data-speed="0.12">
+        <div class="logo-track">
+          <span class="logo-tile" role="img" aria-label="Docker"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-docker"/></svg><span class="logo-name" aria-hidden="true">Docker</span></span>
+          <span class="logo-tile" role="img" aria-label="Tor"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-tor"/></svg><span class="logo-name" aria-hidden="true">Tor</span></span>
+          <span class="logo-tile" role="img" aria-label="Linux"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-linux"/></svg><span class="logo-name" aria-hidden="true">Linux</span></span>
+          <span class="logo-tile" role="img" aria-label="WhatsApp"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-whatsapp"/></svg><span class="logo-name" aria-hidden="true">WhatsApp</span></span>
+          <span class="logo-tile" role="img" aria-label="Supabase"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-supabase"/></svg><span class="logo-name" aria-hidden="true">Supabase</span></span>
+          <span class="logo-tile" role="img" aria-label="GitHub"><svg class="logo-icon" viewBox="0 0 16 16" aria-hidden="true"><use href="#logo-github"/></svg><span class="logo-name" aria-hidden="true">GitHub</span></span>
+          <span class="logo-tile" role="img" aria-label="GitLab"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-gitlab"/></svg><span class="logo-name" aria-hidden="true">GitLab</span></span>
+          <span class="logo-tile" role="img" aria-label="Vercel"><svg class="logo-icon" viewBox="0 0 32 32" aria-hidden="true"><use href="#logo-vercel"/></svg><span class="logo-name" aria-hidden="true">Vercel</span></span>
+          <span class="logo-tile" role="img" aria-label="Cloudflare"><svg class="logo-icon" viewBox="0 0 128 128" aria-hidden="true"><use href="#logo-cloudflare"/></svg><span class="logo-name" aria-hidden="true">Cloudflare</span></span>
+          <span class="logo-tile" role="img" aria-label="Netlify"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-netlify"/></svg><span class="logo-name" aria-hidden="true">Netlify</span></span>
+          <span class="logo-tile" role="img" aria-label="Neon"><svg class="logo-icon" viewBox="0 0 256 256" aria-hidden="true"><use href="#logo-neon"/></svg><span class="logo-name" aria-hidden="true">Neon</span></span>
         </div>
-    </section>
+      </div>
+
+      <div class="logo-row" data-logo-row data-dir="left" data-speed="0.18">
+        <div class="logo-track">
+          <span class="logo-tile" role="img" aria-label="Cloudflare"><svg class="logo-icon" viewBox="0 0 128 128" aria-hidden="true"><use href="#logo-cloudflare"/></svg><span class="logo-name" aria-hidden="true">Cloudflare</span></span>
+          <span class="logo-tile" role="img" aria-label="Neon"><svg class="logo-icon" viewBox="0 0 256 256" aria-hidden="true"><use href="#logo-neon"/></svg><span class="logo-name" aria-hidden="true">Neon</span></span>
+          <span class="logo-tile" role="img" aria-label="Netlify"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-netlify"/></svg><span class="logo-name" aria-hidden="true">Netlify</span></span>
+          <span class="logo-tile" role="img" aria-label="Vercel"><svg class="logo-icon" viewBox="0 0 32 32" aria-hidden="true"><use href="#logo-vercel"/></svg><span class="logo-name" aria-hidden="true">Vercel</span></span>
+          <span class="logo-tile" role="img" aria-label="GitLab"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-gitlab"/></svg><span class="logo-name" aria-hidden="true">GitLab</span></span>
+          <span class="logo-tile" role="img" aria-label="GitHub"><svg class="logo-icon" viewBox="0 0 16 16" aria-hidden="true"><use href="#logo-github"/></svg><span class="logo-name" aria-hidden="true">GitHub</span></span>
+          <span class="logo-tile" role="img" aria-label="Supabase"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-supabase"/></svg><span class="logo-name" aria-hidden="true">Supabase</span></span>
+          <span class="logo-tile" role="img" aria-label="WhatsApp"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-whatsapp"/></svg><span class="logo-name" aria-hidden="true">WhatsApp</span></span>
+          <span class="logo-tile" role="img" aria-label="Linux"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-linux"/></svg><span class="logo-name" aria-hidden="true">Linux</span></span>
+          <span class="logo-tile" role="img" aria-label="Tor"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-tor"/></svg><span class="logo-name" aria-hidden="true">Tor</span></span>
+          <span class="logo-tile" role="img" aria-label="Docker"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-docker"/></svg><span class="logo-name" aria-hidden="true">Docker</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="philosophy" data-reveal>
+    <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Philosophy</p>
+    <h2 class="philosophy-text mt-4">
+      Viviamo per il <em class="not-italic text-accent">rispetto</em>.
+    </h2>
+    <p class="philosophy-sub">
+      We live for respect. Respect for data privacy, for infrastructure integrity, and for the ethical boundaries of our trade. Every engagement is scoped, authorised, and held to a standard you could read aloud.
+    </p>
+  </section>
+
+  <section class="mt-4">
+    <div class="flex items-end justify-between gap-6" data-reveal>
+      <div class="max-w-xl">
+        <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Three pillars</p>
+        <h2 class="mt-3 text-[clamp(1.8rem,3vw,2.5rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
+          What BeduSec is made of.
+        </h2>
+      </div>
+    </div>
+
+    <div class="pillars mt-8" data-reveal>
+      <div class="pillar">
+        <span class="pillar-num">01</span>
+        <div class="pillar-body">
+          <h3>Cyber security experts</h3>
+          <p>Penetration testing, network defence, cryptography, and social engineering awareness. The people who think like adversaries but answer to defenders.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">02</span>
+        <div class="pillar-body">
+          <h3>Passionate developers</h3>
+          <p>Robust, scalable applications with security woven into the architecture from the first line — not bolted on at the end.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">03</span>
+        <div class="pillar-body">
+          <h3>Tech enthusiasts</h3>
+          <p>Curiosity-driven research into emerging threats and new defensive techniques, so our defences never fall behind the curve.</p>
+        </div>
+      </div>
+    </div>
+
+    <a href="/services" class="mt-8 inline-flex items-center gap-1.5 text-[13px] font-semibold text-accent">
+      Our methodology
+      <i class="ph-thin ph-arrow-right text-[14px]"></i>
+    </a>
+  </section>
+
+  <section class="mt-20 sm:mt-28">
+    <div class="flex items-end justify-between gap-6" data-reveal>
+      <div class="max-w-xl">
+        <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Public research</p>
+        <h2 class="mt-3 text-[clamp(1.8rem,3vw,2.5rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
+          Tools we've released.
+        </h2>
+        <p class="mt-4 text-[14.5px] leading-relaxed text-muted">
+          A selection of BeduSec repositories, published for defensive research, education, and authorised security testing.
+        </p>
+      </div>
+      <a href="/projects" class="hidden shrink-0 items-center gap-1.5 text-[13px] font-semibold text-accent sm:inline-flex">
+        All repositories
+        <i class="ph-thin ph-arrow-right text-[14px]"></i>
+      </a>
+    </div>
+
+    <div class="repo-list mt-8" data-reveal>
+      <a class="repo-row" href="/projects"><span class="repo-index">01</span><span class="repo-name">WHYCRY</span><span class="repo-tags">Python · Active · C2 framework</span><i class="ph-thin ph-arrow-up-right repo-arrow text-[18px]"></i></a>
+      <a class="repo-row" href="/projects"><span class="repo-index">02</span><span class="repo-name">MORPHINT</span><span class="repo-tags">Python · Active · OSINT</span><i class="ph-thin ph-arrow-up-right repo-arrow text-[18px]"></i></a>
+      <a class="repo-row" href="/projects"><span class="repo-index">03</span><span class="repo-name">TemplarRAT</span><span class="repo-tags">Python · Archived · Remote access</span><i class="ph-thin ph-arrow-up-right repo-arrow text-[18px]"></i></a>
+      <a class="repo-row" href="/projects"><span class="repo-index">04</span><span class="repo-name">xsocial</span><span class="repo-tags">HTML · Python · Archived · Web app</span><i class="ph-thin ph-arrow-up-right repo-arrow text-[18px]"></i></a>
+      <a class="repo-row" href="/projects"><span class="repo-index">05</span><span class="repo-name">VECTHIVE</span><span class="repo-tags">Python · Active · Threat research</span><i class="ph-thin ph-arrow-up-right repo-arrow text-[18px]"></i></a>
+      <a class="repo-row" href="/projects"><span class="repo-index">06</span><span class="repo-name">beduhashes</span><span class="repo-tags">HTML · Active · Reference</span><i class="ph-thin ph-arrow-up-right repo-arrow text-[18px]"></i></a>
+    </div>
+
+    <div class="mt-6 sm:hidden">
+      <a href="/projects" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-accent">All repositories<i class="ph-thin ph-arrow-right text-[14px]"></i></a>
+    </div>
+  </section>
+
+  <section class="mt-20" data-reveal>
+    <div class="frame grid grid-cols-2 divide-x divide-[var(--line)] !p-0 sm:grid-cols-4">
+      <div class="p-5 sm:p-6"><p class="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">3</p><p class="mt-1 text-[12px] text-muted">Core pillars</p></div>
+      <div class="p-5 sm:p-6"><p class="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">6</p><p class="mt-1 text-[12px] text-muted">Public repos</p></div>
+      <div class="p-5 sm:p-6"><p class="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">100%</p><p class="mt-1 text-[12px] text-muted">Authorised work</p></div>
+      <div class="p-5 sm:p-6"><p class="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">24h</p><p class="mt-1 text-[12px] text-muted">Response time</p></div>
+    </div>
+  </section>
+
+  <section class="mt-20 sm:mt-24">
+    <div class="max-w-xl" data-reveal>
+      <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">What we do</p>
+      <h2 class="mt-3 text-[clamp(1.8rem,3vw,2.5rem)] font-semibold leading-[1.05] tracking-[-0.03em]">Offence informs defence.</h2>
+      <p class="mt-4 text-[14.5px] leading-relaxed text-muted">We test systems the way adversaries would, then help you build them so the next attempt fails.</p>
+    </div>
+
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-reveal>
+      <a href="/services" class="frame frame-lift block">
+        <span class="text-accent"><i class="ph-duotone ph-crosshair text-[22px]"></i></span>
+        <h3 class="mt-3 text-[14px] font-semibold">Penetration testing</h3>
+        <p class="mt-1.5 text-[12.5px] leading-relaxed text-muted">Web, network, mobile and social engineering assessments.</p>
+      </a>
+      <a href="/services" class="frame frame-lift block">
+        <span class="text-accent"><i class="ph-duotone ph-code text-[22px]"></i></span>
+        <h3 class="mt-3 text-[14px] font-semibold">Secure development</h3>
+        <p class="mt-1.5 text-[12.5px] leading-relaxed text-muted">Applications built with security in the architecture, not after.</p>
+      </a>
+      <a href="/services" class="frame frame-lift block">
+        <span class="text-accent"><i class="ph-duotone ph-flask text-[22px]"></i></span>
+        <h3 class="mt-3 text-[14px] font-semibold">Security research</h3>
+        <p class="mt-1.5 text-[12.5px] leading-relaxed text-muted">Vulnerability discovery and responsible disclosure.</p>
+      </a>
+      <a href="/services" class="frame frame-lift block">
+        <span class="text-accent"><i class="ph-duotone ph-graduation-cap text-[22px]"></i></span>
+        <h3 class="mt-3 text-[14px] font-semibold">Training</h3>
+        <p class="mt-1.5 text-[12.5px] leading-relaxed text-muted">Awareness programmes and hands-on defensive workshops.</p>
+      </a>
+    </div>
+
+    <a href="/services" class="mt-6 inline-flex items-center gap-1.5 text-[13px] font-semibold text-accent" data-reveal>View all services<i class="ph-thin ph-arrow-right text-[14px]"></i></a>
+  </section>
+
+  <section class="mt-20 sm:mt-28">
+    <div class="frame relative !p-8 sm:!p-12" data-reveal>
+      <div class="pointer-events-none absolute -top-24 left-1/2 h-48 w-[32rem] -translate-x-1/2" style="background:var(--glow-1);filter:blur(80px)" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-xl text-center">
+        <div class="inline-flex items-center gap-2 border border-line px-3 py-1.5 text-[12px] text-muted">
+          <i class="ph-duotone ph-envelope-simple text-accent"></i>Open for authorised engagements
+        </div>
+        <h2 class="mt-5 text-[clamp(1.7rem,3.4vw,2.6rem)] font-semibold leading-[1.05] tracking-[-0.035em]">Tell us what you need protected — or what you need tested.</h2>
+        <p class="mx-auto mt-4 max-w-md text-[14px] leading-relaxed text-muted">A short message is enough. We will tell you honestly how we would approach it, and whether we are the right team.</p>
+        <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+          <a href="/contact" class="btn btn-accent">Contact BeduSec<i class="ph-thin ph-arrow-up-right text-[15px]"></i></a>
+          <a href="/team" class="btn btn-frame">Meet the team<i class="ph-thin ph-arrow-right text-[15px]"></i></a>
+        </div>
+        <p class="mt-5 text-[12px] text-muted">NDAs welcome · Authorised work only · Replies within one business day</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-20 border-t border-line pt-10">
+    <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div>
+        <a href="/" class="brand" aria-label="BeduSec home"><img src="logo.svg" alt="BeduSec" class="brand-logo"></a>
+        <p class="mt-3 max-w-xs text-[13px] leading-relaxed text-muted">Securing the digital frontier while lurking in the darkness. Cybersecurity experts, developers and tech enthusiasts working under one standard.</p>
+        <div class="mt-4 flex items-center gap-2">
+          <a href="https://github.com/bedusec" aria-label="GitHub" class="grid h-9 w-9 place-items-center border border-line text-muted transition hover:border-accent hover:text-accent"><i class="ph-duotone ph-github-logo text-[17px]"></i></a>
+          <a href="#" aria-label="X" class="grid h-9 w-9 place-items-center border border-line text-muted transition hover:border-accent hover:text-accent"><i class="ph-duotone ph-x-logo text-[17px]"></i></a>
+          <a href="#" aria-label="Discord" class="grid h-9 w-9 place-items-center border border-line text-muted transition hover:border-accent hover:text-accent"><i class="ph-duotone ph-discord-logo text-[17px]"></i></a>
+        </div>
+      </div>
+      <div>
+        <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">Pages</p>
+        <ul class="mt-4 space-y-2.5 text-[13px]">
+          <li><a href="/projects" class="text-ink transition hover:text-accent">Projects</a></li>
+          <li><a href="/services" class="text-ink transition hover:text-accent">Services</a></li>
+          <li><a href="/research" class="text-ink transition hover:text-accent">Research</a></li>
+          <li><a href="/team" class="text-ink transition hover:text-accent">Team</a></li>
+          <li><a href="/contact" class="text-ink transition hover:text-accent">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">Reach us</p>
+        <ul class="mt-4 space-y-2.5 text-[13px]">
+          <li><a href="mailto:hello@bedusec.com" class="text-ink transition hover:text-accent">hello@bedusec.com</a></li>
+          <li><a href="mailto:security@bedusec.com" class="text-ink transition hover:text-accent">security@bedusec.com</a></li>
+          <li><a href="/contact" class="text-ink transition hover:text-accent">Start a project</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-10 border-t border-line pt-5 text-[12px] text-muted">
+      <p>© 2026 BeduSec. All rights reserved. Viviamo per il rispetto.</p>
+    </div>
+  </footer>
 </main>
 
-<footer class="bg-slate-950 border-t border-slate-800 pt-16 pb-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-            <div class="col-span-1 md:col-span-2">
-                <div class="flex items-center gap-2 mb-4">
-                    <i data-feather="shield" class="text-indigo-500 w-6 h-6"></i>
-                    <span class="font-bold text-xl tracking-tight text-slate-50">&#66;&#101;&#100;&#117;<span class="text-indigo-500">&#83;&#101;&#99;</span></span>
-                </div>
-                <p class="text-slate-400 max-w-md mb-6 leading-relaxed">
-                    &#86;&#105;&#118;&#105;&#97;&#109;&#111;&#32;&#112;&#101;&#114;&#32;&#105;&#108;&#32;&#114;&#105;&#115;&#112;&#101;&#116;&#116;&#111;&#46;&#32;&#83;&#101;&#99;&#117;&#114;&#105;&#110;&#103;&#32;&#116;&#104;&#101;&#32;&#100;&#105;&#103;&#105;&#116;&#97;&#108;&#32;&#102;&#114;&#111;&#110;&#116;&#105;&#101;&#114;&#32;&#119;&#104;&#105;&#108;&#101;&#32;&#108;&#117;&#114;&#107;&#105;&#110;&#103;&#32;&#105;&#110;&#32;&#116;&#104;&#101;&#32;&#100;&#97;&#114;&#107;&#110;&#101;&#115;&#115;&#46;&#32;&#80;&#114;&#111;&#102;&#101;&#115;&#115;&#105;&#111;&#110;&#97;&#108;&#44;&#32;&#100;&#105;&#115;&#99;&#114;&#101;&#116;&#101;&#44;&#32;&#97;&#110;&#100;&#32;&#117;&#110;&#99;&#111;&#109;&#112;&#114;&#111;&#109;&#105;&#115;&#105;&#110;&#103;&#32;&#99;&#121;&#98;&#101;&#114;&#115;&#101;&#99;&#117;&#114;&#105;&#116;&#121;&#32;&#97;&#114;&#99;&#104;&#105;&#116;&#101;&#99;&#116;&#117;&#114;&#101;&#46;
-                </p>
-            </div>
-            
-            <div>
-                <h4 class="text-sm font-semibold text-slate-50 tracking-wider uppercase mb-4">&#78;&#97;&#118;&#105;&#103;&#97;&#116;&#105;&#111;&#110;</h4>
-                <ul class="space-y-3">
-                    <li><a href="index.html" class="text-slate-400 hover:text-indigo-400 transition-colors">&#72;&#111;&#109;&#101;</a></li>
-                    <li><a href="about.html" class="text-slate-400 hover:text-indigo-400 transition-colors">&#65;&#98;&#111;&#117;&#116;&#32;&#85;&#115;</a></li>
-                    <li><a href="courses.html" class="text-slate-400 hover:text-indigo-400 transition-colors">&#79;&#110;&#108;&#105;&#110;&#101;&#32;&#67;&#111;&#117;&#114;&#115;&#101;&#115;</a></li>
-                    <li><a href="team.html" class="text-slate-400 hover:text-indigo-400 transition-colors">&#66;&#101;&#100;&#117;&#32;&#84;&#101;&#97;&#109;</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-sm font-semibold text-slate-50 tracking-wider uppercase mb-4">&#67;&#111;&#110;&#110;&#101;&#99;&#116;</h4>
-                <ul class="space-y-3">
-                    <li><a href="contact.html" class="text-slate-400 hover:text-indigo-400 transition-colors">&#67;&#111;&#110;&#116;&#97;&#99;&#116;&#32;&#83;&#117;&#112;&#112;&#111;&#114;&#116;</a></li>
-                    <li><a href="#" class="text-slate-400 hover:text-indigo-400 transition-colors inline-flex items-center gap-2"><i data-feather="github" class="w-4 h-4"></i> &#71;&#105;&#116;&#72;&#117;&#98;</a></li>
-                    <li><a href="#" class="text-slate-400 hover:text-indigo-400 transition-colors inline-flex items-center gap-2"><i data-feather="twitter" class="w-4 h-4"></i> &#84;&#119;&#105;&#116;&#116;&#101;&#114;</a></li>
-                    <li><a href="#" class="text-slate-400 hover:text-indigo-400 transition-colors inline-flex items-center gap-2"><i data-feather="linkedin" class="w-4 h-4"></i> &#76;&#105;&#110;&#107;&#101;&#100;&#73;&#110;</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="border-t border-slate-800/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-slate-500 text-sm text-center md:text-left">
-                &#169;&#32;&#50;&#48;&#50;&#54;&#32;&#66;&#101;&#100;&#117;&#83;&#101;&#99;&#32;&#83;&#101;&#99;&#117;&#114;&#105;&#116;&#121;&#32;&#83;&#121;&#115;&#116;&#101;&#109;&#115;&#46;&#32;&#65;&#108;&#108;&#32;&#114;&#105;&#103;&#104;&#116;&#115;&#32;&#114;&#101;&#115;&#101;&#114;&#118;&#101;&#100;&#46;
-            </p>
-            <div class="flex gap-6 text-sm">
-                <a href="#" class="text-slate-500 hover:text-slate-300 transition-colors">&#80;&#114;&#105;&#118;&#97;&#99;&#121;&#32;&#80;&#111;&#108;&#105;&#99;&#121;</a>
-                <a href="#" class="text-slate-500 hover:text-slate-300 transition-colors">&#84;&#101;&#114;&#109;&#115;&#32;&#111;&#102;&#32;&#83;&#101;&#114;&#118;&#105;&#99;&#101;</a>
-            </div>
-        </div>
-    </div>
-</footer>
-
 <script>
-    feather.replace();
+const root = document.documentElement;
+const menuToggle = document.querySelector('[data-menu-toggle]');
+const menuCol = document.querySelector('[data-menu]');
+const themeButtons = document.querySelectorAll('[data-cycle-theme]');
+const themeIcon = document.querySelector('[data-theme-icon]');
+const logoSection = document.querySelector('[data-logo-scroll]');
+const logoRows = document.querySelectorAll('[data-logo-row]');
 
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    let isMenuOpen = false;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    mobileMenuButton.addEventListener('click', () => {
-        isMenuOpen = !isMenuOpen;
-        if (isMenuOpen) {
-            mobileMenu.classList.add('open');
-            mobileMenuButton.setAttribute('aria-expanded', 'true');
-        } else {
-            mobileMenu.classList.remove('open');
-            mobileMenuButton.setAttribute('aria-expanded', 'false');
-        }
+let menuState = 'closed';
+let lastScrollY = window.scrollY;
+
+const themeIcons = {
+  dark: 'ph-moon',
+  light: 'ph-sun',
+  warm: 'ph-sun-horizon'
+};
+
+const setThemeIcon = (theme) => {
+  if (!themeIcon) return;
+  themeIcon.className = 'ph-duotone ' + (themeIcons[theme] || 'ph-moon');
+};
+
+const applyTheme = (theme) => {
+  root.dataset.theme = theme;
+  setThemeIcon(theme);
+  try { localStorage.setItem('bedusec-theme', theme); } catch (error) {}
+};
+
+const cycleTheme = () => {
+  const order = ['dark', 'light', 'warm'];
+  const current = root.dataset.theme || 'dark';
+  const next = order[(order.indexOf(current) + 1) % order.length];
+  applyTheme(next);
+};
+
+let storedTheme = 'dark';
+try { storedTheme = localStorage.getItem('bedusec-theme') || 'dark'; } catch (error) {}
+applyTheme(storedTheme);
+
+const setMenuState = (state) => {
+  menuState = state;
+  const isOpen = state !== 'closed';
+  menuToggle.setAttribute('aria-expanded', String(isOpen));
+  menuToggle.classList.toggle('is-open', isOpen);
+  menuCol.classList.toggle('is-open', isOpen);
+  menuCol.classList.toggle('is-expanded', state === 'expanded');
+};
+
+menuToggle.addEventListener('click', () => {
+  if (menuState === 'closed') {
+    setMenuState('icons');
+  } else if (menuState === 'icons') {
+    setMenuState('expanded');
+  } else {
+    setMenuState('icons');
+  }
+});
+
+menuCol.querySelectorAll('a.menu-item').forEach((item) => {
+  item.addEventListener('click', () => setMenuState('closed'));
+});
+
+themeButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    cycleTheme();
+  });
+});
+
+document.addEventListener('click', (event) => {
+  if (menuState === 'closed') return;
+  if (menuCol.contains(event.target)) return;
+  if (menuToggle.contains(event.target)) return;
+  setMenuState('closed');
+});
+
+const updateLogos = () => {
+  if (prefersReducedMotion || !logoSection) return;
+  const vh = window.innerHeight;
+  const sectionCenter = logoSection.offsetTop + logoSection.offsetHeight / 2;
+  const scrollCenter = window.scrollY + vh / 2;
+  const delta = scrollCenter - sectionCenter;
+  logoRows.forEach((row) => {
+    const speed = parseFloat(row.dataset.speed) || 0.15;
+    const direction = row.dataset.dir === 'right' ? 1 : -1;
+    const offset = delta * speed * direction;
+    row.style.transform = 'translate3d(' + offset + 'px,0,0)';
+  });
+};
+
+const revealTargets = document.querySelectorAll('[data-reveal]');
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        revealObserver.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  revealTargets.forEach((target) => {
+    target.classList.add('reveal');
+    revealObserver.observe(target);
+  });
+}
 
-    window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768 && isMenuOpen) {
-            isMenuOpen = false;
-            mobileMenu.classList.remove('open');
-            mobileMenuButton.setAttribute('aria-expanded', 'false');
-        }
-    });
+let ticking = false;
+const onScroll = () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    const y = window.scrollY;
+    if (menuState !== 'closed' && Math.abs(y - lastScrollY) > 4) {
+      setMenuState('closed');
+    }
+    updateLogos();
+    lastScrollY = y;
+    ticking = false;
+  });
+};
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', updateLogos, { passive: true });
+onScroll();
+
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') setMenuState('closed');
+});
 </script>
 </body>
 </html>
