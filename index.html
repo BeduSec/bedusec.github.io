@@ -4,12 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>BeduSec — Securing the Digital Frontier While Lurking in the Darkness</title>
-<meta name="description" content="BeduSec is an independent collective of cybersecurity experts, developers and researchers. Offensive security, secure engineering and public tooling, held to one standard.">
+<meta name="description" content="BeduSec is an elite collective of cybersecurity experts, passionate developers and tech enthusiasts. Penetration testing, secure engineering and offensive security research under one roof.">
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500&display=swap">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/thin/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config={theme:{extend:{colors:{ink:'var(--ink)',muted:'var(--muted)',surface:'var(--surface)',line:'var(--line)',accent:'var(--accent)','accent-ink':'var(--accent-ink)'},fontFamily:{sans:['"Clash Grotesk"','ui-sans-serif','system-ui','sans-serif']}}}}
@@ -55,9 +56,14 @@ tailwind.config={theme:{extend:{colors:{ink:'var(--ink)',muted:'var(--muted)',su
 --cur-text:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 256 256'%3E%3Cpath d='M182 208a6 6 0 0 1-6 6h-16a38 38 0 0 1-32-17.55A38 38 0 0 1 96 214H80a6 6 0 0 1 0-12h16a26 26 0 0 0 26-26v-42h-18a6 6 0 0 1 0-12h18V80a26 26 0 0 0-26-26H80a6 6 0 0 1 0-12h16a38 38 0 0 1 32 17.55A38 38 0 0 1 160 42h16a6 6 0 0 1 0 12h-16a26 26 0 0 0-26 26v42h18a6 6 0 0 1 0 12h-18v42a26 26 0 0 0 26 26h16a6 6 0 0 1 6 6' fill='%23E6EDF7' stroke='%230A1424' stroke-width='4'/%3E%3C/svg%3E") 11 11,text;
 }
 *{border-color:var(--line);box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden;width:100%;margin:0;padding:0}
 html,body{max-width:100vw;overflow-x:hidden}
 body{
+width:100vw;
+min-width:100vw;
+max-width:100vw;
+margin:0;
+padding:0;
 background-color:var(--surface);
 color:var(--ink);
 font-family:"Clash Grotesk",ui-sans-serif,system-ui,sans-serif;
@@ -137,7 +143,7 @@ width:54px;
 border:0;background:transparent;
 color:var(--ink);
 align-self:stretch;
-transition:color .2s ease,background-color .2s ease;
+transition:color .2s ease;
 }
 @media (min-width:768px){.icon-btn{width:58px}}
 .icon-btn:hover{color:var(--accent)}
@@ -166,7 +172,7 @@ overflow:hidden;
 opacity:0;
 transform:translateX(calc(100% + 44px));
 pointer-events:none;
-transition:opacity .3s ease,transform .55s cubic-bezier(.34,1.3,.64,1),width .42s cubic-bezier(.34,1.2,.64,1),border-color .2s ease,color .2s ease;
+transition:opacity .35s ease,transform .55s cubic-bezier(.34,1.3,.64,1),width .42s cubic-bezier(.34,1.2,.64,1),border-color .2s ease,color .2s ease;
 }
 @media (min-width:768px){.m-item{height:58px}}
 .mnav.open .m-item{opacity:1;transform:translateX(0);pointer-events:auto}
@@ -189,23 +195,6 @@ opacity:0;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellips
 pointer-events:none;transition:opacity .26s ease;
 }
 .mnav.expanded .m-lab{opacity:1;transition:opacity .3s ease .12s}
-.m-item.ash{
-animation:ashAway .78s cubic-bezier(.3,.1,.4,1) forwards;
-animation-delay:var(--ad,0ms);
-}
-@keyframes ashAway{
-0%{opacity:1;filter:blur(0);translate:0 0;scale:1;rotate:0deg;-webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0 100%,transparent 100%);mask-image:radial-gradient(circle at 50% 50%,#000 0 100%,transparent 100%);-webkit-mask-size:220% 220%;mask-size:220% 220%;-webkit-mask-position:50% 50%;mask-position:50% 50%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
-45%{opacity:.85;filter:blur(1.6px)}
-100%{opacity:0;filter:blur(10px);translate:var(--ax,0) -38px;scale:1.14;rotate:var(--ar,5deg);-webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0 34%,transparent 74%);mask-image:radial-gradient(circle at 50% 50%,#000 0 34%,transparent 74%);-webkit-mask-size:70% 70%;mask-size:70% 70%;-webkit-mask-position:calc(50% + var(--ax,0px)) 18%;mask-position:calc(50% + var(--ax,0px)) 18%}
-}
-.m-item.ash::after{
-content:"";position:absolute;inset:-14px;pointer-events:none;
-background:radial-gradient(60% 60% at 50% 70%,var(--accent-soft),transparent 70%);
-opacity:0;
-animation:plume .78s ease-out forwards;
-}
-@keyframes plume{0%{opacity:0;translate:0 0;scale:.8}40%{opacity:.8}100%{opacity:0;translate:0 -30px;scale:1.3}}
-body.no-anim .m-item,body.no-anim .rail,body.no-anim .rail-item{transition:none!important;animation:none!important}
 .rail{
 position:fixed;right:26px;top:50%;translate:0 -50%;z-index:45;
 display:none;flex-direction:column;align-items:flex-end;gap:14px;
@@ -236,19 +225,18 @@ transition:opacity .35s ease,transform .5s cubic-bezier(.22,1,.36,1),color .2s e
 .rail-item:hover,.rail-item:focus-visible{color:var(--ink)}
 .rail-item:hover .rail-lab,.rail-item:focus-visible .rail-lab{opacity:1;translate:0 0}
 .rail-item:hover .rail-line,.rail-item:focus-visible .rail-line{width:76px;background:var(--accent)}
-.rail-item.ash{animation:railAsh .62s ease forwards;animation-delay:var(--ad,0ms)}
-@keyframes railAsh{0%{opacity:1;filter:blur(0);translate:0 0}100%{opacity:0;filter:blur(8px);translate:26px -14px}}
 main{max-width:1360px;margin:0 auto;padding:0 1rem 5rem}
 @media (min-width:768px){main{padding:0 1.6rem 7rem}}
 @media (min-width:1280px){main{padding:0 2.4rem 9rem}}
 .eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
 .lead{font-size:15px;color:var(--muted);max-width:56ch}
 @media (min-width:768px){.lead{font-size:16px}}
-.rv{opacity:0;translate:0 20px;transition:opacity .9s cubic-bezier(.22,1,.36,1),translate .9s cubic-bezier(.22,1,.36,1);transition-delay:var(--d,0ms)}
-.rv.in{opacity:1;translate:0 0}
+[data-reveal]{opacity:0;translate:0 20px;transition:opacity .9s cubic-bezier(.22,1,.36,1),translate .9s cubic-bezier(.22,1,.36,1);transition-delay:var(--d,0ms)}
+[data-reveal].in{opacity:1;translate:0 0}
 .split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
 .split .wi{display:inline-block;translate:0 110%;opacity:0;transition:translate 1s cubic-bezier(.22,1,.36,1),opacity .7s ease;transition-delay:calc(var(--i,0) * 55ms)}
 .split.in .wi{translate:0 0;opacity:1}
+.wi.accent{color:var(--accent)}
 .hero{position:relative;padding:2.4rem 0 1rem;overflow:hidden}
 @media (min-width:1024px){.hero{padding:4.5rem 0 2rem;min-height:64vh;display:flex;align-items:center}}
 .hero-spot{
@@ -258,8 +246,8 @@ background:radial-gradient(420px 420px at var(--mx,70%) var(--my,30%),var(--acce
 opacity:.9;
 transition:background .15s linear;
 }
-.hero h1{font-size:clamp(2.5rem,8.4vw,4.4rem);line-height:.98;letter-spacing:-.045em;max-width:16ch}
-.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-title{font-size:clamp(2.5rem,8.4vw,4.4rem);line-height:.98;letter-spacing:-.045em;max-width:16ch}
+.hero-title .line{display:block}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
 .btn{
 display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
@@ -277,11 +265,6 @@ transition:border-color .25s ease,color .25s ease,background-color .25s ease,tra
 .hero-tags{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;margin-top:2.2rem;font-size:12.5px;color:var(--muted)}
 .hero-tags span{display:inline-flex;align-items:center;gap:.45rem}
 .hero-tags i{color:var(--accent)}
-.stats{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:3rem}
-@media (min-width:900px){.stats{grid-template-columns:repeat(4,1fr)}}
-.stat{padding:1.2rem 1rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-.stat b{display:block;font-size:clamp(1.5rem,3vw,2rem);font-weight:500;letter-spacing:-.03em}
-.stat span{display:block;margin-top:.2rem;font-size:11.5px;color:var(--muted);letter-spacing:.02em}
 .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.1rem 0;margin-top:3.2rem;overflow:hidden}
 .lrow{overflow:hidden;padding:.35rem 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
 .ltrack{display:flex;align-items:center;gap:1.8rem;width:max-content;will-change:transform}
@@ -305,31 +288,52 @@ transition:opacity .2s ease,gap .25s ease;
 .linkbtn:hover{opacity:.75;gap:.65rem}
 .quote{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:3.6rem 0;margin-top:4.4rem}
 .quote blockquote{font-size:clamp(1.9rem,5.6vw,3.6rem);line-height:1.05;letter-spacing:-.04em;max-width:18ch;font-weight:500}
-.quote blockquote em{font-style:normal;color:var(--accent)}
 .quote p{margin-top:1.3rem;max-width:44ch;font-size:14.5px;color:var(--muted)}
-.flow-wrap{margin-top:3rem;position:relative}
-.flow{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;padding-top:2.4rem}
-.flow-rail{position:absolute;left:0;right:0;top:2.4rem;height:1px;background:var(--line)}
-.flow-fill{position:absolute;left:0;top:2.4rem;height:1px;width:100%;background:var(--accent);transform:scaleX(var(--p,0));transform-origin:left center;transition:transform .12s linear}
-.fstep{position:relative;padding-top:1.4rem}
-.fdot{position:absolute;top:-4px;left:0;width:9px;height:9px;background:var(--surface);border:1px solid var(--accent);transition:background-color .35s ease,box-shadow .35s ease}
-.fstep.on .fdot{background-color:var(--accent);box-shadow:0 0 0 5px var(--accent-soft)}
-.fstep h4{font-size:14px;font-weight:500;margin-bottom:.35rem}
-.fstep p{font-size:12.5px;color:var(--muted);line-height:1.6}
-@media (max-width:767px){
-.flow{grid-template-columns:1fr;gap:0;padding-top:0;padding-left:1.5rem}
-.flow-rail{left:4px;right:auto;top:0;bottom:0;width:1px;height:auto}
-.flow-fill{left:4px;top:0;width:1px;height:100%;transform:scaleY(var(--p,0));transform-origin:top center}
-.fstep{padding:1rem 0}
-.fdot{top:1.35rem;left:-1.5rem}
-}
+.guard{margin-top:2.8rem;display:grid;gap:2rem}
+@media (min-width:900px){.guard{grid-template-columns:1fr 1fr;gap:4rem;align-items:start}}
+.guard-statement{font-size:clamp(1.4rem,3.4vw,2rem);line-height:1.25;letter-spacing:-.02em;max-width:22ch;font-weight:500}
+.guard-statement em{font-style:normal;color:var(--accent)}
+.guard-notes{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.guard-note{padding:1.1rem 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:.25rem}
+.guard-note b{font-size:14px;font-weight:500}
+.guard-note span{font-size:13px;color:var(--muted);line-height:1.6}
 .pillars{margin-top:2.6rem;border-top:1px solid var(--line)}
-.pillar{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;padding:1.8rem 0;border-bottom:1px solid var(--line);transition:padding .35s ease}
-@media (min-width:768px){.pillar{grid-template-columns:80px 1fr;gap:2rem;padding:2.3rem 0}}
+.pillar{
+display:grid;
+grid-template-columns:52px 1fr;
+gap:1.2rem;
+padding:1.8rem 0;
+border-top:0;border-left:0;border-right:0;
+border-bottom:1px solid var(--line);
+background:none;
+width:100%;
+text-align:left;
+font-family:inherit;color:var(--ink);
+transition:padding .35s ease,color .25s ease;
+}
+@media (min-width:768px){.pillar{grid-template-columns:76px 1fr;gap:2rem;padding:2.3rem 0}}
 .pillar:hover{padding-left:.6rem}
-.pnum{font-size:12px;color:var(--accent);padding-top:.35rem;font-variant-numeric:tabular-nums}
-.pillar h3{font-size:clamp(1.1rem,2.4vw,1.45rem);font-weight:500;margin-bottom:.45rem}
-.pillar p{font-size:14px;color:var(--muted);max-width:54ch}
+.p-icon{
+position:relative;
+width:44px;height:44px;
+display:grid;place-items:center;
+transition:transform .4s cubic-bezier(.34,1.3,.64,1);
+}
+.p-icon i{
+position:absolute;inset:0;
+display:grid;place-items:center;
+font-size:32px;
+color:var(--muted);
+transition:opacity .4s ease,color .3s ease;
+}
+.p-icon .p-fill{opacity:0;color:var(--accent)}
+.pillar:hover .p-icon,.pillar:focus-visible .p-icon{transform:scale(1.1)}
+.pillar:hover .p-fill,.pillar:focus-visible .p-fill{opacity:1}
+.pillar:hover .p-icon i:first-child,.pillar:focus-visible .p-icon i:first-child{opacity:0}
+.p-body{display:flex;flex-direction:column;gap:.4rem}
+.p-num{font-size:11px;color:var(--accent);letter-spacing:.08em;font-variant-numeric:tabular-nums}
+.p-title{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:500}
+.p-desc{font-size:14px;color:var(--muted);max-width:54ch}
 .gridb{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:2.6rem}
 @media (min-width:640px){.gridb{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:1024px){.gridb{grid-template-columns:repeat(3,1fr)}}
@@ -338,50 +342,90 @@ position:relative;
 padding:1.6rem 1.4rem 2.2rem;
 border-right:1px solid var(--line);
 border-bottom:1px solid var(--line);
-background-color:transparent;
-text-align:left;
 border-top:0;border-left:0;
+background-color:transparent;
+background-image:linear-gradient(115deg,transparent 35%,var(--accent-soft) 50%,transparent 65%);
+background-size:260% 100%;
+background-position:120% 0;
+background-repeat:no-repeat;
+text-align:left;
 font-family:inherit;color:var(--ink);
-transition:color .25s ease;
+transition:color .25s ease,background-position .9s cubic-bezier(.22,1,.36,1);
 }
-.cell i.lead-ico{font-size:22px;color:var(--accent)}
-.cell h3{font-size:14.5px;font-weight:500;margin-top:.9rem}
+.cell:hover{color:var(--accent);background-position:-20% 0}
+.cell-icon{
+position:relative;
+width:32px;height:32px;
+display:grid;place-items:center;
+transition:transform .4s cubic-bezier(.34,1.3,.64,1);
+}
+.cell-icon i{
+position:absolute;inset:0;
+display:grid;place-items:center;
+font-size:22px;
+color:var(--accent);
+transition:opacity .4s ease;
+}
+.cell-icon .cell-fill{opacity:0}
+.cell:hover .cell-icon,.cell:focus-visible .cell-icon{transform:scale(1.1)}
+.cell:hover .cell-fill,.cell:focus-visible .cell-fill{opacity:1}
+.cell:hover .cell-icon i:first-child,.cell:focus-visible .cell-icon i:first-child{opacity:0}
+.cell h3{font-size:14.5px;margin-top:.9rem}
 .cell p{font-size:12.8px;color:var(--muted);margin-top:.35rem;line-height:1.6}
 .cell .go{position:absolute;right:1.1rem;bottom:1rem;font-size:16px;color:var(--muted);transition:translate .3s ease,color .25s ease}
 .cell:hover .go{translate:3px -3px;color:var(--accent)}
-.cell:hover{color:var(--accent)}
-.cell::after{content:"";position:absolute;inset:0;border:1px solid transparent;transition:border-color .3s ease;pointer-events:none}
-.cell:hover::after{border-color:var(--accent-soft)}
-.layers{display:grid;gap:2rem;align-items:center;margin-top:2.8rem}
-@media (min-width:900px){.layers{grid-template-columns:1.05fr .95fr;gap:3.5rem}}
-.layers-svg{width:100%;height:auto;color:var(--line);overflow:visible}
-.layers-svg .ln{stroke:currentColor;stroke-width:1;fill:none;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--p,0));transition:stroke-dashoffset .12s linear}
-.layers-svg .scan{stroke:var(--accent);stroke-width:1;transform:translateY(calc(var(--p,0) * 268px));opacity:calc(.2 + var(--p,0) * .8)}
-.layers-svg .node{fill:var(--accent);opacity:0;transition:opacity .4s ease}
-.layers-svg .node.on{opacity:1}
-.layers-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
-.ly{display:grid;grid-template-columns:auto 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
-.ly b{font-size:12px;color:var(--accent);font-variant-numeric:tabular-nums}
-.ly h4{font-size:14px;font-weight:500}
-.ly p{font-size:12.5px;color:var(--muted);margin-top:.2rem}
-.rows{margin-top:2.4rem;border-top:1px solid var(--line)}
-.row{
-display:grid;grid-template-columns:auto 1fr;gap:.4rem 1rem;
-align-items:start;
-padding:1.25rem .2rem;
+.repos{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:2.6rem}
+@media (min-width:640px){.repos{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.repos{grid-template-columns:repeat(3,1fr)}}
+.repo{
+padding:1.5rem 1.4rem 1.8rem;
+border-right:1px solid var(--line);
 border-bottom:1px solid var(--line);
-background:none;border-left:0;border-right:0;border-top:0;
-width:100%;text-align:left;font-family:inherit;color:var(--ink);
-transition:padding .3s ease,color .25s ease;
+border-top:0;border-left:0;
+background-color:transparent;
+text-align:left;
+font-family:inherit;color:var(--ink);
+transition:color .25s ease;
+display:flex;flex-direction:column;
 }
-@media (min-width:768px){.row{grid-template-columns:48px 1.1fr 1fr auto;align-items:center;gap:1.4rem;padding:1.5rem .4rem}}
-.row:hover{padding-left:.9rem;color:var(--accent)}
-.ridx{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
-.rtitle{font-size:14.5px;font-weight:500}
-.rmeta{font-size:12px;color:var(--muted)}
-.rarrow{display:none;color:var(--muted);transition:translate .3s ease,color .25s ease}
-@media (min-width:768px){.rarrow{display:block}}
-.row:hover .rarrow{translate:4px 0;color:var(--accent)}
+.repo:hover{color:var(--accent)}
+.repo-top{display:flex;align-items:center;justify-content:space-between;gap:.6rem;font-size:11px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.repo-top b{color:var(--accent);font-weight:400}
+.repo h3{font-size:16px;margin-top:.9rem}
+.repo p{font-size:13px;color:var(--muted);margin-top:.5rem;line-height:1.55}
+.repo .meta{margin-top:auto;padding-top:1rem;display:flex;flex-wrap:wrap;gap:.35rem}
+.repo .meta span{font-size:10px;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);padding:.2rem .45rem}
+.principles{display:flex;flex-direction:column;border-top:1px solid var(--line);margin-top:2.4rem}
+.pr{
+display:grid;
+grid-template-columns:32px 1fr;
+gap:1.1rem;
+padding:1.5rem 0;
+border-bottom:1px solid var(--line);
+transition:padding .35s ease,color .25s ease;
+}
+@media (min-width:768px){.pr{grid-template-columns:44px 1fr;gap:1.8rem;padding:1.7rem 0}}
+.pr:hover{padding-left:.5rem}
+.pr-icon{
+position:relative;
+width:26px;height:26px;
+display:grid;place-items:center;
+margin-top:.15rem;
+transition:transform .4s cubic-bezier(.34,1.3,.64,1);
+}
+.pr-icon i{
+position:absolute;inset:0;
+display:grid;place-items:center;
+font-size:20px;
+color:var(--accent);
+transition:opacity .4s ease;
+}
+.pr-icon .pr-fill{opacity:0}
+.pr:hover .pr-icon{transform:scale(1.12)}
+.pr:hover .pr-fill{opacity:1}
+.pr:hover .pr-icon i:first-child{opacity:0}
+.pr h3{font-size:15px;font-weight:500;margin-bottom:.35rem}
+.pr p{font-size:13.5px;color:var(--muted);max-width:52ch}
 .notes{display:grid;gap:0;grid-template-columns:1fr;border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:2.4rem}
 @media (min-width:768px){.notes{grid-template-columns:repeat(3,1fr)}}
 .note{
@@ -392,16 +436,10 @@ text-align:left;font-family:inherit;color:var(--ink);
 transition:color .25s ease;
 }
 .note:hover{color:var(--accent)}
-.note time{font-size:11px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
-.note h3{font-size:15px;font-weight:500;margin-top:.7rem;line-height:1.35}
+.note time{font-size:10px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.note h3{font-size:15px;margin-top:.7rem;line-height:1.35}
 .note p{font-size:12.8px;color:var(--muted);margin-top:.5rem}
 .note span{display:inline-flex;align-items:center;gap:.35rem;margin-top:1rem;font-size:12px;color:var(--accent)}
-.facts{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:2.4rem}
-@media (min-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:1024px){.facts{grid-template-columns:repeat(3,1fr)}}
-.fact{padding:1.4rem 1.3rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-.fact span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.fact b{display:block;margin-top:.45rem;font-size:14px;font-weight:500;line-height:1.45}
 .faq{margin-top:2.4rem;border-top:1px solid var(--line)}
 .qa{border-bottom:1px solid var(--line)}
 .qa button{
@@ -430,20 +468,15 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:2.6rem 0 2rem}
 @media (min-width:768px){.fgrid{grid-template-columns:1.5fr 1fr 1fr}}
 .fbrand img{height:30px;width:auto;display:block}
 .fbrand p{margin-top:.9rem;max-width:34ch;font-size:12.8px;color:var(--muted)}
-.fcol h4{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.fcol h4{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400}
 .fcol ul{list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-direction:column;gap:.65rem}
-.fcol button{
-background:none;border:0;padding:0;text-align:left;
-font-family:inherit;font-size:13px;color:var(--ink);
-transition:color .2s ease;
-}
+.fcol button{background:none;border:0;padding:0;text-align:left;font-family:inherit;font-size:13px;color:var(--ink);transition:color .2s ease}
 .fcol button:hover{color:var(--accent)}
 .fbot{margin-top:2.6rem;padding-top:1.1rem;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;justify-content:space-between;font-size:11.5px;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){
 html{scroll-behavior:auto}
-.rv,.split .wi{opacity:1;translate:0 0;transition:none}
-.m-item.ash,.rail-item.ash,.m-item.ash::after{animation:none!important}
-.flow-fill{transition:none}
+[data-reveal],.split .wi{opacity:1;translate:0 0;transition:none}
+.p-icon,.cell-icon,.pr-icon{transition:none}
 }
 </style>
 </head>
@@ -560,28 +593,23 @@ html{scroll-behavior:auto}
 <section class="hero" data-hero>
 <div class="hero-spot" data-spot aria-hidden="true"></div>
 <div style="position:relative">
-<p class="eyebrow">Cybersecurity collective · Offensive research · Secure engineering</p>
-<h1 class="split" data-split data-reveal>Securing the digital frontier. Lurking in the darkness.</h1>
-<p class="lead" style="margin-top:1.6rem" data-reveal>We are an independent team of security engineers, developers and researchers. We harden the systems you depend on, then try to break them before someone else does. Everything is scoped, authorised and written down.</p>
+<h1 class="hero-title">
+<span class="line split" data-split>Securing the digital frontier.</span>
+<span class="line split" data-split data-accent="darkness">Lurking in the darkness.</span>
+</h1>
+<p class="lead" style="margin-top:1.6rem" data-reveal>An elite collective of cybersecurity experts, passionate developers and tech enthusiasts dedicated to safeguarding the digital world. We protect against cyber threats with expert penetration testing, network defence, cryptography and social engineering awareness — and our developers weave security into every codebase we touch.</p>
 <div class="hero-actions" data-reveal>
-<button class="btn btn-solid" data-href="/contact">Start an engagement <i class="ph-thin ph-arrow-up-right"></i></button>
-<button class="btn" data-href="/research">Read our research <i class="ph-thin ph-arrow-right"></i></button>
+<button class="btn btn-solid" data-href="/contact">Work with BeduSec <i class="ph-thin ph-arrow-up-right"></i></button>
+<button class="btn" data-href="/projects">Explore research <i class="ph-thin ph-arrow-right"></i></button>
 </div>
 <div class="hero-tags" data-reveal>
 <span><i class="ph-duotone ph-shield-check"></i>Penetration testing</span>
-<span><i class="ph-duotone ph-code"></i>Secure engineering</span>
-<span><i class="ph-duotone ph-crosshair"></i>Adversary simulation</span>
-<span><i class="ph-duotone ph-flask"></i>Public tooling</span>
+<span><i class="ph-duotone ph-code"></i>Secure development</span>
+<span><i class="ph-duotone ph-crosshair"></i>Offensive research</span>
+<span><i class="ph-duotone ph-globe-hemisphere-west"></i>Global reach</span>
 </div>
 </div>
 </section>
-
-<div class="stats" data-reveal>
-<div class="stat"><b>3</b><span>Core disciplines</span></div>
-<div class="stat"><b>6</b><span>Public repositories</span></div>
-<div class="stat"><b>24h</b><span>First response</span></div>
-<div class="stat"><b>100%</b><span>Authorised work</span></div>
-</div>
 
 <section class="marquee" aria-label="Stack" data-marquee>
 <div class="lrow"><div class="ltrack" data-lrow data-dir="left" data-speed="0.16">
@@ -626,28 +654,24 @@ html{scroll-behavior:auto}
 </section>
 
 <section class="quote" data-reveal>
-<blockquote class="split" data-split>Viviamo per il rispetto.</blockquote>
+<blockquote class="split" data-split data-accent="rispetto">Viviamo per il rispetto.</blockquote>
 <p>We live for respect. Respect for data privacy, for the integrity of the infrastructure we touch, and for the ethical boundaries of this trade. Curiosity belongs in the lab. Recklessness does not belong anywhere.</p>
 </section>
 
 <section class="sect">
 <div class="sect-head" data-reveal>
 <div>
-<p class="eyebrow">Method</p>
-<h2 style="margin-top:.8rem">How an engagement actually runs.</h2>
-<p class="lead">Five phases, one document trail. You always know what we are doing, what we found, and what remains open.</p>
+<p class="eyebrow">Guardianship</p>
+<h2 style="margin-top:.8rem">With great power comes great responsibility.</h2>
 </div>
-<button class="linkbtn" data-href="/services">See the full method <i class="ph-thin ph-arrow-right"></i></button>
 </div>
-<div class="flow-wrap" data-draw data-reveal>
-<div class="flow">
-<div class="flow-rail" aria-hidden="true"></div>
-<div class="flow-fill" aria-hidden="true"></div>
-<div class="fstep" data-at="0.05"><span class="fdot" aria-hidden="true"></span><h4>Scope</h4><p>Assets, rules of engagement, escalation contacts, legal boundaries.</p></div>
-<div class="fstep" data-at="0.28"><span class="fdot" aria-hidden="true"></span><h4>Recon</h4><p>Passive and active mapping. No exploitation until the map is agreed.</p></div>
-<div class="fstep" data-at="0.5"><span class="fdot" aria-hidden="true"></span><h4>Access</h4><p>Controlled exploitation, evidence capture, immediate critical reporting.</p></div>
-<div class="fstep" data-at="0.72"><span class="fdot" aria-hidden="true"></span><h4>Report</h4><p>Reproduction steps, impact, severity, and a fix that your team can ship.</p></div>
-<div class="fstep" data-at="0.92"><span class="fdot" aria-hidden="true"></span><h4>Retest</h4><p>We come back. Anything still open stays open in the tracker until it closes.</p></div>
+<div class="guard" data-reveal>
+<p class="guard-statement">We are the <em>guardians</em> of the digital realm. Not because we say so — because the work requires it.</p>
+<div class="guard-notes">
+<div class="guard-note"><b>Elite collective</b><span>Security engineers, developers and researchers working as one team, not three vendors passing documents around.</span></div>
+<div class="guard-note"><b>Authorised work only</b><span>Every engagement begins with a signed scope. No exceptions, no shortcuts, no "we will formalise it later".</span></div>
+<div class="guard-note"><b>Safeguarding the digital world</b><span>Protection of the systems people actually depend on. Not theoretical hardening, not marketing slides.</span></div>
+<div class="guard-note"><b>Research that ships</b><span>We build tools, publish findings and hand back what defenders can use.</span></div>
 </div>
 </div>
 </section>
@@ -660,27 +684,39 @@ html{scroll-behavior:auto}
 </div>
 </div>
 <div class="pillars">
-<div class="pillar" data-reveal>
-<span class="pnum">01</span>
-<div>
-<h3>Security engineers</h3>
-<p>Penetration testing, network defence, applied cryptography and social engineering awareness. People who think like adversaries but answer to defenders.</p>
-</div>
-</div>
-<div class="pillar" data-reveal>
-<span class="pnum">02</span>
-<div>
-<h3>Developers</h3>
-<p>Applications and firmware built with security in the architecture from the first commit, rather than patched in after the first incident.</p>
-</div>
-</div>
-<div class="pillar" data-reveal>
-<span class="pnum">03</span>
-<div>
-<h3>Researchers</h3>
-<p>Curiosity-driven work on emerging threats, tooling and detection. We publish what defenders can use and disclose what vendors must fix.</p>
-</div>
-</div>
+<button class="pillar" data-href="/services" data-reveal>
+<span class="p-icon" aria-hidden="true">
+<i class="ph-duotone ph-shield-check"></i>
+<i class="ph-fill ph-shield-check p-fill"></i>
+</span>
+<span class="p-body">
+<span class="p-num">01</span>
+<span class="p-title">Cybersecurity experts</span>
+<span class="p-desc">Expert penetration testing, network defence, cryptography and social engineering awareness. The people who think like adversaries but answer to defenders.</span>
+</span>
+</button>
+<button class="pillar" data-href="/services" data-reveal>
+<span class="p-icon" aria-hidden="true">
+<i class="ph-duotone ph-code"></i>
+<i class="ph-fill ph-code p-fill"></i>
+</span>
+<span class="p-body">
+<span class="p-num">02</span>
+<span class="p-title">Passionate developers</span>
+<span class="p-desc">We weave security into every codebase. Robust, scalable applications with defence designed in from the first commit — not patched in after the first incident.</span>
+</span>
+</button>
+<button class="pillar" data-href="/research" data-reveal>
+<span class="p-icon" aria-hidden="true">
+<i class="ph-duotone ph-rocket-launch"></i>
+<i class="ph-fill ph-rocket-launch p-fill"></i>
+</span>
+<span class="p-body">
+<span class="p-num">03</span>
+<span class="p-title">Tech enthusiasts</span>
+<span class="p-desc">Our researchers stay ahead of emerging threats, delivering cutting-edge solutions so our defences never fall behind the curve.</span>
+</span>
+</button>
 </div>
 </section>
 
@@ -693,38 +729,56 @@ html{scroll-behavior:auto}
 </div>
 </div>
 <div class="gridb">
-<button class="cell tilt" data-href="/services" data-reveal>
-<i class="ph-duotone ph-crosshair lead-ico"></i>
+<button class="cell" data-href="/services" data-reveal>
+<span class="cell-icon" aria-hidden="true">
+<i class="ph-duotone ph-crosshair"></i>
+<i class="ph-fill ph-crosshair cell-fill"></i>
+</span>
 <h3>Offensive security</h3>
 <p>Web, API, mobile, network and wireless testing with reproduction steps that engineers can act on.</p>
 <span class="go"><i class="ph-thin ph-arrow-up-right"></i></span>
 </button>
-<button class="cell tilt" data-href="/services" data-reveal>
-<i class="ph-duotone ph-code lead-ico"></i>
+<button class="cell" data-href="/services" data-reveal>
+<span class="cell-icon" aria-hidden="true">
+<i class="ph-duotone ph-code"></i>
+<i class="ph-fill ph-code cell-fill"></i>
+</span>
 <h3>Secure engineering</h3>
 <p>Threat modelling, secure design review and hands-on hardening inside your codebase.</p>
 <span class="go"><i class="ph-thin ph-arrow-up-right"></i></span>
 </button>
-<button class="cell tilt" data-href="/services" data-reveal>
-<i class="ph-duotone ph-users-three lead-ico"></i>
+<button class="cell" data-href="/services" data-reveal>
+<span class="cell-icon" aria-hidden="true">
+<i class="ph-duotone ph-users-three"></i>
+<i class="ph-fill ph-users-three cell-fill"></i>
+</span>
 <h3>Adversary simulation</h3>
 <p>Scoped red team exercises, including phishing and physical vectors where the rules allow.</p>
 <span class="go"><i class="ph-thin ph-arrow-up-right"></i></span>
 </button>
-<button class="cell tilt" data-href="/research" data-reveal>
-<i class="ph-duotone ph-flask lead-ico"></i>
+<button class="cell" data-href="/research" data-reveal>
+<span class="cell-icon" aria-hidden="true">
+<i class="ph-duotone ph-flask"></i>
+<i class="ph-fill ph-flask cell-fill"></i>
+</span>
 <h3>Research</h3>
 <p>Vulnerability research, detection engineering and open tooling published for defenders.</p>
 <span class="go"><i class="ph-thin ph-arrow-up-right"></i></span>
 </button>
-<button class="cell tilt" data-href="/services" data-reveal>
-<i class="ph-duotone ph-graduation-cap lead-ico"></i>
+<button class="cell" data-href="/services" data-reveal>
+<span class="cell-icon" aria-hidden="true">
+<i class="ph-duotone ph-graduation-cap"></i>
+<i class="ph-fill ph-graduation-cap cell-fill"></i>
+</span>
 <h3>Training</h3>
 <p>Workshops, tabletop exercises and secure coding sessions built around your stack.</p>
 <span class="go"><i class="ph-thin ph-arrow-up-right"></i></span>
 </button>
-<button class="cell tilt" data-href="/services" data-reveal>
-<i class="ph-duotone ph-file-text lead-ico"></i>
+<button class="cell" data-href="/services" data-reveal>
+<span class="cell-icon" aria-hidden="true">
+<i class="ph-duotone ph-file-text"></i>
+<i class="ph-fill ph-file-text cell-fill"></i>
+</span>
 <h3>Audit readiness</h3>
 <p>Control mapping, evidence packs and gap analysis for ISO 27001 and similar frameworks.</p>
 <span class="go"><i class="ph-thin ph-arrow-up-right"></i></span>
@@ -733,116 +787,98 @@ html{scroll-behavior:auto}
 </section>
 
 <section class="sect">
-<div class="layers">
-<div data-reveal>
-<p class="eyebrow">Defence in depth</p>
-<h2 style="margin-top:.8rem;font-size:clamp(1.7rem,4.4vw,2.5rem);line-height:1.06">Every layer is a decision.</h2>
-<p class="lead" style="margin-top:1rem">Perimeter, identity, application, data. A weakness in one is survivable; a weakness in all four is not. We test each layer separately, then test what happens when they fail together.</p>
-</div>
-<div data-reveal>
-<svg class="layers-svg" viewBox="0 0 520 300" role="img" aria-label="Diagram of four security layers with a scan moving through them" data-draw>
-<rect class="ln" x="12" y="12" width="496" height="276" pathLength="1"/>
-<rect class="ln" x="52" y="50" width="416" height="200" pathLength="1"/>
-<rect class="ln" x="92" y="88" width="336" height="124" pathLength="1"/>
-<rect class="ln" x="132" y="126" width="256" height="48" pathLength="1"/>
-<circle class="node" data-at="0.15" cx="12" cy="12" r="3.5"/>
-<circle class="node" data-at="0.38" cx="52" cy="50" r="3.5"/>
-<circle class="node" data-at="0.62" cx="92" cy="88" r="3.5"/>
-<circle class="node" data-at="0.86" cx="132" cy="126" r="3.5"/>
-<line class="scan" x1="12" y1="0" x2="508" y2="0"/>
-</svg>
-</div>
-</div>
-<div class="layers-list" data-reveal>
-<div class="ly"><b>01</b><div><h4>Perimeter</h4><p>Exposed services, DNS, TLS, edge configuration and cloud boundaries.</p></div></div>
-<div class="ly"><b>02</b><div><h4>Identity</h4><p>Authentication flows, session handling, privilege boundaries and MFA gaps.</p></div></div>
-<div class="ly"><b>03</b><div><h4>Application</h4><p>Business logic, injection classes, authorisation flaws and dependency risk.</p></div></div>
-<div class="ly"><b>04</b><div><h4>Data</h4><p>Storage, encryption, retention, backups and what happens after a breach.</p></div></div>
-</div>
-</section>
-
-<section class="sect">
-<div class="sect-head" data-reveal>
-<div>
-<p class="eyebrow">Selected engagements</p>
-<h2 style="margin-top:.8rem">Anonymised, because the work matters more than the logo.</h2>
-</div>
-<button class="linkbtn" data-href="/projects">All projects <i class="ph-thin ph-arrow-right"></i></button>
-</div>
-<div class="rows">
-<button class="row" data-href="/projects" data-reveal>
-<span class="ridx">01</span>
-<span class="rtitle">Payments API hardening</span>
-<span class="rmeta">Fintech · 6 weeks · 3 critical findings closed</span>
-<span class="rarrow"><i class="ph-thin ph-arrow-up-right"></i></span>
-</button>
-<button class="row" data-href="/projects" data-reveal>
-<span class="ridx">02</span>
-<span class="rtitle">Fleet firmware review</span>
-<span class="rmeta">Logistics · 9 weeks · signed boot gaps closed</span>
-<span class="rarrow"><i class="ph-thin ph-arrow-up-right"></i></span>
-</button>
-<button class="row" data-href="/projects" data-reveal>
-<span class="ridx">03</span>
-<span class="rtitle">Insider threat simulation</span>
-<span class="rmeta">SaaS · 4 weeks · detection coverage raised</span>
-<span class="rarrow"><i class="ph-thin ph-arrow-up-right"></i></span>
-</button>
-<button class="row" data-href="/projects" data-reveal>
-<span class="ridx">04</span>
-<span class="rtitle">Identity provider assessment</span>
-<span class="rmeta">Public sector · 5 weeks · 11 findings, 0 open</span>
-<span class="rarrow"><i class="ph-thin ph-arrow-up-right"></i></span>
-</button>
-</div>
-</section>
-
-<section class="sect">
 <div class="sect-head" data-reveal>
 <div>
 <p class="eyebrow">Public research</p>
-<h2 style="margin-top:.8rem">Tools we released anyway.</h2>
-<p class="lead">Published for defensive research, education and authorised testing. Read the README before you run anything.</p>
+<h2 style="margin-top:.8rem">Six repositories, published anyway.</h2>
+<p class="lead">Built for defensive research, education and authorised testing. Read the README before you run anything.</p>
 </div>
 <button class="linkbtn" data-href="/projects">All repositories <i class="ph-thin ph-arrow-right"></i></button>
 </div>
-<div class="rows">
-<button class="row" data-href="/projects" data-reveal>
-<span class="ridx">01</span>
-<span class="rtitle">WHYCRY</span>
-<span class="rmeta">Python · Active · WhatsApp command and control research</span>
-<span class="rarrow"><i class="ph-thin ph-arrow-up-right"></i></span>
+<div class="repos">
+<button class="repo" data-href="/projects" data-reveal>
+<div class="repo-top"><b>01</b><span>Python</span></div>
+<h3>WHYCRY</h3>
+<p>An advanced WhatsApp Command and Control framework demonstrating covert communication channels and remote management for authorised research.</p>
+<div class="meta"><span>Active</span><span>C2 research</span></div>
 </button>
-<button class="row" data-href="/projects" data-reveal>
-<span class="ridx">02</span>
-<span class="rtitle">MORPHINT</span>
-<span class="rmeta">Python · Active · Self-contained OSINT framework</span>
-<span class="rarrow"><i class="ph-thin ph-arrow-up-right"></i></span>
+<button class="repo" data-href="/projects" data-reveal>
+<div class="repo-top"><b>02</b><span>Python</span></div>
+<h3>MORPHINT</h3>
+<p>A self-contained, AI-powered OSINT framework that automates intelligence gathering and analysis while maintaining operational security.</p>
+<div class="meta"><span>Active</span><span>OSINT</span></div>
 </button>
-<button class="row" data-href="/projects" data-reveal>
-<span class="ridx">03</span>
-<span class="rtitle">TemplarRAT</span>
-<span class="rmeta">Python · Archived · Remote access mechanics for defenders</span>
-<span class="rarrow"><i class="ph-thin ph-arrow-up-right"></i></span>
+<button class="repo" data-href="/projects" data-reveal>
+<div class="repo-top"><b>03</b><span>Python</span></div>
+<h3>TemplarRAT</h3>
+<p>A research-grade Remote Access Tool built to help defenders understand RAT mechanics, impact and detection methods. Archived for reference.</p>
+<div class="meta"><span>Archived</span><span>Remote access</span></div>
 </button>
-<button class="row" data-href="/projects" data-reveal>
-<span class="ridx">04</span>
-<span class="rtitle">xsocial</span>
-<span class="rmeta">HTML · Python · Archived · Web application study</span>
-<span class="rarrow"><i class="ph-thin ph-arrow-up-right"></i></span>
+<button class="repo" data-href="/projects" data-reveal>
+<div class="repo-top"><b>04</b><span>HTML</span></div>
+<h3>xsocial</h3>
+<p>A minimalist full-stack social media demonstration used to study common web application structures, pitfalls and secure implementation.</p>
+<div class="meta"><span>Archived</span><span>Web app</span></div>
 </button>
-<button class="row" data-href="/projects" data-reveal>
-<span class="ridx">05</span>
-<span class="rtitle">VECTHIVE</span>
-<span class="rmeta">Python · Active · Distributed attack surface concept</span>
-<span class="rarrow"><i class="ph-thin ph-arrow-up-right"></i></span>
+<button class="repo" data-href="/projects" data-reveal>
+<div class="repo-top"><b>05</b><span>Python</span></div>
+<h3>VECTHIVE</h3>
+<p>A conceptual framework illustrating how attack code can be distributed across legitimate websites to evade traditional detection mechanisms.</p>
+<div class="meta"><span>Active</span><span>Threat research</span></div>
 </button>
-<button class="row" data-href="/projects" data-reveal>
-<span class="ridx">06</span>
-<span class="rtitle">beduhashes</span>
-<span class="rmeta">HTML · Active · Password hashing reference</span>
-<span class="rarrow"><i class="ph-thin ph-arrow-up-right"></i></span>
+<button class="repo" data-href="/projects" data-reveal>
+<div class="repo-top"><b>06</b><span>HTML</span></div>
+<h3>beduhashes</h3>
+<p>A curated reference on password hashing algorithms, common hash types and their security properties for authentication assessments.</p>
+<div class="meta"><span>Active</span><span>Reference</span></div>
 </button>
+</div>
+</section>
+
+<section class="sect">
+<div class="sect-head" data-reveal>
+<div>
+<p class="eyebrow">Viviamo per il rispetto</p>
+<h2 style="margin-top:.8rem">What that means in practice.</h2>
+<p class="lead">Five principles taken from the philosophy, applied to every engagement.</p>
+</div>
+</div>
+<div class="principles">
+<div class="pr" data-reveal>
+<span class="pr-icon" aria-hidden="true">
+<i class="ph-duotone ph-lock-key"></i>
+<i class="ph-fill ph-lock-key pr-fill"></i>
+</span>
+<div><h3>Authorisation before action</h3><p>Nothing is tested without a signed scope that names the assets, the time window, the contacts and the legal boundaries. If a client cannot produce that, we stop.</p></div>
+</div>
+<div class="pr" data-reveal>
+<span class="pr-icon" aria-hidden="true">
+<i class="ph-duotone ph-notebook"></i>
+<i class="ph-fill ph-notebook pr-fill"></i>
+</span>
+<div><h3>Evidence in writing</h3><p>Every finding is documented with reproduction steps, impact and a fix. If it isn't written down, it didn't happen — and it can't be retested.</p></div>
+</div>
+<div class="pr" data-reveal>
+<span class="pr-icon" aria-hidden="true">
+<i class="ph-duotone ph-handshake"></i>
+<i class="ph-fill ph-handshake pr-fill"></i>
+</span>
+<div><h3>Respect for the boundary</h3><p>Data privacy, infrastructure integrity and the ethical limits of this trade. Curiosity belongs in the lab, not in a client's production data.</p></div>
+</div>
+<div class="pr" data-reveal>
+<span class="pr-icon" aria-hidden="true">
+<i class="ph-duotone ph-megaphone"></i>
+<i class="ph-fill ph-megaphone pr-fill"></i>
+</span>
+<div><h3>Fix, then disclose</h3><p>Client findings stay private by default. Independent research on third-party products follows coordinated disclosure, usually a ninety-day window.</p></div>
+</div>
+<div class="pr" data-reveal>
+<span class="pr-icon" aria-hidden="true">
+<i class="ph-duotone ph-sparkle"></i>
+<i class="ph-fill ph-sparkle pr-fill"></i>
+</span>
+<div><h3>Leave it cleaner</h3><p>Every environment goes back in better shape than we found it, or we say why it cannot. That is the whole of the respect the motto asks for.</p></div>
+</div>
 </div>
 </section>
 
@@ -855,41 +891,24 @@ html{scroll-behavior:auto}
 <button class="linkbtn" data-href="/research">All notes <i class="ph-thin ph-arrow-right"></i></button>
 </div>
 <div class="notes">
-<button class="note tilt" data-href="/research" data-reveal>
+<button class="note" data-href="/research" data-reveal>
 <time>2026 · 6 min</time>
 <h3>Why WhatsApp remains a durable command channel</h3>
 <p>Encrypted transport, ubiquitous clients, and a detection model most blue teams still cannot see.</p>
 <span>Read <i class="ph-thin ph-arrow-right"></i></span>
 </button>
-<button class="note tilt" data-href="/research" data-reveal>
+<button class="note" data-href="/research" data-reveal>
 <time>2026 · 8 min</time>
 <h3>OSINT automation without operational leakage</h3>
 <p>What MORPHINT taught us about collecting intelligence while staying invisible to the target.</p>
 <span>Read <i class="ph-thin ph-arrow-right"></i></span>
 </button>
-<button class="note tilt" data-href="/research" data-reveal>
+<button class="note" data-href="/research" data-reveal>
 <time>2026 · 5 min</time>
 <h3>What RAT source code teaches defenders</h3>
 <p>Persistence, beacon jitter and the artefacts that survive a rebuild. A defensive reading list.</p>
 <span>Read <i class="ph-thin ph-arrow-right"></i></span>
 </button>
-</div>
-</section>
-
-<section class="sect">
-<div class="sect-head" data-reveal>
-<div>
-<p class="eyebrow">The collective</p>
-<h2 style="margin-top:.8rem">Facts, not adjectives.</h2>
-</div>
-</div>
-<div class="facts" data-reveal>
-<div class="fact"><span>Model</span><b>Independent studio, senior-only teams</b></div>
-<div class="fact"><span>Disciplines</span><b>Offensive, engineering, research</b></div>
-<div class="fact"><span>Public tools</span><b>Six repositories on GitHub</b></div>
-<div class="fact"><span>Engagement</span><b>Fixed scope, fixed price, written report</b></div>
-<div class="fact"><span>Disclosure</span><b>Coordinated, 90-day default window</b></div>
-<div class="fact"><span>Coverage</span><b>Remote worldwide, on-site by arrangement</b></div>
 </div>
 </section>
 
@@ -974,24 +993,20 @@ const menutoggle=document.querySelector('[data-menutoggle]');
 const mnav=document.querySelector('[data-mnav]');
 const rail=document.querySelector('[data-rail]');
 const caret=document.querySelector('[data-caret]');
-const mItems=[...document.querySelectorAll('.m-item')];
-const railItems=[...document.querySelectorAll('.rail-item')];
 const searchCell=document.querySelector('[data-searchcell]');
-const searchOpen=document.querySelector('[data-searchopen]');
+const searchOpenBtn=document.querySelector('[data-searchopen]');
 const searchForm=document.querySelector('[data-searchform]');
 const searchInput=document.querySelector('.search-input');
 const themeIcons=[...document.querySelectorAll('[data-themeicon]')];
 const ring=document.querySelector('[data-ring]');
 const spot=document.querySelector('[data-spot]');
 const hero=document.querySelector('[data-hero]');
-const drawEls=[...document.querySelectorAll('[data-draw]')];
+
 const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine=window.matchMedia('(pointer: fine)').matches;
 const desktop=window.matchMedia('(min-width: 1024px)');
 
 let state='closed';
-let lastY=window.scrollY;
-let ticking=false;
 let searchExpanded=false;
 
 const themeOrder=['light','dark','warm'];
@@ -1014,24 +1029,17 @@ try{stored=localStorage.getItem('bedusec-theme')||'light'}catch(e){}
 setTheme(stored,false);
 
 document.addEventListener('click',(event)=>{
-const trigger=event.target.closest('[data-action]');
-if(trigger&&trigger.dataset.action==='theme'){
-event.preventDefault();
-cycleTheme();
-return;
-}
+const themeBtn=event.target.closest('[data-action="theme"]');
+if(themeBtn){event.preventDefault();cycleTheme();return}
 const go=event.target.closest('[data-href]');
-if(go){
-const href=go.dataset.href;
-if(href){location.href=href}
-}
+if(go&&go.dataset.href){location.href=go.dataset.href}
 });
 
 const openSearch=()=>{
 if(searchExpanded)return;
 searchExpanded=true;
 searchCell.classList.add('open');
-searchOpen.setAttribute('aria-expanded','true');
+searchOpenBtn.setAttribute('aria-expanded','true');
 setTimeout(()=>searchInput.focus(),120);
 };
 
@@ -1039,11 +1047,11 @@ const closeSearch=()=>{
 if(!searchExpanded)return;
 searchExpanded=false;
 searchCell.classList.remove('open');
-searchOpen.setAttribute('aria-expanded','false');
+searchOpenBtn.setAttribute('aria-expanded','false');
 searchInput.blur();
 };
 
-searchOpen.addEventListener('click',()=>{
+searchOpenBtn.addEventListener('click',()=>{
 if(searchExpanded){searchInput.focus()}else{openSearch()}
 });
 
@@ -1051,43 +1059,22 @@ searchForm.addEventListener('submit',(event)=>{
 event.preventDefault();
 const value=searchInput.value.trim();
 if(!value)return;
-const query=encodeURIComponent(value).replace(/%20/g,'+');
-location.href='/search?q='+query;
+location.href='/search?q='+encodeURIComponent(value).replace(/%20/g,'+');
 });
 
-const ashOut=(items)=>{
-if(reduced){return}
-items.forEach((el,i)=>{
-el.style.setProperty('--ax',(Math.random()*26-13).toFixed(1)+'px');
-el.style.setProperty('--ar',(Math.random()*8-4).toFixed(1)+'deg');
-el.style.setProperty('--ad',(i*34)+'ms');
-el.classList.add('ash');
-});
-};
-
-const resetState=()=>{
-body.classList.add('no-anim');
+const setClosed=()=>{
 state='closed';
 menutoggle.setAttribute('data-state','closed');
 menutoggle.setAttribute('aria-expanded','false');
 mnav.classList.remove('open','expanded');
 rail.classList.remove('open');
-mItems.forEach(el=>el.classList.remove('ash'));
-railItems.forEach(el=>el.classList.remove('ash'));
 caret.className='ico-caret';
-requestAnimationFrame(()=>{requestAnimationFrame(()=>body.classList.remove('no-anim'))});
 };
 
-const closeAll=(ash)=>{
+const closeAll=()=>{
 if(state==='closed')return;
 if(searchExpanded)closeSearch();
-if(ash&&!reduced){
-const items=desktop.matches?railItems:mItems;
-ashOut(items);
-setTimeout(resetState,reduced?0:820);
-}else{
-resetState();
-}
+setClosed();
 };
 
 const setOpen=()=>{
@@ -1110,11 +1097,21 @@ mnav.classList.add('expanded');
 caret.className='ph ph-caret-right ico-caret';
 };
 
+const shrink=()=>{
+state='open';
+menutoggle.setAttribute('data-state','icons');
+mnav.classList.remove('expanded');
+caret.className='ph ph-caret-left ico-caret';
+};
+
 menutoggle.addEventListener('click',()=>{
+if(desktop.matches){
+if(state==='closed'){setOpen()}else{closeAll()}
+return;
+}
 if(state==='closed'){setOpen();return}
-if(desktop.matches){closeAll(true);return}
 if(state==='open'){expand();return}
-closeAll(true);
+if(state==='expanded'){shrink();return}
 });
 
 document.addEventListener('click',(event)=>{
@@ -1123,31 +1120,32 @@ if(event.target.closest('[data-menutoggle]'))return;
 if(event.target.closest('[data-mnav]'))return;
 if(event.target.closest('[data-rail]'))return;
 if(event.target.closest('[data-searchcell]'))return;
-closeAll(true);
+closeAll();
 });
 
 document.addEventListener('keydown',(event)=>{
-if(event.key==='Escape'){
-closeAll(true);
-closeSearch();
-}
+if(event.key==='Escape'){closeAll();closeSearch()}
 });
 
 const splitWords=(el)=>{
 const raw=el.textContent.trim().replace(/\s+/g,' ');
 if(!raw)return;
+const words=raw.split(' ');
+const accentSet=new Set((el.dataset.accent||'').toLowerCase().split(/\s+/).filter(Boolean));
 el.setAttribute('aria-label',raw);
 el.textContent='';
-raw.split(' ').forEach((word,i)=>{
-const outer=document.createElement('span');
-outer.className='w';
-outer.style.setProperty('--i',i);
-const inner=document.createElement('span');
-inner.className='wi';
-inner.textContent=word;
-outer.appendChild(inner);
-el.appendChild(outer);
-if(i<raw.split(' ').length-1)el.appendChild(document.createTextNode(' '));
+words.forEach((word,i)=>{
+const w=document.createElement('span');
+w.className='w';
+w.style.setProperty('--i',i);
+const wi=document.createElement('span');
+wi.className='wi';
+const clean=word.toLowerCase().replace(/[.,!?;:]/g,'');
+if(accentSet.has(clean))wi.classList.add('accent');
+wi.textContent=word;
+w.appendChild(wi);
+el.appendChild(w);
+if(i<words.length-1)el.appendChild(document.createTextNode(' '));
 });
 };
 
@@ -1161,29 +1159,14 @@ revealObserver.unobserve(entry.target);
 });
 },{threshold:0.14,rootMargin:'0px 0px -60px 0px'});
 
-document.querySelectorAll('[data-reveal], .split').forEach((el,index)=>{
-if(el.parentElement){
+document.querySelectorAll('[data-reveal], .split').forEach((el)=>{
+if(el.hasAttribute('data-reveal')&&el.parentElement){
 const siblings=[...el.parentElement.children].filter(x=>x.hasAttribute('data-reveal'));
 const pos=siblings.indexOf(el);
 if(pos>0)el.style.setProperty('--d',(pos*70)+'ms');
 }
 revealObserver.observe(el);
 });
-
-const updateDraws=()=>{
-const vh=window.innerHeight;
-drawEls.forEach((el)=>{
-const rect=el.getBoundingClientRect();
-const start=vh*0.86;
-const total=rect.height+vh*0.34;
-let p=(start-rect.top)/total;
-p=Math.max(0,Math.min(1,p));
-el.style.setProperty('--p',p.toFixed(4));
-el.querySelectorAll('[data-at]').forEach((node)=>{
-node.classList.toggle('on',p>=parseFloat(node.dataset.at));
-});
-});
-};
 
 const updateMarquee=()=>{
 const section=document.querySelector('[data-marquee]');
@@ -1198,40 +1181,31 @@ row.style.transform='translate3d('+(delta*speed*dir).toFixed(2)+'px,0,0)';
 });
 };
 
-const updateThemeOnScroll=()=>{};
-
+let ticking=false;
 const onScroll=()=>{
 if(ticking)return;
 ticking=true;
 requestAnimationFrame(()=>{
-const y=window.scrollY;
-if(state!=='closed'&&Math.abs(y-lastY)>4)closeAll(true);
-if(searchExpanded&&Math.abs(y-lastY)>4)closeSearch();
-updateDraws();
+if(state!=='closed'||searchExpanded){
+closeAll();
+}
 updateMarquee();
-lastY=y;
 ticking=false;
 });
 };
 
 window.addEventListener('scroll',onScroll,{passive:true});
-window.addEventListener('resize',()=>{updateDraws();updateMarquee()},{passive:true});
-updateDraws();
+window.addEventListener('resize',()=>{updateMarquee()},{passive:true});
 updateMarquee();
 
 if(fine){
 root.classList.add('use-cursor');
 let rx=0,ry=0,tx=0,ty=0,visible=false;
-const move=(event)=>{
+window.addEventListener('pointermove',(event)=>{
 tx=event.clientX;
 ty=event.clientY;
-if(!visible){
-visible=true;
-ring.style.opacity='0.55';
-rx=tx;ry=ty;
-}
-};
-window.addEventListener('pointermove',move,{passive:true});
+if(!visible){visible=true;ring.style.opacity='0.55';rx=tx;ry=ty}
+},{passive:true});
 window.addEventListener('pointerleave',()=>{visible=false;ring.style.opacity='0'});
 const loop=()=>{
 rx+=(tx-rx)*0.18;
@@ -1241,10 +1215,10 @@ requestAnimationFrame(loop);
 };
 loop();
 const grow=()=>ring.classList.add('grow');
-const shrink=()=>ring.classList.remove('grow');
+const shrinkRing=()=>ring.classList.remove('grow');
 document.querySelectorAll('button,[data-href],.cell,.note').forEach((el)=>{
 el.addEventListener('pointerenter',grow);
-el.addEventListener('pointerleave',shrink);
+el.addEventListener('pointerleave',shrinkRing);
 });
 
 if(hero&&spot){
@@ -1256,16 +1230,6 @@ spot.style.setProperty('--mx',mx.toFixed(2)+'%');
 spot.style.setProperty('--my',my.toFixed(2)+'%');
 },{passive:true});
 }
-
-document.querySelectorAll('.tilt').forEach((card)=>{
-card.addEventListener('pointermove',(event)=>{
-const rect=card.getBoundingClientRect();
-const x=(event.clientX-rect.left)/rect.width-0.5;
-const y=(event.clientY-rect.top)/rect.height-0.5;
-card.style.transform='perspective(700px) rotateX('+(-y*4).toFixed(2)+'deg) rotateY('+(x*4).toFixed(2)+'deg)';
-},{passive:true});
-card.addEventListener('pointerleave',()=>{card.style.transform=''});
-});
 }
 
 document.querySelectorAll('[data-qa]').forEach((button)=>{
@@ -1277,7 +1241,7 @@ qa.dataset.open=open?'false':'true';
 });
 });
 
-window.addEventListener('load',()=>{updateDraws();updateMarquee()});
+window.addEventListener('load',()=>{updateMarquee()});
 </script>
 </body>
 </html>
